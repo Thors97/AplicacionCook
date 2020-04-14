@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<!-- ___ RESUMEN PERSONAL _____________________ -->
+    <TextView
+        android:id="@+id/resumenPeso"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:paddingStart="10dp"
+        android:background="#00ACC1"
+        android:backgroundTint="#EAECEC"
+        android:fontFamily="@font/chewy"
+        android:text="@string/resumenPeso"
+        android:textSize="24sp"
+        android:onClick="perfilButton"/>
+
+<!-- _____ RESUMEN NEVERA _______________________-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resumenListaCompra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chewy"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/resumenListaCompra"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/alimentoCompra1"
+                android:layout_width="135dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="6dp"
+                android:paddingStart="3sp"
+                android:background="#00897B"
+                android:onClick="neveraButton"
+                android:text="@string/resumenListaAlimento1"
+                android:textColor="#FFFFFF"
+                android:typeface="normal" />
+
+            <TextView
+                android:id="@+id/alimentoCompra2"
+                android:layout_width="135dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="60dp"
+                android:paddingStart="3sp"
+                android:background="#00897B"
+                android:onClick="neveraButton"
+                android:text="@string/resumenListaAlimento2"
+                android:textColor="#FFFFFF"
+                android:typeface="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/resumenDespensa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chewy"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/resumenDespensa"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/resumenListaDespensa1"
+                android:layout_width="135dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="6dp"
+                android:paddingStart="3sp"
+                android:background="#00897B"
+                android:onClick="neveraButton"
+                android:text="@string/resumenListaDespensa1"
+                android:textColor="#FFFFFF"
+                android:typeface="normal" />
+
+            <TextView
+                android:id="@+id/resumenListaDespensa2"
+                android:layout_width="135dp"
+                android:layout_height="20dp"
+                android:paddingStart="3sp"
+                android:background="#00897B"
+                android:onClick="neveraButton"
+                android:text="@string/resumenListaDespensa2"
+                android:textColor="#FFFFFF"
+                android:typeface="normal" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+<!-- _____ RECETA DEL DÍA _______________________-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/recetaDelDía"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/resumenRecetaDeldía"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/ensaladaGarbanzos"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="ensaladaGarbanzosButton"
+                app:srcCompat="@drawable/ensalada_garbanzos"
+                tools:ignore="ContentDescription"
+                tools:scaleType="centerInside" />
+
+            <TextView
+                android:id="@+id/recetaEnsaladaGarbanzos"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginTop="10dp"
+                android:text="@string/resumenRecetaEnsaladaGarbanzos"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+<!-- _____ PLAN SEMANAL _______________________-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/planSemanal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/chewy"
+            android:text="@string/resumenPlanSemanal"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/añadirMenu"
+                android:layout_width="0dp"
+                android:layout_weight="7"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:background="#71EEE3"
+                android:backgroundTint="#EAECEC"
+                android:hint="@string/resumenAñadirMenu"
+                android:textAlignment="viewStart"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/add"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="24dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/add"
+                android:onClick="añadirMenuButton"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+<!-- _________NAV BAR_________________________ -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:paddingTop="10dp"
+        app:itemIconTint="@color/itemIconTint"
+        app:itemTextColor="@color/itemIconTint"
+        app:menu="@menu/navigation_bottom" />
+    <!-- si tal, dentro de lo de arriba
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true" -->
+
+</LinearLayout>

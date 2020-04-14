@@ -1,0 +1,151 @@
+<resources>
+
+    <!-- General -->
+    <string name="error">Error</string>
+    <string name="ok">Ok</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="mensajeEliminar">¿Desea eliminar \'%1$s\' de la lista?</string>
+
+
+    <!-- Activity main -->
+    <string name="goText">Cook+</string>
+    <string name="textButtonGo">Go</string>
+
+    <!-- Buscar Recetas -->
+    <string name="buscarRecetas">Introduzca una receta</string>
+    <string name="nombreReceta1">Receta 1</string>
+    <string name="nombreReceta2">Receta 2</string>
+    <string name="nombreReceta3">Receta 3</string>
+
+    <string name="desReceta1">Pelamos, lavamos y cortamos las patatas en rodajas. Pelamos y cortamos la cebolla en rodajas muy finas.</string>
+    <string name="desReceta2">En una sartén ponemos aceite de girasol, y freímos las patatas a fuego medio, hasta que queden blanditas pero no doradas."</string>
+    <string name="desReceta3">Cuando estén listas, al sacarlas de la sartén, las ponemos en un plato con papel de cocina, para que absorba el exceso de aceite.</string>
+
+
+    <!-- Principal -->
+    <string name="resumenPeso">Evolución del peso</string>
+    <string name="resumenListaCompra">Lista de la compra</string>
+    <string name="resumenListaAlimento1">Listar un alimento</string>
+    <string name="resumenListaAlimento2">Listar un alimento</string>
+    <string name="resumenListaDespensa1">Listar un alimento</string>
+    <string name="resumenListaDespensa2">Listar un alimento</string>
+    <string name="resumenDespensa">Despensa</string>
+    <string name="resumenRecetaDeldía">Receta del día</string>
+    <string name="resumenPlanSemanal">Plan Semanal</string>
+    <string name="resumenAñadirMenu">Añadir menú</string>
+    <string name="resumenRecetaEnsaladaGarbanzos">Ensalada de garbanzos frescos con tomate, queso, pavo, lechuga, maiz y rúcula.</string>
+
+    <!-- Plan Semanal -->
+    <string name="resumenLunes">Lunes</string>
+    <string name="resumendesayunoLunes">Desayuno</string>
+    <string name="resumencomidaLunes">Comida</string>
+    <string name="resumencenaLunes">Cena</string>
+
+    <string name="resumenMartes">Martes</string>
+    <string name="resumendesayunoMartes">Desayuno</string>
+    <string name="resumencomidaMartes">Comida</string>
+    <string name="resumencenaMartes">Cena</string>
+
+    <string name="resumenMiércoles">Miércoles</string>
+    <string name="resumendesayunoMiércoles">Desayuno</string>
+    <string name="resumencomidaMiércoles">Comida</string>
+    <string name="resumencenaMiércoles">Cena</string>
+
+    <string name="resumenJueves">Jueves</string>
+    <string name="resumendesayunoJueves">Desayuno</string>
+    <string name="resumencomidaJueves">Comida</string>
+    <string name="resumencenaJueves">Cena</string>
+
+    <string name="resumenViernes">Viernes</string>
+    <string name="resumendesayunoViernes">Desayuno</string>
+    <string name="resumencomidaViernes">Comida</string>
+    <string name="resumencenaViernes">Cena</string>
+
+    <string name="resumenSábado">Sábado</string>
+    <string name="resumendesayunoSábado">Desayuno</string>
+    <string name="resumencomidaSábado">Comida</string>
+    <string name="resumencenaSábado">Cena</string>
+
+    <string name="resumenDomingo">Domingo</string>
+    <string name="resumendesayunoDomingo">Desayuno</string>
+    <string name="resumencomidaDomingo">Comida</string>
+    <string name="resumencenaDomingo">Cena</string>
+
+    <!-- Receta -->
+    <string name="resumenTítuloReceta">Ensalada de garbanzos</string>
+    <string name="resumenDescripción">1. Pon agua a hervir en un cazo, en el caso de que los garbanzos sean secos y tengas necesidad de hervirlos. Recuerda que para ello debes dejarlos en remojo durante unas horas antes de ponerlos a hervir. Existen botes de garbanzos ya cocinados los cuales no tienes que pasar por este paso.\n
+        2. Puedes añadir al mismo agua el huevo para hervir. Es necesario para poder servirlo y añadirlo a la ensalada de garbanzos.\n
+        3. Mientras se lleva a cabo el paso anterior, prepara la ensalada. En primer lugar, trocea la lechuga. No pongas demasiada ya que los garbanzos y el resto de ingredientes pesan mucho. Para ello, mejor, pocas hojas y troceadas bien pequeñas. No te olvides de enjuagarlas bien.\n
+    </string>
+
+    <!-- Perfil -->
+    <string name="peso"> Evolución del peso</string>
+    <string name="macros">Macronutrientes</string>
+    <string name="diarioFotos">Diario de fotos</string>
+
+    <!-- Nevera -->
+    <string name="despensa">Despensa</string>
+    <string name="alimentoDespensa1">Zanahorias</string>
+    <string name="alimentoDespensa2">Tomates</string>
+    <string name="alimentoDespensa3">Lentejas</string>
+    <string name="anadir">Añadir alimento</string>
+    <string name="listaCompra">Lista de la compra</string>
+    <string name="alimentoLista1">Zanahorias</string>
+    <string name="alimentoLista2">Tomates</string>
+    <string name="alimentoLista3">Lentejas</string>
+    <string name="alimento_vacio_adv">Alimento vacío, escriba un alimento para añadir.</string>
+
+    <!-- Favoritos -->
+    <string name="recetaFav1">Tortilla de patatas sin huevo</string>
+    <string name="recetaFav2">Ensalada de garbanzos</string>
+    <string name="recetaFav3">Crema de verduras</string>
+    <string name="recetaFav4">Arroz a la cubana</string>
+    <string name="recetaFav5">Tallarines tailandeses con ternera</string>
+    <string name="recetaFav6">Menestra de verduras</string>
+    <string name="recetaFav7">Tarta de queso sin lactosa</string>
+    <string name="recetaFav8">Tarta de zanahoria</string>
+    <string name="recetaFav9">Crepes sin gluten</string>
+    <string name="recetaFav10">Pollo al curry</string>
+
+    <!-- AppMovil -->
+    <string name="resumenTítuloEquipo">Equipo 7 </string>
+    <string name="resumenEquipo">- Somos el Equipo 7 y esta es la aplicación que hemos desarrollado para la asignatura Aplicaciones Móviles.\n- El principal objetivo de nuestra aplicación es animar a sus usuarios a llevar una alimentación sana, variada y equilibrada.\n\nUn saludo, el equipo 7. </string>
+
+    <!-- Usuario -->
+
+    <string name="resumenPerfilUsuario">PERFIL DE USUARIO</string>
+    <string name="resumenNombreApellidos"> Nombre Apellido1 Apellido2</string>
+    <string name="resumenNickUsuario"> Nick de usuario : </string>
+    <string name="resumenInfo"> Información básica :</string>
+    <string name="resumenEdad">- Edad</string>
+    <string name="resumenpeso">- Peso</string>
+    <string name="resumenAltura">- Altura</string>
+    <string name="resumenSexo">- Sexo</string>
+    <string name="resumenSaludCardio"> Salud cardiovascular </string>
+    <string name="resumenEnfermedad"> - Tengo diabetes </string>
+    <string name="resumenIntolerancias"> Celiaquía, Intolerancias y Alergias Alimentarias</string>
+    <string name="resumenIntolerancias1"> - Crústaceos</string>
+    <string name="resumenIntolerancias2"> - Gluten</string>
+    <string name="resumenIngredientesNo"> Ingredientes no deseados</string>
+    <string name="resumenIngredientesNo1"> - Carne de cerdo</string>
+    <string name="resumenEditar">Editar</string>
+
+    <!-- otros -->
+    <string name="app_name">Cook +</string>
+    <string name="hello">Cook+</string>
+    <string name="title_activity_main4">Main4Activity</string>
+
+    <!-- Top toolbar -->
+    <string name="action_settings">Datos Perfil</string>
+    <string name="action_about">Sobre Nosotros</string>
+    <string name="action_save">Guardar</string>
+    <string name="action_edit">Editar</string>
+
+
+    <!-- Bottom toolbar -->
+    <string name="menu_back"/>
+    <string name="menu_favorite"/>
+    <string name="menu_fridge"/>
+    <string name="menu_user"/>
+
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/títuloEquipo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/chewy"
+        android:text="@string/resumenTítuloEquipo"
+        android:textAlignment="center"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/equipo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/resumenEquipo"
+        android:textAlignment="viewStart"
+        android:textSize="14sp" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:layout_marginBottom="24dp"
+        app:srcCompat="@mipmap/cookmax_foreground" />
+
+</LinearLayout>

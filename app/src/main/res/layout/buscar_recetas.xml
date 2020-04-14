@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!-- _____ BUSCADOR _________________ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_margin="25dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/buscadorReceta"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:padding="5sp"
+            android:background="#71EEE3"
+            android:backgroundTint="#EAECEC"
+            android:hint="@string/buscarRecetas"
+            android:textAlignment="viewStart"
+            android:textSize="16sp" />
+        <ImageButton
+            android:id="@+id/buscarBtn"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_search"
+            android:onClick="buscar"/>
+    </LinearLayout>
+
+    <ListView android:id="@+id/id_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_marginStart="5dp"
+        android:paddingEnd="8dp">
+    </ListView>
+
+
+
+
+    <!-- _________NAV BAR_________________________ -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:paddingTop="10dp"
+        app:itemIconTint="@color/itemIconTint"
+        app:itemTextColor="@color/itemIconTint"
+        app:menu="@menu/navigation_bottom" />
+    <!-- si tal, dentro de lo de arriba
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true" -->
+
+
+</LinearLayout>
