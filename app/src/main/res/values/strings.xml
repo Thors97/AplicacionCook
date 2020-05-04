@@ -25,10 +25,10 @@
     <!-- Principal -->
     <string name="resumenPeso">Evolución del peso</string>
     <string name="resumenListaCompra">Lista de la compra</string>
-    <string name="resumenListaAlimento1">Listar un alimento</string>
-    <string name="resumenListaAlimento2">Listar un alimento</string>
-    <string name="resumenListaDespensa1">Listar un alimento</string>
-    <string name="resumenListaDespensa2">Listar un alimento</string>
+    <string name="resumenListaAlimento1"> Listar un alimento</string>
+    <string name="resumenListaAlimento2"> Listar un alimento</string>
+    <string name="resumenListaDespensa1"> Listar un alimento</string>
+    <string name="resumenListaDespensa2"> Listar un alimento</string>
     <string name="resumenDespensa">Despensa</string>
     <string name="resumenRecetaDeldía">Receta del día</string>
     <string name="resumenPlanSemanal">Plan Semanal</string>
@@ -109,7 +109,7 @@
 
     <!-- AppMovil -->
     <string name="resumenTítuloEquipo">Equipo 7 </string>
-    <string name="resumenEquipo">- Somos el Equipo 7 y esta es la aplicación que hemos desarrollado para la asignatura Aplicaciones Móviles.\n- El principal objetivo de nuestra aplicación es animar a sus usuarios a llevar una alimentación sana, variada y equilibrada.\n\nUn saludo, el equipo 7. </string>
+    <string name="resumenEquipo"> Somos el Equipo 7 y esta es la aplicación que hemos desarrollado para la asignatura Aplicaciones Móviles.\n  El principal objetivo de nuestra aplicación es animar a sus usuarios a llevar una alimentación sana, variada y equilibrada.\n\nUn saludo, el equipo 7. </string>
 
     <!-- Usuario -->
 
