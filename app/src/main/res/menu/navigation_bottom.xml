@@ -6,7 +6,7 @@
          android:title="@string/menu_back" /> -->
     <item
         android:id="@+id/action_favorite"
-        android:icon="@drawable/favorite"
+        android:icon="@drawable/fav"
         android:title="@string/menu_favorite"
         android:onClick="onOptionsItemSelected"/>
      <item
@@ -22,7 +22,7 @@
 
      <item
        android:id="@+id/action_search"
-       android:icon="@drawable/arrow"
+       android:icon="@drawable/search"
          android:title=""
          android:onClick="onOptionsItemSelected" />
 

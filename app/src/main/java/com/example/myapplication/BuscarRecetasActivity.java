@@ -3,6 +3,9 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.AsyncTask;
 import java.io.BufferedInputStream;
@@ -11,6 +14,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import android.graphics.BitmapFactory;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.app.ProgressDialog;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -53,6 +59,23 @@ public class BuscarRecetasActivity extends AppCompatActivity {
 
     public void buscar(View view){
         alimento = m_edittext.getText().toString();
+        if (alimento.isEmpty()) {
+
+            //AlertDialog
+            // si no hay nada metido, no puede buscar nada
+            //4_Android_Intents_BroadcastReceivers_Dialog.pdf UC3M (pág 30)
+            AlertDialog.Builder ad = new AlertDialog.Builder(this);
+            ad.setTitle("Error");
+            ad.setMessage(" No ha introducido nada ");
+            ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int arg1) {
+                    dialog.cancel();
+                }
+            });
+            ad.show();
+            return;
+
+        }
         new BuscarReceta().execute(alimento);
 
     }
@@ -141,24 +164,36 @@ public class BuscarRecetasActivity extends AppCompatActivity {
             return temp;
         }
 
+        //Progress dialog para notificar que se están buscando recetas
+        ProgressDialog progress_dialog = new ProgressDialog(BuscarRecetasActivity.this);
+
         @Override
         protected void onPreExecute() {
-            // we can start a progress bar here
+            //Mostramos el progressDialog en la activity
+            progress_dialog.setTitle("Espere por favor");
+            progress_dialog.setMessage("   Buscando recetas...");
+            progress_dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress_dialog.show();
         }
         protected void onPostExecute(ArrayList<Receta> result) {
             // Aquí se actualiza el interfaz de usuario
             List<String> listTitle = new ArrayList<String>();
 
+
             for (int i = 0; i < result.size(); i++) {
                 // make a list of the venus that are loaded in the list.
                 // show the name, the category and the city
-                listTitle.add(i, "Nombre de la receta: " +result.get(i).getNombre());
+                listTitle.add(i, result.get(i).getNombre());
             }
 
             ArrayAdapter<String> myAdapter;
             myAdapter = new ArrayAdapter<String>(BuscarRecetasActivity.this, R.layout.lista_recetas , R.id.listText, listTitle);
 
             m_listview.setAdapter(myAdapter);
+
+            //Ocultamos el progressDialog
+            progress_dialog.dismiss();
+
         }
 
 
@@ -209,6 +244,7 @@ public class BuscarRecetasActivity extends AppCompatActivity {
                                         Receta receta = new Receta();
 
                                         String nombre = null;
+                                        Bitmap imagen = null;
                                         String name3 = jsonReader.nextName();
                                         if(name3.equals("label")){
                                             nombre = jsonReader.nextString();
@@ -247,5 +283,3 @@ public class BuscarRecetasActivity extends AppCompatActivity {
         return true;
     }
 }
-
-

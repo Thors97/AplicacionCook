@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -36,7 +41,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:scaleType="centerInside"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    android:background="@drawable/esquinas_redondeadas"/>
 
                 <Button
                     android:id="@+id/button"
@@ -83,7 +89,6 @@
                     tools:background="#EAECEC" />
 
             </LinearLayout>
-
         </LinearLayout>
 
         <!-- _________DATOS GENERALES_________________________ -->
@@ -107,7 +112,6 @@
                 android:layout_width="378dp"
                 android:layout_height="36dp"
                 android:orientation="horizontal">
-
 
                 <TextView
                     android:id="@+id/sexo1"
@@ -220,17 +224,13 @@
                     tools:backgroundTint="#EAECEC" />
 
             </LinearLayout>
-
-
         </LinearLayout>
 
         <!-- _________INTOLERANCIAS_________________________ -->
         <LinearLayout
             android:layout_width="378dp"
-            android:layout_height="112dp"
+            android:layout_height="181dp"
             android:orientation="vertical">
-
-
 
             <TextView
                 android:id="@+id/intolerancias"
@@ -243,45 +243,24 @@
                 android:textSize="16sp"
                 tools:layout_marginBottom="6dp" />
 
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/intoleranciasEdit"
+                android:layout_width="329dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:hint="Pulse aquí para seleccionar las intolerancias"
+                android:onClick="onTextViewClickedIntolerancias"
+                android:textSize="16sp"
+                tools:layout_marginBottom="6dp" />
 
-                <EditText
-                    android:id="@+id/intoleranciasEdit"
-                    android:layout_width="329dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text=""
-                    android:textSize="16sp"
-                    tools:layout_marginBottom="6dp" />
-                <ImageButton
-                    android:id="@+id/addIntoleranciasBtn"
-                    android:layout_width="32dp"
-                    android:layout_height="26dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#FFFFFF"
-                    android:backgroundTint="#FFFFFF"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/add" />
-            </LinearLayout>
-
-            <GridView
-                android:id="@+id/intoleranciasLV"
-                android:layout_width="match_parent"
-                android:layout_height="33dp"
-                android:numColumns="auto_fit" />
         </LinearLayout>
         <!-- _________INGREDIENTES_________________________ -->
 
         <LinearLayout
             android:layout_width="378dp"
-            android:layout_height="123dp"
+            android:layout_height="174dp"
             android:orientation="vertical">
 
             <TextView
@@ -295,52 +274,31 @@
                 android:textSize="16sp"
                 tools:layout_marginBottom="8dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/ingredientesNoEdit"
+                android:layout_width="329dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <EditText
-                    android:id="@+id/ingredientesNoEdit"
-                    android:layout_width="329dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text=""
-                    android:textSize="16sp"
-                    tools:layout_marginBottom="8dp" />
-
-                <ImageButton
-                    android:id="@+id/addIngredientesBtn"
-                    android:layout_width="32dp"
-                    android:layout_height="26dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#FFFFFF"
-                    android:backgroundTint="#FFFFFF"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/add" />
-
-            </LinearLayout>
-            <GridView
-                android:id="@+id/ingredientesLV"
-                android:layout_width="wrap_content"
-                android:layout_height="59dp"
-                android:numColumns="auto_fit" />
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:hint="Pulse aquí para seleccionar los ingredientes"
+                android:onClick="onTextViewClickedIngredientes"
+                android:textSize="16sp"
+                tools:layout_marginBottom="8dp" />
 
         </LinearLayout>
-
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        android:paddingTop="10dp"
-        app:itemIconTint="@color/itemIconTint"
-        app:itemTextColor="@color/itemIconTint"
-        app:menu="@menu/navigation_bottom" />
+    android:id="@+id/bottom_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:background="@color/colorPrimary"
+    android:paddingTop="10dp"
+    app:itemIconTint="@color/itemIconTint"
+    app:itemTextColor="@color/itemIconTint"
+    app:menu="@menu/navigation_bottom" />
 
 </LinearLayout>
+</ScrollView>

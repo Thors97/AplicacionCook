@@ -16,11 +16,11 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:paddingStart="10dp"
-        android:background="#00ACC1"
         android:backgroundTint="#EAECEC"
         android:fontFamily="@font/chewy"
         android:text="@string/resumenPeso"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:background="@drawable/esquinas_redondeadas"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,6 +43,7 @@
             android:id="@+id/imgMacros"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="visible"
             app:srcCompat="@drawable/graficobarras" />
 
     </LinearLayout>

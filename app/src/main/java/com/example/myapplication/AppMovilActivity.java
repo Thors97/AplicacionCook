@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 public class AppMovilActivity extends AppCompatActivity {
 
-    //Pruebas a
+    //hola
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

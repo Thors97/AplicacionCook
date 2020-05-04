@@ -20,45 +20,56 @@
         <activity
             android:name=".AppMovilActivity"
             android:parentActivityName=".PrincipalActivity"
-            android:label="Cook+"/>
+            android:label="Cook+"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".UsuarioActivity"
             android:label="Perfil de usuario"
-            android:parentActivityName=".PrincipalActivity"/>
+            android:parentActivityName=".PrincipalActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PerfilActivity"
             android:label="Perfil"
-            android:parentActivityName=".PrincipalActivity"/>
+            android:parentActivityName=".PrincipalActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PlanSemanalActivity"
             android:label="Plan Semanal"
-            android:parentActivityName=".PrincipalActivity" />
+            android:parentActivityName=".PrincipalActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".FavoritosActivity"
             android:label="Favoritos"
-            android:parentActivityName=".PrincipalActivity"/>
+            android:parentActivityName=".PrincipalActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PrincipalActivity"
-            android:label="Cook+" />
+            android:label="Cook+"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".RecetaActivity"
             android:label="Receta del día"
-            android:parentActivityName=".PrincipalActivity" />
+            android:parentActivityName=".PrincipalActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DiarioFotosActivity"
             android:label="Diario de fotos"
-            android:parentActivityName=".PerfilActivity"/>
+            android:parentActivityName=".PerfilActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".BuscarRecetasActivity"
             android:label="Buscador de recetas"
-            android:parentActivityName=".PrincipalActivity"/>
+            android:parentActivityName=".PrincipalActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".NeveraActivity"
             android:label="Despensa"
-            android:parentActivityName=".PrincipalActivity"/>
+            android:parentActivityName=".PrincipalActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:label="Cook+">
+            android:label="Cook+"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
