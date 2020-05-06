@@ -10,7 +10,9 @@ import android.media.Image;
 import android.os.AsyncTask;
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,7 @@ public class BuscarRecetasActivity extends AppCompatActivity {
 
         // Creamos un listview que va a contener los resultados de la consulta
         m_listview = (ListView) findViewById(R.id.id_list_view);
+
         m_edittext = (EditText)  findViewById(R.id.buscadorReceta);
 
     }
@@ -176,21 +179,24 @@ public class BuscarRecetasActivity extends AppCompatActivity {
             progress_dialog.show();
         }
         protected void onPostExecute(ArrayList<Receta> result) {
+
             // Aquí se actualiza el interfaz de usuario
             List<String> listTitle = new ArrayList<String>();
+            List<Bitmap> listImage = new ArrayList<Bitmap>();
 
+            System.out.println("TAMAÑO RESULT" + result.size());
 
             for (int i = 0; i < result.size(); i++) {
                 // make a list of the venus that are loaded in the list.
                 // show the name, the category and the city
-                listTitle.add(i, result.get(i).getNombre());
+                // listTitle.add(i, result.get(i).getNombre());
+                //listImage.add(i, result.get(i).getImagen());
+                System.out.println("RESULT NAME:  " + result.get(i).getNombre());
             }
 
-            ArrayAdapter<String> myAdapter;
-            myAdapter = new ArrayAdapter<String>(BuscarRecetasActivity.this, R.layout.lista_recetas , R.id.listText, listTitle);
+            BuscarRecetasAdapter adapter = new BuscarRecetasAdapter(BuscarRecetasActivity.this, R.layout.buscar_recetas, result);
 
-            m_listview.setAdapter(myAdapter);
-
+            m_listview.setAdapter(adapter);
             //Ocultamos el progressDialog
             progress_dialog.dismiss();
 
@@ -225,31 +231,27 @@ public class BuscarRecetasActivity extends AppCompatActivity {
             try {
                 jsonReader = new JsonReader(new InputStreamReader(is, "UTF-8"));
                 jsonReader.beginObject();
+                Receta receta;
+
                 while (jsonReader.hasNext()) {
                     String name = jsonReader.nextName();
-
+                    //Buscamos la cadena hits
                     if(name.equals("hits")){
-
                         jsonReader.beginArray();
-                        while(jsonReader.hasNext()){
+                        while (jsonReader.hasNext()) {
+                            receta = new Receta();
                             jsonReader.beginObject();
-                            while(jsonReader.hasNext()){
-                                String name2 = jsonReader.nextName();
-                                if(name2.equals("recipe")){
-                                    // nombre = jsonReader.nextString();
-                                    //System.out.println("nombre 1:" + nombre);
-
+                            //comienza un objeto
+                            while (jsonReader.hasNext()) {
+                                name = jsonReader.nextName();
+                                if (name.equals("recipe")) {
                                     jsonReader.beginObject();
                                     while(jsonReader.hasNext()){
-                                        Receta receta = new Receta();
-
-                                        String nombre = null;
-                                        Bitmap imagen = null;
-                                        String name3 = jsonReader.nextName();
-                                        if(name3.equals("label")){
-                                            nombre = jsonReader.nextString();
-                                            receta.setName(nombre);
-                                            temp.add(receta);
+                                        name = jsonReader.nextName();
+                                        if (name.equals("label")) {
+                                            receta.setName(jsonReader.nextString());
+                                        } else if (name.equals("image")) {
+                                            receta.setImagen(getBitmapFromURL(jsonReader.nextString()));
                                         }else{
                                             jsonReader.skipValue();
                                         }
@@ -259,27 +261,48 @@ public class BuscarRecetasActivity extends AppCompatActivity {
                                 }else{
                                     jsonReader.skipValue();
                                 }
-
                             }
                             jsonReader.endObject();
+                            temp.add(receta);
                         }
                         jsonReader.endArray();
                     }else{
                         jsonReader.skipValue();
                     }
                 }
-                jsonReader.endObject();
+
             } catch (Exception e) {
                 System.out.println("Exception");
                 return new ArrayList<Receta>();
             }
         }
-
-        return temp;}
+        return temp;
+    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    /**
+     * Este código ha sido sacado de StackOverflow.
+     * Página: https://stackoverflow.com/questions/18210700/best-method-to-download-image-from-url-in-android
+     ***/
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            java.net.URL url = new java.net.URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url
+                    .openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
