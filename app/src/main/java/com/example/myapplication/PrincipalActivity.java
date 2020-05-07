@@ -106,14 +106,6 @@ public class PrincipalActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void perfilUsuarioButton(View view){
-        // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-        Intent intent = new Intent(this, UsuarioActivity.class);
-
-        // Iniciamos la nueva actividad
-        startActivity(intent);
-    }
-
     public void perfilButton(View view){
         // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
         Intent intent = new Intent(this, PerfilActivity.class);
