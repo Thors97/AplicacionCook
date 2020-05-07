@@ -89,15 +89,16 @@ public class UsuarioActivity extends AppCompatActivity {
         String sharedPrefFile = "com.example.myapplication";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
-        String nombre, edadP, alturaP, pesoP, intoleranciasP, ingredientesP, sex_spinner;
+        String nombre, edadP, alturaP, pesoP, intoleranciasP, ingredientesP, strImagen, sex_spinner;
 
         if(mPreferences!=null){
             nombre= mPreferences.getString(NOMBRE, "");
             nombreApellidos = (EditText) findViewById(R.id.nombreApellidos);
             nombreApellidos.setText(nombre);
 
-            byte[] decodedByte = Base64.decode(IMG.getBytes(),Base64.DEFAULT );
-            System.out.println("recuperamos: "+decodedByte);
+            strImagen = mPreferences.getString(IMG, "");
+
+            byte[] decodedByte = Base64.decode(strImagen, 0);
             if (decodedByte != null) {
                 Bitmap imagen = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
                 System.out.println("recuperamos imagen: "+imagen);
@@ -226,7 +227,7 @@ public class UsuarioActivity extends AppCompatActivity {
         Bitmap bitmap = fotoPerfil.getDrawingCache();
 
         editor.putString(IMG, encodeTobase64(bitmap));
-        System.out.println("Imagen: "+encodeTobase64(bitmap));
+
         editor.putString(EDAD,edad.getText().toString());
         //int posicion = Integer.parseInt(sexSpinner.getSelectedItem().toString()) ;
 //        int posicion = Integer.valueOf((String)sexSpinner.getSelectedItem()) ;
@@ -348,6 +349,7 @@ public class UsuarioActivity extends AppCompatActivity {
         String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
 
         Log.d("Image Log:", imageEncoded);
+        System.out.println("IMAGEN ENCODED:  " + imageEncoded);
         return imageEncoded;
     }
     //-----------------------------------------------------------------------//

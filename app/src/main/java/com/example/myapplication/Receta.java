@@ -11,12 +11,15 @@ public class Receta {
     private String calorias;
     private String tiempo;
 
+
     public Receta(){
         this.nombre = "";
         this.imagen = null;
-        /*this.healthLabels = null;
         this.ingredientes = null;
         this.calorias = "";
+
+
+        /*  this.healthLabels = null;
         this.tiempo = "";*/
     }
 
@@ -34,5 +37,21 @@ public class Receta {
 
     public Bitmap getImagen() {
         return imagen;
+    }
+
+    public String[] getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(String[] ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+
+    public String getCalorias() {
+        return calorias;
+    }
+
+    public void setCalorias(String calorias) {
+        this.calorias = calorias;
     }
 }

@@ -32,6 +32,7 @@ public class BuscarRecetasAdapter extends ArrayAdapter<Receta> {
     private class ViewHolder {
         ImageView imageView;
         TextView txtTitle;
+        TextView txtCalorias;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -45,12 +46,14 @@ public class BuscarRecetasAdapter extends ArrayAdapter<Receta> {
             holder = new ViewHolder();
             holder.txtTitle = (TextView) convertView.findViewById(R.id.listText);
             holder.imageView = (ImageView) convertView.findViewById(R.id.listImage);
+            holder.txtCalorias = (TextView) convertView.findViewById(R.id.listCalorias);
             convertView.setTag(holder);
         } else
             holder = (ViewHolder) convertView.getTag();
 
         holder.txtTitle.setText(receta.getNombre());
         holder.imageView.setImageBitmap(receta.getImagen());
+        holder.txtCalorias.setText("CALORIAS:  " + receta.getCalorias());
 
         return convertView;
     }

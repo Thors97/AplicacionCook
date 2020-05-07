@@ -252,7 +252,9 @@ public class BuscarRecetasActivity extends AppCompatActivity {
                                             receta.setName(jsonReader.nextString());
                                         } else if (name.equals("image")) {
                                             receta.setImagen(getBitmapFromURL(jsonReader.nextString()));
-                                        }else{
+                                        } else if (name.equals("calories")) {
+                                            receta.setCalorias(jsonReader.nextString());
+                                        } else {
                                             jsonReader.skipValue();
                                         }
 
