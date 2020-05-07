@@ -44,12 +44,13 @@
                 android:id="@+id/resumenListaCompra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/esquinas_redondeadas"
                 android:fontFamily="@font/chewy"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="@string/resumenListaCompra"
-                android:textSize="24sp"
-                android:background="@drawable/esquinas_redondeadas"/>
+                android:textAlignment="textStart"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/alimentoCompra1"
@@ -90,14 +91,15 @@
 
             <TextView
                 android:id="@+id/resumenDespensa"
-                android:layout_width="wrap_content"
+                android:layout_width="132dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/esquinas_redondeadas"
                 android:fontFamily="@font/chewy"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="@string/resumenDespensa"
-                android:textSize="24sp"
-                android:background="@drawable/esquinas_redondeadas"/>
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/resumenListaDespensa1"

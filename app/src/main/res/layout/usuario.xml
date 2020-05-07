@@ -15,6 +15,7 @@
     <LinearLayout
         android:layout_width="379dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:orientation="vertical">
 
         <!-- _________FOTO, NOMBRE Y APELLIDOS_________________________ -->
@@ -23,7 +24,6 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
@@ -40,9 +40,9 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:scaleType="centerInside"
-                    android:visibility="visible"
-                    android:background="@drawable/esquinas_redondeadas"/>
+                    android:background="@drawable/esquinas_redondeadas"
+                    android:scaleType="center"
+                    android:visibility="visible" />
 
                 <Button
                     android:id="@+id/button"
@@ -50,8 +50,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:background="#C8CFCF"
-                    android:backgroundTint="#C8CFCF"
+                    android:background="@drawable/esquinas_redondeadas"
+                    android:backgroundTint="#00897B"
                     android:onClick="onClick"
                     android:text="Foto de Perfil"
                     android:textSize="10sp" />
@@ -72,7 +72,7 @@
                     android:fontFamily="@font/chewy"
                     android:inputType="textPersonName"
                     android:text="@string/resumenNickUsuario"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/nombreApellidos"
@@ -94,7 +94,8 @@
         <!-- _________DATOS GENERALES_________________________ -->
         <LinearLayout
             android:layout_width="378dp"
-            android:layout_height="196dp"
+            android:layout_height="181dp"
+            android:layout_marginTop="6dp"
             android:orientation="vertical"
             android:scrollbars="vertical">
 
@@ -106,7 +107,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/chewy"
                 android:text="@string/resumenInfo"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="378dp"
@@ -163,8 +164,8 @@
                     android:layout_height="26dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="0dp"
-                    android:background="#C8CFCF"
-                    android:backgroundTint="#C8CFCF"
+                    android:background="@drawable/esquinas_redondeadas"
+                    android:backgroundTint="#00897B"
                     android:scaleType="centerInside"
                     android:text="Establecer"
                     app:srcCompat="@drawable/add" />
@@ -187,12 +188,13 @@
 
                 <EditText
                     android:id="@+id/pesoEdit"
-                    android:layout_width="270dp"
+                    android:layout_width="83dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:hint="(en kilos)"
                     android:inputType="number|numberDecimal"
                     android:text=""
+                    android:textAlignment="viewStart"
                     tools:background="#EAECEC"
                     tools:backgroundTint="#EAECEC" />
 
@@ -214,7 +216,7 @@
 
                 <EditText
                     android:id="@+id/alturaEdit"
-                    android:layout_width="270dp"
+                    android:layout_width="84dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:hint="(en cm)"
@@ -234,23 +236,25 @@
 
             <TextView
                 android:id="@+id/intolerancias"
-                android:layout_width="325dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/chewy"
                 android:text="@string/resumenIntolerancias"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 tools:layout_marginBottom="6dp" />
 
             <TextView
                 android:id="@+id/intoleranciasEdit"
-                android:layout_width="329dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="134dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:background="@drawable/esquinas_redondeadas"
+                android:backgroundTint="#EAECEC"
                 android:clickable="true"
-                android:hint="Pulse aquí para seleccionar las intolerancias"
+                android:hint="   Pulse aquí para seleccionar las intolerancias"
                 android:onClick="onTextViewClickedIntolerancias"
                 android:textSize="16sp"
                 tools:layout_marginBottom="6dp" />
@@ -261,44 +265,47 @@
         <LinearLayout
             android:layout_width="378dp"
             android:layout_height="174dp"
+            android:layout_marginBottom="14dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/ingredientesNo"
-                android:layout_width="328dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/chewy"
                 android:text="@string/resumenIngredientesNo"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 tools:layout_marginBottom="8dp" />
 
             <TextView
                 android:id="@+id/ingredientesNoEdit"
-                android:layout_width="329dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="134dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:background="@drawable/esquinas_redondeadas"
+                android:backgroundTint="#EAECEC"
                 android:clickable="true"
-                android:hint="Pulse aquí para seleccionar los ingredientes"
+                android:hint="   Pulse aquí para seleccionar los ingredientes"
                 android:onClick="onTextViewClickedIngredientes"
                 android:textSize="16sp"
-                tools:layout_marginBottom="8dp" />
+                tools:layout_marginBottom="16dp" />
 
         </LinearLayout>
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-    android:id="@+id/bottom_navigation"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:background="@color/colorPrimary"
-    android:paddingTop="10dp"
-    app:itemIconTint="@color/itemIconTint"
-    app:itemTextColor="@color/itemIconTint"
-    app:menu="@menu/navigation_bottom" />
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_weight="0"
+        android:background="@color/colorPrimary"
+        android:paddingTop="10dp"
+        app:itemIconTint="@color/itemIconTint"
+        app:itemTextColor="@color/itemIconTint"
+        app:menu="@menu/navigation_bottom" />
 
 </LinearLayout>
-</ScrollView>
+    </ScrollView>
