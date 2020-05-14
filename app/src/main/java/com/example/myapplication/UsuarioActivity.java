@@ -1,8 +1,6 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +13,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,129 +22,136 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.widget.Toast;
-
-
+import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
+import java.util.ArrayList;
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UsuarioActivity extends AppCompatActivity {
-    private ArrayList<String> itemIntolerancias;
-    private ArrayAdapter<String> adapterIntolerancias;
-    private ArrayList<String> itemIngredientesNo;
-    private ArrayAdapter<String> adapterIngredientesNo;
 
     private ImageView fotoPerfil;
-
     private EditText nombreApellidos;
     private TextView edad;
     private Button establecerBtn;
     private EditText peso;
     private EditText altura;
-    private ImageButton btnAddIntolerancias;
-    private GridView listaIntolerancias;
-    private EditText editItemIntolerancias;
-    private ImageButton btnAddIngredientes;
-    private GridView listaIngredientesNo;
-    private EditText editItemIngredientes;
-
+    private TextView intoleranciasEdit;
+    private TextView ingredientesNoEdit;
+    private Set<String> dieta, ingredientes;
     Calendar c;
     DatePickerDialog fecha;
-
-    public int editar=0; //Variable que en función de su valor nos permite editar o no la Activity
+    Spinner sexSpinner;
 
     // código de acción para lanzar un Intent que solicite una captura
     private static final int CODIGO_HACER_FOTO = 100;
-
     // ubicación de la imagen tomada
     private File ubicacion = null;
-
     // Clave para no perder la ruta en caso de destrucción de la activity
     private final static String CLAVE_RUTA_IMAGEN = "CLAVE_RUTA_IMAGEN";
+    private final static String NOMBRE = "NOMBRE";
+    private final static String IMG = "IMG";
+    private final static String SEXO = "SEXO";
+    private final static String PESO = "PESO";
+    private final static String ALTURA= "ALTURA";
+    private final static String EDAD= "EDAD";
+    private final static String INTOLERANCIAS= "INTOLERANCIAS";
+    private final static String INGREDIENTES= "INGREDIENTES";
 
+    //-----------------------------------------------------------------------//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //  if (editar==0) { //si pongo aquí 1 no funciona
         super.onCreate(savedInstanceState);
         setContentView(R.layout.usuario);
 
-        //PREFERENCIAS
-        //5_Android_Prefences_Fichero_BD.pdf
-        //        // Recuperamos la informacion salvada en la preferencia
-        //        String sharedPrefFile = "com.uc3m.it.preferencesappmovprefs";
-        //        SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-        //        String name = mPreferences.getString("NAME", "No name defined yet!");
-        //        No se donde recuperar las preferencias para que si doy para atrás y luego hacia delante sigan estando
-        //        los datos que he introducido
-
-        //Spinner para el sexo de la persona
-        //2_Android_InterfacesUsuario_v2.pdf UC3M (págs 18, 19)
+        // SPINNER para el sexo de la persona
+        // 2_Android_InterfacesUsuario_v2.pdf UC3M (págs 18, 19)
         final String[] optionsSex = new String[]{"Mujer", "Hombre"};
-        ArrayAdapter<String> adapterSex = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, optionsSex);
+        sexSpinner = (Spinner) findViewById(R.id.sexo);
 
-        final Spinner sexSpinner = (Spinner) findViewById(R.id.sexo);
+        ArrayAdapter<String> adapterSex = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, optionsSex);
         adapterSex.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);//Layout de la lista al desplegarse para seleccionar opción
         sexSpinner.setAdapter(adapterSex);
 
-        //instanciamos
-        fotoPerfil = (ImageView) findViewById(R.id.fotoUsuario);
-        nombreApellidos = (EditText) findViewById(R.id.nombreApellidos);
-        edad = (TextView) findViewById(R.id.edadEdit);
+        // PREFERENCIAS
+        // 5_Android_Prefences_Fichero_BD.pdf
+        // Recuperamos la informacion salvada en la preferencia
+        String sharedPrefFile = "com.example.myapplication";
+        SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+
+        String nombre, edadP, alturaP, pesoP, strImagen, sex_spinner;
+        Set<String> ingredientesP, intoleranciasP;
+        if(mPreferences!=null){
+            nombre= mPreferences.getString(NOMBRE, "");
+            nombreApellidos = (EditText) findViewById(R.id.nombreApellidos);
+            nombreApellidos.setText(nombre);
+
+            strImagen = mPreferences.getString(IMG, "");
+
+            byte[] decodedByte = Base64.decode(strImagen, 0);
+            if (decodedByte != null) {
+                Bitmap imagen = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+                System.out.println("recuperamos imagen: "+imagen);
+                fotoPerfil = (ImageView) findViewById(R.id.fotoUsuario);
+                fotoPerfil.setImageBitmap(imagen);
+            }
+
+            int position = mPreferences.getInt(SEXO, -1);
+            sexSpinner.setSelection(position);
+
+            edadP= mPreferences.getString(EDAD, "");
+            edad = (TextView) findViewById(R.id.edadEdit);
+            edad.setText(edadP);
+
+            alturaP= mPreferences.getString(ALTURA, "");
+            altura = (EditText) findViewById(R.id.alturaEdit);
+            altura.setText(alturaP);
+
+            pesoP= mPreferences.getString(PESO, "");
+            peso = (EditText) findViewById(R.id.pesoEdit);
+            peso.setText(pesoP);
+
+            intoleranciasP = mPreferences.getStringSet(INTOLERANCIAS, new HashSet<String>());
+            System.out.println("MIRAMOS A VER CUANTAS INTOLERANCIAS SE GUARDAN: " + intoleranciasP);
+            intoleranciasEdit = (TextView) findViewById(R.id.intoleranciasEdit);
+            String intoleranciasPintar = "";
+            for (String ingrediente : intoleranciasP) {
+
+                intoleranciasPintar = intoleranciasPintar + "\n" + ingrediente;
+            }
+
+            intoleranciasEdit.setText(intoleranciasPintar);
+
+            //ingredientesP= mPreferences.getString(INGREDIENTES, "");
+            ingredientesP = mPreferences.getStringSet(INGREDIENTES, new HashSet<String>());
+            ingredientesNoEdit = (TextView) findViewById(R.id.ingredientesNoEdit);
+            String ingredientesPintar = "";
+            for (String ingrediente : ingredientesP) {
+
+                ingredientesPintar = ingredientesPintar + "\n" + ingrediente;
+            }
+
+            ingredientesNoEdit.setText(ingredientesPintar);
+
+        }
+
+        // instanciamos
         establecerBtn = (Button) findViewById(R.id.addBirthayBtn);
-        peso = (EditText) findViewById(R.id.pesoEdit);
-        altura = (EditText) findViewById(R.id.alturaEdit);
-        btnAddIntolerancias = (ImageButton) findViewById(R.id.addIntoleranciasBtn);
-        listaIntolerancias = (GridView) findViewById(R.id.intoleranciasLV);
-        editItemIntolerancias = (EditText) findViewById(R.id.intoleranciasEdit);
-        btnAddIngredientes = (ImageButton) findViewById(R.id.addIngredientesBtn);
-        listaIngredientesNo = (GridView) findViewById(R.id.ingredientesLV);
-        editItemIngredientes = (EditText) findViewById(R.id.ingredientesNoEdit);
-
-        //Nos creamos un arrayList para el manejo de las listas
-        itemIntolerancias = new ArrayList<>();
-        itemIngredientesNo = new ArrayList<>();
-
-        adapterIntolerancias = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                itemIntolerancias
-        );
-        adapterIngredientesNo = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                itemIngredientesNo
-        );
-
-        // OnClickListener
-        btnAddIntolerancias.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addItemIntolerancia();
-            }
-        });
-
-        btnAddIngredientes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addItemIngredientes();
-            }
-        });
-
-        //DatePickerDialog
-        //2_Android_InterfacesUsuario_v2.pdf UC3M
-        //https://www.youtube.com/watch?v=-mJmScTAWyQ
+        // DatePickerDialog
+        // 2_Android_InterfacesUsuario_v2.pdf UC3M
         establecerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,182 +162,104 @@ public class UsuarioActivity extends AppCompatActivity {
 
                 fecha = new DatePickerDialog(UsuarioActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        edad.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                    public void onDateSet(DatePicker view, int año, int mes, int dia) {
+                        edad.setText(dia + "/" + (mes + 1) + "/" + año);
                     }
                 }, dia, mes, año);
                 fecha.show();
             }
         });
-        listaIntolerancias.setAdapter(adapterIntolerancias);//establece los datos detrás del ListView
-        listaIngredientesNo.setAdapter(adapterIngredientesNo);
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         // }//end if
     }
-
+    //-----------------------------------------------------------------------//
     public boolean onCreateOptionsMenu(Menu menu) {
         // Se recrea el menu que aparece en ActionBar de la actividad.
         getMenuInflater().inflate(R.menu.menu_usuario, menu);
         return true;
     }
-
+    //-----------------------------------------------------------------------//
     public boolean onOptionsItemSelected(MenuItem item) {
         // Se obtiene el identificador del item que ha sido seleccionado
         int id = item.getItemId();
 
         //NavBar
-        if (id == R.id.action_favorite) {
-            // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-            Intent intent = new Intent(this,FavoritosActivity.class);
-            // Iniciamos la nueva actividad
-            startActivity(intent);
+        switch (id){
+            case R.id.action_favorite:
+                // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
+                Intent intentFav = new Intent(this,FavoritosActivity.class);
+                // Iniciamos la nueva actividad
+                startActivity(intentFav);
+            break;
+            case R.id.action_fridge:
+                // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
+                Intent intentFridge = new Intent(this,NeveraActivity.class);
+                // Iniciamos la nueva actividad
+                startActivity(intentFridge);
+            break;
+            case R.id.action_user:
 
-            System.out.println("APPMOV: About action...");
-            return true;
+            break;
+            case R.id.action_search:
+                // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
+                Intent intent = new Intent(this,BuscarRecetasActivity.class);
+                // Iniciamos la nueva actividad
+                startActivity(intent);
+            break;
+            case R.id.action_edit:
+                // editar=1;//Podemos editar el perfil de usuario
+            break;
+            case R.id.action_save:
+                // Guardamos los datos en preferencias
+                savePref();
+                //4_Android_Intents_BroadcastReceivers_Dialog.pdf UC3M
+                // Toast para indicar al usuario que se han guardado los datos
+                Context context = getApplicationContext();
+                String msg = "Guardado";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, msg, duration);
+                toast.show();
+            break;
         }
-        if (id == R.id.action_fridge) {
-            // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-            Intent intent = new Intent(this,NeveraActivity.class);
-            // Iniciamos la nueva actividad
-            startActivity(intent);
-
-            System.out.println("APPMOV: About action...");
-            return true;
-        }
-        if (id == R.id.action_user) {
-            System.out.println("APPMOV: About action...");
-            return true;
-        }
-        if (id == R.id.action_search) {
-            // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-            Intent intent = new Intent(this,BuscarRecetasActivity.class);
-            // Iniciamos la nueva actividad
-            startActivity(intent);
-
-            System.out.println("APPMOV: About action...");
-            return true;
-        }
-
-        if (id == R.id.action_edit) {
-            //editar=1;//Podemos editar el perfil de usuario
-            System.out.println("APPMOV: About action...");
-            return true;
-        }
-
-        if (id == R.id.action_save) {
-            System.out.println("APPMOV: About action...");
-            savePref();
-            return true;
-        }
-
-
         return super.onOptionsItemSelected(item);
     }
 
+    //-----------------------------------------------------------------------//
+
     public void savePref() {
-        // Creamos colecciÃ³n de preferencias
-        String sharedPrefFile = "com.uc3m.it.preferencesappmovprefs";
+        // Creamos coleccion de preferencias
+        String sharedPrefFile = "com.example.myapplication";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
         // Obtenemos un editor de preferencias
         SharedPreferences.Editor editor = mPreferences.edit();
 
         // Guardamos el valor en una preferencia
-        editor.putString("NAME", nombreApellidos.getText().toString());
-        editor.putString("Nombre",nombreApellidos.getText().toString() );//insertamos los valores con su método put<type> correspondiente
-        editor.putString("Edad",edad.getText().toString());
-        editor.putString("Peso",peso.getText().toString());
-        editor.putString("Intolerancias",editItemIntolerancias.getText().toString());
-        editor.putString("Ingredientes",editItemIngredientes.getText().toString());
+        editor.putString(NOMBRE,nombreApellidos.getText().toString() );//insertamos los valores con su método put<type> correspondiente
+
+        // Obtenemos la imagen como mapa de bits a través del método getDrawingCache()
+        fotoPerfil.buildDrawingCache();
+        Bitmap bitmap = fotoPerfil.getDrawingCache();
+
+        editor.putString(IMG, encodeTobase64(bitmap));
+
+        editor.putString(EDAD, edad.getText().toString());
+        int posicion = sexSpinner.getSelectedItemPosition();
+        //System.out.println("AAAAAAA " + posicion);
+        //int posicion = Integer.valueOf((String)sexSpinner.getSelectedItem()) ;
+        //        Log.e("Posicion:  ", String.valueOf(posicion));
+        editor.putInt(SEXO, posicion);
+        editor.putString(PESO,peso.getText().toString());
+        editor.putString(ALTURA,altura.getText().toString());
+
+        editor.putStringSet(INTOLERANCIAS, ingredientes);
+        editor.putStringSet(INGREDIENTES, dieta);
+        //        (INGREDIENTES,ingredientesNoEdit.getText().toString());
         editor.apply();
-
     }
-
-    private void addItemIntolerancia() {
-        String itemText = editItemIntolerancias.getText().toString();
-
-        if (itemText.isEmpty()) {
-
-            //AlertDialog para indicar al usuario que no ha introducido nada
-            //4_Android_Intents_BroadcastReceivers_Dialog.pdf UC3M (pág 30)
-            AlertDialog.Builder ad = new AlertDialog.Builder(this);
-            ad.setTitle("Error");
-            ad.setMessage(" No ha introducido nada ");
-            ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int arg1) {
-                    dialog.cancel();
-                }
-            });
-            ad.show();
-
-            return;//si no hay nada metido, que no se añada
-        }
-        itemIntolerancias.add(itemText);
-        adapterIntolerancias.notifyDataSetChanged();//Notifica a los observadores adjuntos que los datos subyacentes
-        // han cambiado y que cualquier Vista que refleje el conjunto de
-        // datos debería actualizarse.
-    }
-    private void addItemIngredientes() {
-        String itemText = editItemIngredientes.getText().toString();
-
-        if (itemText.isEmpty()) {
-
-            //AlertDialog para indicar al usuario que no ha introducido nada
-            //4_Android_Intents_BroadcastReceivers_Dialog.pdf UC3M (pág 30)
-            AlertDialog.Builder ad = new AlertDialog.Builder(this);
-            ad.setTitle("Error");
-            ad.setMessage(" No ha introducido nada ");
-            ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int arg1) {
-                    dialog.cancel();
-                }
-            });
-            ad.show();
-            return;//si no hay nada metido, que no se añada
-
-        }
-
-        itemIngredientesNo.add(itemText);
-        adapterIngredientesNo.notifyDataSetChanged();//Notifica a los observadores adjuntos que los datos subyacentes
-        // han cambiado y que cualquier Vista que refleje el conjunto de
-        // datos debería actualizarse.
-    }
-
-    //Foto de perfil de usuario
-    // Función que invoca un intent para capturar una foto
-    //https://developer.android.com/training/camera/photobasics?hl=es-419
-    /*
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            //Si llamamos a startActivityForResult() con un intent que ninguna app puede manejar, la app fallará
-            // Por lo tanto, siempre que el resultado no sea nulo, se puede usar el intent
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
-    */
-    //La aplicación de cámara de Android codifica la foto en el Intent de devolución que se entrega a onActivityResult()
-    // como un Bitmap pequeño en la carpeta Extras, en los "data" clave. El siguiente código recupera esta imagen y la muestra en un ImageView
-
-   /* protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            fotoPerfil.setImageBitmap(imageBitmap);
-        }
-    }  */
-    //manejo de la imagen de perfil de usuario
-    // https://www.youtube.com/watch?v=jFYAp42rMEA
-
-    // En caso de que la activity sea destruida mientras que otra app toma la fotografía,
-    // es necesario guardar la ruta y restaurarla de nuevo, puesto que si no, no habrá forma
-    // de acceder a la imagen.
-
+    //-----------------------------------------------------------------------//
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         if (ubicacion != null) {
@@ -339,7 +267,7 @@ public class UsuarioActivity extends AppCompatActivity {
         }
         super.onSaveInstanceState(savedInstanceState);
     }
-
+    //-----------------------------------------------------------------------//
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState.containsKey(CLAVE_RUTA_IMAGEN)) {
@@ -347,8 +275,7 @@ public class UsuarioActivity extends AppCompatActivity {
         }
         super.onRestoreInstanceState(savedInstanceState);
     }
-
-
+    //-----------------------------------------------------------------------//
     public void onClick(View v) {
         // si el usuario pulsa el botón, pedimos una captura mediante un Intent
         // que solicite la acción de una app apropiada para la tarea
@@ -364,7 +291,6 @@ public class UsuarioActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
                 return;
             }
-
             // solicitamos específicamente la captura de una imagen
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -385,10 +311,9 @@ public class UsuarioActivity extends AppCompatActivity {
                 Toast.makeText(this, "No se puede acceder al sistema de archivos",
                         Toast.LENGTH_LONG).show();
             }
-
         }
     }
-
+    //-----------------------------------------------------------------------//
     /** Creamos un objeto File (que no es otra cosa que una ruta) para guardar ahí la foto */
     private File obtenerUbicacionImagen() {
 
@@ -396,7 +321,6 @@ public class UsuarioActivity extends AppCompatActivity {
         //         siempre que se guarden archivos MULTIMEDIA
 
         File directorioExterno;
-
 
         // IMPORTANTE: Primero comprobamos que el almacenamiento externo está disponible para escritura.
         // Ver posibles estados en:
@@ -419,7 +343,6 @@ public class UsuarioActivity extends AppCompatActivity {
         //directorioExterno = new File(Environment.getExternalStoragePublicDirectory(
         //        Environment.DIRECTORY_PICTURES), "HelloCamera");
 
-
         // Si aún no existe el directorio, lo creamos
         if (! directorioExterno.exists()){
             if (! directorioExterno.mkdirs()){
@@ -427,19 +350,31 @@ public class UsuarioActivity extends AppCompatActivity {
                 return null;
             }
         }
-
         // Creamos un nombre de fichero dentro de ese directorio
         // (es buena idea utilizar un timestamp para evitar sobreescribir imágenes)
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File fichero = new File(directorioExterno.getPath() + File.separator +
                 "IMG_"+ timestamp + ".jpg");
-
         // Devolvemos la ruta completa que hemos creado
         return fichero;
     }
+    //-----------------------------------------------------------------------//
+    // method for bitmap to base64
+    // https://stackoverflow.com/questions/18072448/how-to-save-image-in-shared-preference-in-android-shared-preference-issue-in-a
+    public static String encodeTobase64(Bitmap image) {
+        Bitmap immage = image;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
 
+        Log.d("Image Log:", imageEncoded);
+        System.out.println("IMAGEN ENCODED:  " + imageEncoded);
+        return imageEncoded;
+    }
+    //-----------------------------------------------------------------------//
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
         Log.i("onActivityResult", "requestCode = " + requestCode + ", resultCode = " + resultCode + ", data = " + (data == null ? "null" : "not null"));
@@ -455,7 +390,6 @@ public class UsuarioActivity extends AppCompatActivity {
                 ImageView miImagen = (ImageView) findViewById(R.id.fotoUsuario);
                 Bitmap miBitmap = BitmapFactory.decodeFile(ubicacion.getPath());
                 miImagen.setImageBitmap(miBitmap);
-
                 // NOTA: a pesar de los ejemplos acerca de este tema,
                 // el Intent del resultado suele venir a NULL y hay que guardar
                 // la URI en el momento de su creación, no a posteriori
@@ -468,5 +402,172 @@ public class UsuarioActivity extends AppCompatActivity {
             }
         }
     }
+    //-----------------------------------------------------------------------//
+    public void onTextViewClickedIntolerancias(View v){
 
+        //Código extraido de:
+        //https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
+        final TextView tv = (TextView) findViewById(R.id.intoleranciasEdit);
+        tv.setText(null);
+        //Initialize a new AlertDialog Builder
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+
+        adb.setTitle("Seleccione los parametros saludables:");
+
+        final String[] Intolerancias = new String[]{
+                "Sin azucar", "Cacahuetes", "Frutos Secos", "Alcohol", "Vegana", "Vegetariana"
+        };
+
+        //ArrayList to store Alert Dialog selected items index position
+        final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
+
+        //Array to store pre checked/selected items
+        final boolean[] preCheckedItems = new boolean[]{
+                false,false,false,false,false,false
+        };
+
+        adb.setMultiChoiceItems(Intolerancias, preCheckedItems, new DialogInterface.OnMultiChoiceClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked){
+
+                //You can update the preCheckedItems array here
+                //In this tutorial i ignored this feature
+                if(isChecked)
+                {
+                    //Add the checked item to checked items collection
+                    selectedItems.add(which);
+                }
+                else if(selectedItems.contains(which))
+                {
+                    /*If the clicked checkbox item is unchecked now
+                    and it already contains in the selected items collection
+                    then we remove it from selected items collection*/
+                    selectedItems.remove(Integer.valueOf(which));
+            }
+            }
+        });
+
+        //Define the AlertDialog positive/ok/yes button
+        adb.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                //When user click the positive button from alert dialog
+
+                //Loop/iterate through ArrayList
+                ingredientes = new HashSet<>();
+                for(int i=0;i<selectedItems.size();i++){
+                    //selectedItems ArrayList current item's correspondent
+                    int IndexOfAllergies = selectedItems.get(i);
+
+                    //Get the selectedItems array specific index position's
+                    String intoleranciaSelected = Arrays.asList(Intolerancias).get(IndexOfAllergies);
+
+                    // Borramos el contenido ya almacenado y Display the selected colors to TextView
+                    ingredientes.add(intoleranciaSelected);
+                    tv.setText(tv.getText() + intoleranciaSelected + "\n");
+
+
+                }
+            }
+        });
+
+        //Define the Neutral/Cancel button in AlertDialog
+        adb.setNeutralButton("Cancel", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                //When user click the neutral/cancel button from alert dialog
+            }
+        });
+
+        //Display the Alert Dialog on app interface
+
+        adb.show();
+    }
+
+    //-----------------------------------------------------------------------//
+
+    public void onTextViewClickedIngredientes(View v){
+
+        //Código extraido de:
+        dieta = null;
+        //https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
+        final TextView tv = (TextView) findViewById(R.id.ingredientesNoEdit);
+        tv.setText(null);
+
+        //Initialize a new AlertDialog Builder
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+
+        //Set a title for alert dialog
+        adb.setTitle("Tipo de dieta:");
+
+        //Initialize a new String Array
+        final String[] Ingredientes = new String[]{
+                "Balanceada", "Alta en proteína", "Baja en grasa", "Baja en carbohidratos"
+        };
+
+        //ArrayList to store Alert Dialog selected items index position
+        final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
+
+        //Array to store pre checked/selected items
+        final boolean[] preCheckedItems = new boolean[]{
+                false, false, false, false
+        };
+
+        adb.setMultiChoiceItems(Ingredientes, preCheckedItems, new DialogInterface.OnMultiChoiceClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked){
+
+                //You can update the preCheckedItems array here
+                //In this tutorial i ignored this feature
+                if(isChecked)
+                {
+                    //Add the checked item to checked items collection
+                    selectedItems.add(which);
+                }
+                else if(selectedItems.contains(which))
+                {
+                    /*If the clicked checkbox item is unchecked now
+                     and it already contains in the selected items collection
+                     then we remove it from selected items collection*/
+                    selectedItems.remove(Integer.valueOf(which));
+                }
+            }
+        });
+
+        //Define the AlertDialog positive/ok/yes button
+        adb.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                //When user click the positive button from alert dialog
+
+                //Loop/iterate through ArrayList
+                dieta = new HashSet<>();
+                for(int i=0;i<selectedItems.size();i++){
+                    //selectedItems ArrayList current item's correspondent
+                    int IndexOfIngredients = selectedItems.get(i);
+
+                    //Get the selectedItems array specific index position's
+                    String ingredientesSelected = Arrays.asList(Ingredientes).get(IndexOfIngredients);
+
+                    //Display the selected colors to TextView
+
+                    dieta.add(ingredientesSelected);
+                    tv.setText(tv.getText() + ingredientesSelected + "\n");
+
+                }
+            }
+        });
+
+        //Define the Neutral/Cancel button in AlertDialog
+        adb.setNeutralButton("Cancel", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                //When user click the neutral/cancel button from alert dialog
+            }
+        });
+        tv.setText(null);
+        //Display the Alert Dialog on app interface
+        adb.show();
+    }
 }
+//-----------------------------------------------------------------------//

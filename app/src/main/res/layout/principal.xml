@@ -18,12 +18,12 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"
         android:paddingStart="10dp"
-        android:background="#00ACC1"
         android:backgroundTint="#EAECEC"
         android:fontFamily="@font/chewy"
         android:text="@string/resumenPeso"
         android:textSize="24sp"
-        android:onClick="perfilButton"/>
+        android:onClick="perfilButton"
+        android:background="@drawable/esquinas_redondeadas"/>
 
 <!-- _____ RESUMEN NEVERA _______________________-->
     <LinearLayout
@@ -44,10 +44,12 @@
                 android:id="@+id/resumenListaCompra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/esquinas_redondeadas"
                 android:fontFamily="@font/chewy"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="@string/resumenListaCompra"
+                android:textAlignment="textStart"
                 android:textSize="24sp" />
 
             <TextView
@@ -56,10 +58,12 @@
                 android:layout_height="20dp"
                 android:layout_marginEnd="36dp"
                 android:layout_marginBottom="6dp"
-                android:paddingStart="3sp"
-                android:background="#00897B"
+                android:background="@drawable/esquinas_redondeadas"
+                android:backgroundTint="#00897B"
                 android:onClick="neveraButton"
+                android:paddingStart="3sp"
                 android:text="@string/resumenListaAlimento1"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:typeface="normal" />
 
@@ -68,10 +72,12 @@
                 android:layout_width="135dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="60dp"
-                android:paddingStart="3sp"
-                android:background="#00897B"
+                android:background="@drawable/esquinas_redondeadas"
+                android:backgroundTint="#00897B"
                 android:onClick="neveraButton"
+                android:paddingStart="3sp"
                 android:text="@string/resumenListaAlimento2"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:typeface="normal" />
 
@@ -85,12 +91,14 @@
 
             <TextView
                 android:id="@+id/resumenDespensa"
-                android:layout_width="wrap_content"
+                android:layout_width="132dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/esquinas_redondeadas"
                 android:fontFamily="@font/chewy"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="@string/resumenDespensa"
+                android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
@@ -99,10 +107,12 @@
                 android:layout_height="20dp"
                 android:layout_marginEnd="36dp"
                 android:layout_marginBottom="6dp"
-                android:paddingStart="3sp"
-                android:background="#00897B"
+                android:background="@drawable/esquinas_redondeadas"
+                android:backgroundTint="#00897B"
                 android:onClick="neveraButton"
+                android:paddingStart="3sp"
                 android:text="@string/resumenListaDespensa1"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:typeface="normal" />
 
@@ -110,10 +120,12 @@
                 android:id="@+id/resumenListaDespensa2"
                 android:layout_width="135dp"
                 android:layout_height="20dp"
-                android:paddingStart="3sp"
-                android:background="#00897B"
+                android:background="@drawable/esquinas_redondeadas"
+                android:backgroundTint="#00897B"
                 android:onClick="neveraButton"
+                android:paddingStart="3sp"
                 android:text="@string/resumenListaDespensa2"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:typeface="normal" />
 
@@ -152,7 +164,8 @@
                 android:onClick="ensaladaGarbanzosButton"
                 app:srcCompat="@drawable/ensalada_garbanzos"
                 tools:ignore="ContentDescription"
-                tools:scaleType="centerInside" />
+                tools:scaleType="centerInside"
+                android:background="@drawable/esquinas_redondeadas"/>
 
             <TextView
                 android:id="@+id/recetaEnsaladaGarbanzos"
@@ -196,11 +209,11 @@
                 android:layout_weight="7"
                 android:layout_height="wrap_content"
                 android:padding="5sp"
-                android:background="#71EEE3"
                 android:backgroundTint="#EAECEC"
                 android:hint="@string/resumenAñadirMenu"
                 android:textAlignment="viewStart"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/esquinas_redondeadas"/>
 
             <ImageView
                 android:id="@+id/add"

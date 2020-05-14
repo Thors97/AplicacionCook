@@ -21,11 +21,11 @@
     <TextView
         android:id="@+id/equipo"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="52dp"
         android:layout_weight="3"
+        android:fontFamily="sans-serif"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
-        android:fontFamily="sans-serif"
         android:text="@string/resumenEquipo"
         android:textAlignment="viewStart"
         android:textSize="14sp" />
@@ -34,9 +34,9 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_height="17dp"
         android:layout_marginBottom="24dp"
+        android:layout_weight="8"
         app:srcCompat="@mipmap/cookmax_foreground" />
 
 </LinearLayout>

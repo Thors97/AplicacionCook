@@ -35,8 +35,9 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:scaleType="centerInside"
-            android:background="@color/design_default_color_background"
-            app:srcCompat="@drawable/cora_unclicked" />
+            android:backgroundTint="@color/design_default_color_background"
+            app:srcCompat="@drawable/cora_unclicked"
+            android:background="@drawable/esquinas_redondeadas"/>
             <!--android:onClick="addFav"-->
     </LinearLayout>
     <ScrollView

@@ -190,9 +190,6 @@ public class NeveraActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-
-
-
     //Menu de Settings y About
     public boolean onCreateOptionsMenu(Menu menu) {
         // Se recrea el menu que aparece en ActionBar de la actividad.
