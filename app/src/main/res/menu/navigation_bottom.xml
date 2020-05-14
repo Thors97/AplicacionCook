@@ -30,6 +30,4 @@
          android:enabled="true"
          android:onClick="onOptionsItemSelected" />
 
-    <!--  android:onClick="perfilUsuarioButtom" -->
-
 </menu>

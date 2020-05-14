@@ -4,8 +4,6 @@
     <string name="error">Error</string>
     <string name="ok">Ok</string>
     <string name="eliminar">Eliminar</string>
-    <string name="mensajeEliminar">¿Desea eliminar \'%1$s\' de la lista?</string>
-
 
     <!-- Activity main -->
     <string name="goText">Cook+</string>
@@ -85,15 +83,16 @@
 
     <!-- Nevera -->
     <string name="despensa">Despensa</string>
-    <string name="alimentoDespensa1">Zanahorias</string>
-    <string name="alimentoDespensa2">Tomates</string>
-    <string name="alimentoDespensa3">Lentejas</string>
     <string name="anadir">Añadir alimento</string>
     <string name="listaCompra">Lista de la compra</string>
-    <string name="alimentoLista1">Zanahorias</string>
-    <string name="alimentoLista2">Tomates</string>
-    <string name="alimentoLista3">Lentejas</string>
     <string name="alimento_vacio_adv">Alimento vacío, escriba un alimento para añadir.</string>
+    <string name="mensajeEliminarTodo">¿Desea eliminar todos los alimentos de \'%1$s\'?</string>
+    <string name="mensajeEliminar">¿Desea eliminar \'%1$s\' de la lista?</string>
+    <string name="borrarTodoLista">Borrar la lista de la compra</string>
+    <string name="borrarTodoDespensa">Borrar la despensa</string>
+    <string name="borrarSelecDespensa">Borrar lo seleccionado en la despensa</string>
+    <string name="borrarSelecLista">Borrar lo seleccionado en la lista de la compra</string>
+
 
     <!-- Favoritos -->
     <string name="recetaFav1">Tortilla de patatas sin huevo</string>
