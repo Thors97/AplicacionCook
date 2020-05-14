@@ -6,6 +6,9 @@ import android.media.Image;
 public class Receta {
     private String nombre;
     private Bitmap imagen;
+
+
+    private String url;
     private String[] healthLabels;
     private String[] ingredientes;
     private String calorias;
@@ -17,6 +20,7 @@ public class Receta {
         this.imagen = null;
         this.ingredientes = null;
         this.calorias = "";
+        this.url = url;
 
 
         /*  this.healthLabels = null;
@@ -53,5 +57,13 @@ public class Receta {
 
     public void setCalorias(String calorias) {
         this.calorias = calorias;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

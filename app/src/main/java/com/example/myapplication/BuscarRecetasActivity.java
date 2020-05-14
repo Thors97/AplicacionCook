@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.media.Image;
+import android.net.Uri;
 import android.os.AsyncTask;
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -15,7 +17,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import android.graphics.BitmapFactory;
 
 
@@ -25,6 +30,7 @@ import android.util.JsonReader;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -38,8 +44,8 @@ import javax.net.ssl.HttpsURLConnection;
 public class BuscarRecetasActivity extends AppCompatActivity {
 
     //APP ID y API KEY
-    final String APP_ID = "3116a446";
-    final String API_KEY ="a98641147b27d0ffe831f2be4da7e3cd";
+    final String APP_ID = "638c05ef";
+    final String API_KEY = "131fcc82ee2adeadd0e6d8e2e1d29f99";
 
     private ListView m_listview;
     private EditText m_edittext;
@@ -157,14 +163,90 @@ public class BuscarRecetasActivity extends AppCompatActivity {
 
         @Override
         protected ArrayList<Receta> doInBackground(String... urls) {
-
+            String health, diet = "";
             ArrayList<Receta> temp;
             String alimento = urls[0];
-            // make Call to the url
+            String intolerancias = "";
+            Set<String> salud, dieta;
+            //Queremos acceder a las preferencias para poder filtrar.
+            String sharedPrefFile = "com.example.myapplication";
+            SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+            String[] arrayIngredientes, arrayDieta = null;
 
-            temp = makeCall("https://api.edamam.com/search?q=" + alimento + "&app_id=" + APP_ID + "&app_key=" + API_KEY);
+            String url = "https://api.edamam.com/search?q=" + alimento + "&app_id=" + APP_ID + "&app_key=" + API_KEY;
+
+            if (mPreferences != null) {
+                salud = mPreferences.getStringSet("INTOLERANCIAS", new HashSet<String>());
+
+                dieta = mPreferences.getStringSet("INGREDIENTES", new HashSet<String>());
+
+                if (salud.size() > 0) {
+                    url = url + "&" + tipoSalud(salud);
+                }
+                if (dieta.size() > 0) {
+                    url = url + "&" + tipoDieta(dieta);
+                }
+            }
+
+
+            // make Call to the url
+            temp = makeCall(url);
 
             return temp;
+        }
+
+        protected String tipoSalud(Set<String> ingredientes) {
+            String health = "health=";
+            int count = 0;
+            for (String ingr : ingredientes) {
+                if (ingr.equals("Sin azucar")) {
+                    ingr = "sugar-conscious";
+                } else if (ingr.equals("Cacahuetes")) {
+                    ingr = "peanut-free";
+                } else if (ingr.equals("Alcohol")) {
+                    ingr = "alcohol-free";
+                } else if (ingr.equals("Frutos Secos")) {
+                    ingr = "tree-nut-free";
+                } else if (ingr.equals("Vegana")) {
+                    ingr = "vegan";
+                } else if (ingr.equals("Vegetariana")) {
+                    ingr = "vegetarian";
+                }
+
+                if (count == ingredientes.size() - 1)
+                    health = health + ingr;
+                else
+                    health = health + ingr + "&health=";
+                count++;
+
+            }
+
+            return health;
+        }
+
+        protected String tipoDieta(Set<String> dieta) {
+            String health = "diet=";
+
+            int count = 0;
+            for (String ingrediente : dieta) {
+                if (ingrediente.equals("Balanceada")) {
+                    ingrediente = "balanced";
+                } else if (ingrediente.equals("Alta en proteína")) {
+                    ingrediente = "high-protein";
+                } else if (ingrediente.equals("Baja en grasa")) {
+                    ingrediente = "low-fat";
+                } else if (ingrediente.equals("Baja en carbohidratos")) {
+                    ingrediente = "low-carb";
+                }
+
+                if (count == dieta.size() - 1)
+                    health = health + ingrediente;
+                else
+                    health = health + ingrediente + "&diet=";
+                count++;
+            }
+
+            return health;
         }
 
         //Progress dialog para notificar que se están buscando recetas
@@ -181,22 +263,23 @@ public class BuscarRecetasActivity extends AppCompatActivity {
         protected void onPostExecute(ArrayList<Receta> result) {
 
             // Aquí se actualiza el interfaz de usuario
-            List<String> listTitle = new ArrayList<String>();
-            List<Bitmap> listImage = new ArrayList<Bitmap>();
 
-            System.out.println("TAMAÑO RESULT" + result.size());
 
-            for (int i = 0; i < result.size(); i++) {
-                // make a list of the venus that are loaded in the list.
-                // show the name, the category and the city
-                // listTitle.add(i, result.get(i).getNombre());
-                //listImage.add(i, result.get(i).getImagen());
-                System.out.println("RESULT NAME:  " + result.get(i).getNombre());
-            }
-
-            BuscarRecetasAdapter adapter = new BuscarRecetasAdapter(BuscarRecetasActivity.this, R.layout.buscar_recetas, result);
+            final BuscarRecetasAdapter adapter = new BuscarRecetasAdapter(BuscarRecetasActivity.this, R.layout.buscar_recetas, result);
 
             m_listview.setAdapter(adapter);
+            m_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    String linked = adapter.getLink(position);
+                    Uri url = Uri.parse(linked);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, url);
+                    startActivity(intent);
+
+                }
+            });
+
             //Ocultamos el progressDialog
             progress_dialog.dismiss();
 
@@ -252,6 +335,10 @@ public class BuscarRecetasActivity extends AppCompatActivity {
                                             receta.setName(jsonReader.nextString());
                                         } else if (name.equals("image")) {
                                             receta.setImagen(getBitmapFromURL(jsonReader.nextString()));
+
+
+                                        } else if (name.equals("url")) {
+                                            receta.setUrl(jsonReader.nextString());
                                         } else if (name.equals("calories")) {
                                             receta.setCalorias(jsonReader.nextString());
                                         } else {

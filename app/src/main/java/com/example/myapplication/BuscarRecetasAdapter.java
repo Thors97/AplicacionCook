@@ -2,13 +2,16 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,10 +26,12 @@ import java.util.List;
 public class BuscarRecetasAdapter extends ArrayAdapter<Receta> {
 
     Context context;
+    List<Receta> items;
 
     public BuscarRecetasAdapter(Context context, int resourceId, List<Receta> items) {
         super(context, resourceId, items);
         this.context = context;
+        this.items = items;
     }
 
     private class ViewHolder {
@@ -51,11 +56,15 @@ public class BuscarRecetasAdapter extends ArrayAdapter<Receta> {
         } else
             holder = (ViewHolder) convertView.getTag();
 
+
         holder.txtTitle.setText(receta.getNombre());
         holder.imageView.setImageBitmap(receta.getImagen());
         holder.txtCalorias.setText("CALORIAS:  " + receta.getCalorias());
-
         return convertView;
+    }
+
+    public String getLink(int position) {
+        return items.get(position).getUrl();
     }
 }
 

@@ -35,6 +35,9 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UsuarioActivity extends AppCompatActivity {
 
@@ -46,7 +49,7 @@ public class UsuarioActivity extends AppCompatActivity {
     private EditText altura;
     private TextView intoleranciasEdit;
     private TextView ingredientesNoEdit;
-
+    private Set<String> dieta, ingredientes;
     Calendar c;
     DatePickerDialog fecha;
     Spinner sexSpinner;
@@ -89,8 +92,8 @@ public class UsuarioActivity extends AppCompatActivity {
         String sharedPrefFile = "com.example.myapplication";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
-        String nombre, edadP, alturaP, pesoP, intoleranciasP, ingredientesP, strImagen, sex_spinner;
-
+        String nombre, edadP, alturaP, pesoP, strImagen, sex_spinner;
+        Set<String> ingredientesP, intoleranciasP;
         if(mPreferences!=null){
             nombre= mPreferences.getString(NOMBRE, "");
             nombreApellidos = (EditText) findViewById(R.id.nombreApellidos);
@@ -106,8 +109,8 @@ public class UsuarioActivity extends AppCompatActivity {
                 fotoPerfil.setImageBitmap(imagen);
             }
 
-//            int position= mPreferences.getInt(SEXO,0);
-//              sexSpinner.setSelection(position);
+            int position = mPreferences.getInt(SEXO, -1);
+            sexSpinner.setSelection(position);
 
             edadP= mPreferences.getString(EDAD, "");
             edad = (TextView) findViewById(R.id.edadEdit);
@@ -121,13 +124,27 @@ public class UsuarioActivity extends AppCompatActivity {
             peso = (EditText) findViewById(R.id.pesoEdit);
             peso.setText(pesoP);
 
-            intoleranciasP= mPreferences.getString(INTOLERANCIAS, "");
+            intoleranciasP = mPreferences.getStringSet(INTOLERANCIAS, new HashSet<String>());
+            System.out.println("MIRAMOS A VER CUANTAS INTOLERANCIAS SE GUARDAN: " + intoleranciasP);
             intoleranciasEdit = (TextView) findViewById(R.id.intoleranciasEdit);
-            intoleranciasEdit.setText(intoleranciasP);
+            String intoleranciasPintar = "";
+            for (String ingrediente : intoleranciasP) {
 
-            ingredientesP= mPreferences.getString(INGREDIENTES, "");
+                intoleranciasPintar = intoleranciasPintar + "\n" + ingrediente;
+            }
+
+            intoleranciasEdit.setText(intoleranciasPintar);
+
+            //ingredientesP= mPreferences.getString(INGREDIENTES, "");
+            ingredientesP = mPreferences.getStringSet(INGREDIENTES, new HashSet<String>());
             ingredientesNoEdit = (TextView) findViewById(R.id.ingredientesNoEdit);
-            ingredientesNoEdit.setText(ingredientesP);
+            String ingredientesPintar = "";
+            for (String ingrediente : ingredientesP) {
+
+                ingredientesPintar = ingredientesPintar + "\n" + ingrediente;
+            }
+
+            ingredientesNoEdit.setText(ingredientesPintar);
 
         }
 
@@ -228,15 +245,18 @@ public class UsuarioActivity extends AppCompatActivity {
 
         editor.putString(IMG, encodeTobase64(bitmap));
 
-        editor.putString(EDAD,edad.getText().toString());
-        //int posicion = Integer.parseInt(sexSpinner.getSelectedItem().toString()) ;
-//        int posicion = Integer.valueOf((String)sexSpinner.getSelectedItem()) ;
-//        Log.e("Posicion:  ", String.valueOf(posicion));
-//        editor.putInt(SEXO, posicion);
+        editor.putString(EDAD, edad.getText().toString());
+        int posicion = sexSpinner.getSelectedItemPosition();
+        //System.out.println("AAAAAAA " + posicion);
+        //int posicion = Integer.valueOf((String)sexSpinner.getSelectedItem()) ;
+        //        Log.e("Posicion:  ", String.valueOf(posicion));
+        editor.putInt(SEXO, posicion);
         editor.putString(PESO,peso.getText().toString());
         editor.putString(ALTURA,altura.getText().toString());
-        editor.putString(INTOLERANCIAS,intoleranciasEdit.getText().toString());
-        editor.putString(INGREDIENTES,ingredientesNoEdit.getText().toString());
+
+        editor.putStringSet(INTOLERANCIAS, ingredientes);
+        editor.putStringSet(INGREDIENTES, dieta);
+        //        (INGREDIENTES,ingredientesNoEdit.getText().toString());
         editor.apply();
     }
     //-----------------------------------------------------------------------//
@@ -392,10 +412,10 @@ public class UsuarioActivity extends AppCompatActivity {
         //Initialize a new AlertDialog Builder
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
 
-        adb.setTitle("Seleccione las alergias e intolerancias:");
+        adb.setTitle("Seleccione los parametros saludables:");
 
         final String[] Intolerancias = new String[]{
-                "Lactosa","Histamina","Gluten","Alergia al marisco y al pescado", "Alergia a verduras y frutas","Alergia a frutos secos, legumbres y cereales"
+                "Sin azucar", "Cacahuetes", "Frutos Secos", "Alcohol", "Vegana", "Vegetariana"
         };
 
         //ArrayList to store Alert Dialog selected items index position
@@ -422,7 +442,7 @@ public class UsuarioActivity extends AppCompatActivity {
                     /*If the clicked checkbox item is unchecked now
                     and it already contains in the selected items collection
                     then we remove it from selected items collection*/
-                    selectedItems.remove(which);
+                    selectedItems.remove(Integer.valueOf(which));
             }
             }
         });
@@ -434,6 +454,7 @@ public class UsuarioActivity extends AppCompatActivity {
                 //When user click the positive button from alert dialog
 
                 //Loop/iterate through ArrayList
+                ingredientes = new HashSet<>();
                 for(int i=0;i<selectedItems.size();i++){
                     //selectedItems ArrayList current item's correspondent
                     int IndexOfAllergies = selectedItems.get(i);
@@ -442,7 +463,8 @@ public class UsuarioActivity extends AppCompatActivity {
                     String intoleranciaSelected = Arrays.asList(Intolerancias).get(IndexOfAllergies);
 
                     // Borramos el contenido ya almacenado y Display the selected colors to TextView
-                    tv.setText(tv.getText() + "   "+ intoleranciaSelected + "\n");
+                    ingredientes.add(intoleranciaSelected);
+                    tv.setText(tv.getText() + intoleranciaSelected + "\n");
 
 
                 }
@@ -458,6 +480,7 @@ public class UsuarioActivity extends AppCompatActivity {
         });
 
         //Display the Alert Dialog on app interface
+
         adb.show();
     }
 
@@ -466,6 +489,7 @@ public class UsuarioActivity extends AppCompatActivity {
     public void onTextViewClickedIngredientes(View v){
 
         //Código extraido de:
+        dieta = null;
         //https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
         final TextView tv = (TextView) findViewById(R.id.ingredientesNoEdit);
         tv.setText(null);
@@ -474,11 +498,11 @@ public class UsuarioActivity extends AppCompatActivity {
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
 
         //Set a title for alert dialog
-        adb.setTitle("Seleccione los ingredientes no deseados:");
+        adb.setTitle("Tipo de dieta:");
 
         //Initialize a new String Array
         final String[] Ingredientes = new String[]{
-                "Huevos","Leche","Gluten","Frutos Secos","Soja", "Marisco"
+                "Balanceada", "Alta en proteína", "Baja en grasa", "Baja en carbohidratos"
         };
 
         //ArrayList to store Alert Dialog selected items index position
@@ -486,7 +510,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
         //Array to store pre checked/selected items
         final boolean[] preCheckedItems = new boolean[]{
-                false,false,false,false,false,false
+                false, false, false, false
         };
 
         adb.setMultiChoiceItems(Ingredientes, preCheckedItems, new DialogInterface.OnMultiChoiceClickListener(){
@@ -505,7 +529,7 @@ public class UsuarioActivity extends AppCompatActivity {
                     /*If the clicked checkbox item is unchecked now
                      and it already contains in the selected items collection
                      then we remove it from selected items collection*/
-                    selectedItems.remove(which);
+                    selectedItems.remove(Integer.valueOf(which));
                 }
             }
         });
@@ -517,6 +541,7 @@ public class UsuarioActivity extends AppCompatActivity {
                 //When user click the positive button from alert dialog
 
                 //Loop/iterate through ArrayList
+                dieta = new HashSet<>();
                 for(int i=0;i<selectedItems.size();i++){
                     //selectedItems ArrayList current item's correspondent
                     int IndexOfIngredients = selectedItems.get(i);
@@ -525,7 +550,9 @@ public class UsuarioActivity extends AppCompatActivity {
                     String ingredientesSelected = Arrays.asList(Ingredientes).get(IndexOfIngredients);
 
                     //Display the selected colors to TextView
-                    tv.setText(tv.getText() + "   "+ingredientesSelected + "\n");
+
+                    dieta.add(ingredientesSelected);
+                    tv.setText(tv.getText() + ingredientesSelected + "\n");
 
                 }
             }
