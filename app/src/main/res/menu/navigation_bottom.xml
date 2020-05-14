@@ -6,26 +6,28 @@
          android:title="@string/menu_back" /> -->
     <item
         android:id="@+id/action_favorite"
-        android:icon="@drawable/favorite"
+        android:icon="@drawable/fav"
         android:title="@string/menu_favorite"
+        android:enabled="true"
         android:onClick="onOptionsItemSelected"/>
      <item
          android:id="@+id/action_fridge"
          android:icon="@drawable/fridge"
          android:title="@string/menu_fridge"
+         android:enabled="true"
          android:onClick="onOptionsItemSelected"/>
      <item
          android:id="@+id/action_user"
          android:icon="@drawable/user"
          android:title=""
+         android:enabled="true"
          android:onClick="onOptionsItemSelected"/>
 
      <item
        android:id="@+id/action_search"
-       android:icon="@drawable/arrow"
+       android:icon="@drawable/search"
          android:title=""
+         android:enabled="true"
          android:onClick="onOptionsItemSelected" />
-
-    <!--  android:onClick="perfilUsuarioButtom" -->
 
 </menu>

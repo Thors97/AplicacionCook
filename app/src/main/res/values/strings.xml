@@ -4,8 +4,6 @@
     <string name="error">Error</string>
     <string name="ok">Ok</string>
     <string name="eliminar">Eliminar</string>
-    <string name="mensajeEliminar">¿Desea eliminar \'%1$s\' de la lista?</string>
-
 
     <!-- Activity main -->
     <string name="goText">Cook+</string>
@@ -25,10 +23,10 @@
     <!-- Principal -->
     <string name="resumenPeso">Evolución del peso</string>
     <string name="resumenListaCompra">Lista de la compra</string>
-    <string name="resumenListaAlimento1">Listar un alimento</string>
-    <string name="resumenListaAlimento2">Listar un alimento</string>
-    <string name="resumenListaDespensa1">Listar un alimento</string>
-    <string name="resumenListaDespensa2">Listar un alimento</string>
+    <string name="resumenListaAlimento1"> Listar un alimento</string>
+    <string name="resumenListaAlimento2"> Listar un alimento</string>
+    <string name="resumenListaDespensa1"> Listar un alimento</string>
+    <string name="resumenListaDespensa2"> Listar un alimento</string>
     <string name="resumenDespensa">Despensa</string>
     <string name="resumenRecetaDeldía">Receta del día</string>
     <string name="resumenPlanSemanal">Plan Semanal</string>
@@ -85,15 +83,16 @@
 
     <!-- Nevera -->
     <string name="despensa">Despensa</string>
-    <string name="alimentoDespensa1">Zanahorias</string>
-    <string name="alimentoDespensa2">Tomates</string>
-    <string name="alimentoDespensa3">Lentejas</string>
     <string name="anadir">Añadir alimento</string>
     <string name="listaCompra">Lista de la compra</string>
-    <string name="alimentoLista1">Zanahorias</string>
-    <string name="alimentoLista2">Tomates</string>
-    <string name="alimentoLista3">Lentejas</string>
     <string name="alimento_vacio_adv">Alimento vacío, escriba un alimento para añadir.</string>
+    <string name="mensajeEliminarTodo">¿Desea eliminar todos los alimentos de \'%1$s\'?</string>
+    <string name="mensajeEliminar">¿Desea eliminar \'%1$s\' de la lista?</string>
+    <string name="borrarTodoLista">Borrar la lista de la compra</string>
+    <string name="borrarTodoDespensa">Borrar la despensa</string>
+    <string name="borrarSelecDespensa">Borrar lo seleccionado en la despensa</string>
+    <string name="borrarSelecLista">Borrar lo seleccionado en la lista de la compra</string>
+
 
     <!-- Favoritos -->
     <string name="recetaFav1">Tortilla de patatas sin huevo</string>
@@ -109,7 +108,7 @@
 
     <!-- AppMovil -->
     <string name="resumenTítuloEquipo">Equipo 7 </string>
-    <string name="resumenEquipo">- Somos el Equipo 7 y esta es la aplicación que hemos desarrollado para la asignatura Aplicaciones Móviles.\n- El principal objetivo de nuestra aplicación es animar a sus usuarios a llevar una alimentación sana, variada y equilibrada.\n\nUn saludo, el equipo 7. </string>
+    <string name="resumenEquipo">Somos el Equipo 7 y esta es la aplicación que hemos desarrollado para la asignatura Aplicaciones Móviles.\nEl principal objetivo de nuestra aplicación es animar a sus usuarios a llevar una alimentación sana, variada y equilibrada.\n\nUn saludo, \n            El equipo 7 </string>
 
     <!-- Usuario -->
 

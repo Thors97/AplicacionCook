@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <!-- _____ BUSCADOR _________________ -->
+    <!-- __________ BUSCADOR ______________ -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -42,9 +42,6 @@
         android:layout_marginStart="5dp"
         android:paddingEnd="8dp">
     </ListView>
-
-
-
 
     <!-- _________NAV BAR_________________________ -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
