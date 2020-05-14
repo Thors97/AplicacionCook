@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_receta1"
+    android:id="@+id/receta"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="3"
@@ -17,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/chewy"
-        android:text="@string/nombreReceta1"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -40,4 +39,5 @@
             android:text="@string/desReceta1" />
 
     </LinearLayout>
+
 </LinearLayout>
