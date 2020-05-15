@@ -1,7 +1,8 @@
-package com.example.myapplication;
+package com.example.cookplus;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +14,18 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.principal);
+        String sharedPrefFile = "com.example.myapplication";
+        SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        SharedPreferences.Editor editor = mPreferences.edit();
+
+        boolean firstTime = mPreferences.getBoolean("PRIMERAVEZ", false);
+        if (!firstTime) {
+            Intent intentSettings = new Intent(this, UsuarioActivity.class);
+            startActivity(intentSettings);
+        } else if (firstTime) {
+            setContentView(R.layout.principal);
+        }
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

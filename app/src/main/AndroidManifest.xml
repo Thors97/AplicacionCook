@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.example.cookplus">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,56 +18,56 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AppMovilActivity"
-            android:parentActivityName=".PrincipalActivity"
+            android:name="com.example.cookplus.AppMovilActivity"
+            android:parentActivityName="com.example.cookplus.PrincipalActivity"
             android:label="Cook+"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".UsuarioActivity"
+            android:name="com.example.cookplus.UsuarioActivity"
             android:label="Perfil de usuario"
-            android:parentActivityName=".PrincipalActivity"
+            android:parentActivityName="com.example.cookplus.PrincipalActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".PerfilActivity"
+            android:name="com.example.cookplus.PerfilActivity"
             android:label="Perfil"
-            android:parentActivityName=".PrincipalActivity"
+            android:parentActivityName="com.example.cookplus.PrincipalActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".PlanSemanalActivity"
+            android:name="com.example.cookplus.PlanSemanalActivity"
             android:label="Plan Semanal"
-            android:parentActivityName=".PrincipalActivity"
+            android:parentActivityName="com.example.cookplus.PrincipalActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".FavoritosActivity"
+            android:name="com.example.cookplus.FavoritosActivity"
             android:label="Favoritos"
-            android:parentActivityName=".PrincipalActivity"
+            android:parentActivityName="com.example.cookplus.PrincipalActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".PrincipalActivity"
+            android:name="com.example.cookplus.PrincipalActivity"
             android:label="Cook+"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".RecetaActivity"
+            android:name="com.example.cookplus.RecetaActivity"
             android:label="Receta del día"
-            android:parentActivityName=".PrincipalActivity"
+            android:parentActivityName="com.example.cookplus.PrincipalActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".DiarioFotosActivity"
+            android:name="com.example.cookplus.DiarioFotosActivity"
             android:label="Diario de fotos"
-            android:parentActivityName=".PerfilActivity"
+            android:parentActivityName="com.example.cookplus.PerfilActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".BuscarRecetasActivity"
+            android:name="com.example.cookplus.BuscarRecetasActivity"
             android:label="Buscador de recetas"
-            android:parentActivityName=".PrincipalActivity"
+            android:parentActivityName="com.example.cookplus.PrincipalActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".NeveraActivity"
+            android:name="com.example.cookplus.NeveraActivity"
             android:label="Despensa"
-            android:parentActivityName=".PrincipalActivity"
+            android:parentActivityName="com.example.cookplus.PrincipalActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.cookplus.MainActivity"
             android:label="Cook+"
             android:screenOrientation="portrait">
             <intent-filter>

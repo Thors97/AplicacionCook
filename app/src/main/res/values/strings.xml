@@ -146,5 +146,9 @@
     <string name="menu_favorite"/>
     <string name="menu_fridge"/>
     <string name="menu_user"/>
+    <string name="establecer">Establecer</string>
+    <string name="en_cm">(en cm)</string>
+    <string name="ingredientes_no">Pulse aquí para seleccionar las intolerancias</string>
+    <string name="dieta">Pulse aquí para seleccionar los ingredientes</string>
 
 </resources>

@@ -7,305 +7,311 @@
     android:layout_height="wrap_content"
     android:fillViewport="false">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
     <LinearLayout
-        android:layout_width="379dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:orientation="vertical">
 
-        <!-- _________FOTO, NOMBRE Y APELLIDOS_________________________ -->
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
+            android:layout_width="379dp"
+            android:layout_height="669dp"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+
+            <!-- _________FOTO, NOMBRE Y APELLIDOS_________________________ -->
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="117dp"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/fotoUsuario"
-                    android:layout_width="94dp"
-                    android:layout_height="68dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/esquinas_redondeadas"
-                    android:scaleType="center"
-                    android:visibility="visible" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="117dp"
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="94dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/esquinas_redondeadas"
-                    android:backgroundTint="#00897B"
-                    android:onClick="onClick"
-                    android:text="Foto de Perfil"
-                    android:textSize="10sp" />
+                    <ImageView
+                        android:id="@+id/fotoUsuario"
+                        android:layout_width="94dp"
+                        android:layout_height="68dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/esquinas_redondeadas"
+                        android:contentDescription="Imagen del usuario"
+                        android:scaleType="center"
+                        android:visibility="visible" />
 
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="94dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/esquinas_redondeadas"
+                        android:backgroundTint="#00897B"
+                        android:onClick="onClick"
+                        android:text="Foto de Perfil"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="265dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nickUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/chewy"
+                        android:inputType="textPersonName"
+                        android:text="@string/resumenNickUsuario"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/nombreApellidos"
+                        android:layout_width="262dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#EAECEC"
+                        android:hint="@string/resumenNombreApellidos"
+                        android:inputType="textPersonName"
+                        android:text=""
+                        android:textAlignment="viewStart"
+                        tools:background="#EAECEC" />
+
+                </LinearLayout>
             </LinearLayout>
 
+            <!-- _________DATOS GENERALES_________________________ -->
             <LinearLayout
-                android:layout_width="265dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_width="378dp"
+                android:layout_height="181dp"
+                android:layout_marginTop="6dp"
+                android:orientation="vertical"
+                android:scrollbars="vertical">
 
                 <TextView
-                    android:id="@+id/nickUsuario"
+                    android:id="@+id/info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/chewy"
-                    android:inputType="textPersonName"
-                    android:text="@string/resumenNickUsuario"
+                    android:text="@string/resumenInfo"
                     android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/nombreApellidos"
-                    android:layout_width="262dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#EAECEC"
-                    android:hint="@string/resumenNombreApellidos"
-                    android:inputType="textPersonName"
-                    android:text=""
-                    android:textAlignment="viewStart"
-                    tools:background="#EAECEC" />
+                <LinearLayout
+                    android:layout_width="378dp"
+                    android:layout_height="36dp"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:id="@+id/sexo1"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/resumenSexo"
+                        tools:background="#EAECEC"
+                        tools:backgroundTint="#EAECEC" />
+
+                    <Spinner
+                        android:id="@+id/sexo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        tools:background="#EAECEC"
+                        tools:backgroundTint="#EAECEC" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="378dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/edad"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="#EAECEC"
+                        android:text="@string/resumenEdad"
+                        tools:background="#EAECEC"
+                        tools:backgroundTint="#EAECEC" />
+
+                    <TextView
+                        android:id="@+id/edadEdit"
+                        android:layout_width="128dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:inputType="number"
+                        android:text=""
+                        tools:background="#EAECEC"
+                        tools:backgroundTint="#EAECEC" />
+
+                    <Button
+                        android:id="@+id/addBirthayBtn"
+                        android:layout_width="132dp"
+                        android:layout_height="26dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@drawable/esquinas_redondeadas"
+                        android:backgroundTint="#00897B"
+                        android:scaleType="centerInside"
+                        android:text="@string/establecer"
+                        app:srcCompat="@drawable/add" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="379dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/peso"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/resumenpeso"
+                        tools:background="#EAECEC"
+                        tools:backgroundTint="#EAECEC" />
+
+                    <EditText
+                        android:id="@+id/pesoEdit"
+                        android:layout_width="83dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:hint="(en kilos)"
+                        android:inputType="number|numberDecimal"
+                        android:text=""
+                        android:textAlignment="viewStart"
+                        tools:background="#EAECEC"
+                        tools:backgroundTint="#EAECEC" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="379dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/altura"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/resumenAltura"
+                        tools:background="#EAECEC"
+                        tools:backgroundTint="#EAECEC" />
+
+                    <EditText
+                        android:id="@+id/alturaEdit"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:hint="@string/en_cm"
+                        android:inputType="number"
+                        android:text=""
+                        tools:background="#EAECEC"
+                        tools:backgroundTint="#EAECEC" />
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-        <!-- _________DATOS GENERALES_________________________ -->
-        <LinearLayout
-            android:layout_width="378dp"
-            android:layout_height="181dp"
-            android:layout_marginTop="6dp"
-            android:orientation="vertical"
-            android:scrollbars="vertical">
-
-            <TextView
-                android:id="@+id/info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/chewy"
-                android:text="@string/resumenInfo"
-                android:textSize="18sp" />
-
+            <!-- _________INTOLERANCIAS_________________________ -->
             <LinearLayout
                 android:layout_width="378dp"
-                android:layout_height="36dp"
-                android:orientation="horizontal">
+                android:layout_height="181dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/sexo1"
-                    android:layout_width="72dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/resumenSexo"
-                    tools:background="#EAECEC"
-                    tools:backgroundTint="#EAECEC" />
-
-                <Spinner
-                    android:id="@+id/sexo"
+                    android:id="@+id/intolerancias"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    tools:background="#EAECEC"
-                    tools:backgroundTint="#EAECEC" />
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/chewy"
+                    android:text="@string/resumenIntolerancias"
+                    android:textSize="18sp"
+                    tools:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:id="@+id/intoleranciasEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="134dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/esquinas_redondeadas"
+                    android:backgroundTint="#EAECEC"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:hint="@string/ingredientes_no"
+                    android:onClick="onTextViewClickedIntolerancias"
+                    android:textAlignment="center"
+                    android:textSize="17sp"
+                    tools:layout_marginBottom="6dp" />
 
             </LinearLayout>
+            <!-- _________INGREDIENTES_________________________ -->
 
             <LinearLayout
                 android:layout_width="378dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="128dp"
+                android:layout_marginBottom="14dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/edad"
-                    android:layout_width="72dp"
+                    android:id="@+id/ingredientesNo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:backgroundTint="#EAECEC"
-                    android:text="@string/resumenEdad"
-                    tools:background="#EAECEC"
-                    tools:backgroundTint="#EAECEC" />
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/chewy"
+                    android:text="@string/resumenIngredientesNo"
+                    android:textSize="18sp"
+                    tools:layout_marginBottom="8dp" />
 
                 <TextView
-                    android:id="@+id/edadEdit"
-                    android:layout_width="128dp"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/ingredientesNoEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
                     android:layout_marginStart="8dp"
-                    android:inputType="number"
-                    android:text=""
-                    tools:background="#EAECEC"
-                    tools:backgroundTint="#EAECEC" />
-
-                <Button
-                    android:id="@+id/addBirthayBtn"
-                    android:layout_width="132dp"
-                    android:layout_height="26dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/esquinas_redondeadas"
-                    android:backgroundTint="#00897B"
-                    android:scaleType="centerInside"
-                    android:text="Establecer"
-                    app:srcCompat="@drawable/add" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="379dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/peso"
-                    android:layout_width="72dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/resumenpeso"
-                    tools:background="#EAECEC"
-                    tools:backgroundTint="#EAECEC" />
-
-                <EditText
-                    android:id="@+id/pesoEdit"
-                    android:layout_width="83dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:hint="(en kilos)"
-                    android:inputType="number|numberDecimal"
-                    android:text=""
-                    android:textAlignment="viewStart"
-                    tools:background="#EAECEC"
-                    tools:backgroundTint="#EAECEC" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="379dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/altura"
-                    android:layout_width="72dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/resumenAltura"
-                    tools:background="#EAECEC"
-                    tools:backgroundTint="#EAECEC" />
-
-                <EditText
-                    android:id="@+id/alturaEdit"
-                    android:layout_width="84dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:hint="(en cm)"
-                    android:inputType="number"
-                    android:text=""
-                    tools:background="#EAECEC"
-                    tools:backgroundTint="#EAECEC" />
+                    android:backgroundTint="#EAECEC"
+                    android:clickable="true"
+                    android:hint="@string/dieta"
+                    android:onClick="onTextViewClickedIngredientes"
+                    android:textSize="17sp"
+                    tools:layout_marginBottom="16dp"
+                    android:textAlignment="center" />
 
             </LinearLayout>
         </LinearLayout>
 
-        <!-- _________INTOLERANCIAS_________________________ -->
-        <LinearLayout
-            android:layout_width="378dp"
-            android:layout_height="181dp"
-            android:orientation="vertical">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_weight="0"
+            android:background="@color/colorPrimary"
+            android:paddingTop="10dp"
+            app:itemIconTint="@color/itemIconTint"
+            app:itemTextColor="@color/itemIconTint"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/navigation_bottom" />
 
-            <TextView
-                android:id="@+id/intolerancias"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/chewy"
-                android:text="@string/resumenIntolerancias"
-                android:textSize="18sp"
-                tools:layout_marginBottom="6dp" />
-
-            <TextView
-                android:id="@+id/intoleranciasEdit"
-                android:layout_width="match_parent"
-                android:layout_height="134dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/esquinas_redondeadas"
-                android:backgroundTint="#EAECEC"
-                android:clickable="true"
-                android:hint="   Pulse aquí para seleccionar las intolerancias"
-                android:onClick="onTextViewClickedIntolerancias"
-                android:textSize="16sp"
-                tools:layout_marginBottom="6dp" />
-
-        </LinearLayout>
-        <!-- _________INGREDIENTES_________________________ -->
-
-        <LinearLayout
-            android:layout_width="378dp"
-            android:layout_height="174dp"
-            android:layout_marginBottom="14dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/ingredientesNo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/chewy"
-                android:text="@string/resumenIngredientesNo"
-                android:textSize="18sp"
-                tools:layout_marginBottom="8dp" />
-
-            <TextView
-                android:id="@+id/ingredientesNoEdit"
-                android:layout_width="match_parent"
-                android:layout_height="134dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/esquinas_redondeadas"
-                android:backgroundTint="#EAECEC"
-                android:clickable="true"
-                android:hint="   Pulse aquí para seleccionar los ingredientes"
-                android:onClick="onTextViewClickedIngredientes"
-                android:textSize="16sp"
-                tools:layout_marginBottom="16dp" />
-
-        </LinearLayout>
     </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_weight="0"
-        android:background="@color/colorPrimary"
-        android:paddingTop="10dp"
-        app:itemIconTint="@color/itemIconTint"
-        app:itemTextColor="@color/itemIconTint"
-        app:menu="@menu/navigation_bottom" />
-
-</LinearLayout>
     </ScrollView>

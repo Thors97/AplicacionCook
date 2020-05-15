@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.cookplus;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
@@ -361,7 +361,6 @@ public class BuscarRecetasActivity extends AppCompatActivity {
                                             while (jsonReader.hasNext()) {
                                                 ArrayList<String> ingredientes = new ArrayList<String>();
                                                 jsonReader.beginObject();
-                                                int count = 0;
                                                 while (jsonReader.hasNext()) {
                                                     name = jsonReader.nextName();
                                                     if (name.equals("text")) {
@@ -369,7 +368,6 @@ public class BuscarRecetasActivity extends AppCompatActivity {
                                                     } else {
                                                         jsonReader.skipValue();
                                                     }
-                                                    count++;
                                                 }
                                                 receta.setIngredientes(ingredientes);
                                                 jsonReader.endObject();

@@ -237,7 +237,8 @@
         android:paddingTop="10dp"
         app:itemIconTint="@color/itemIconTint"
         app:itemTextColor="@color/itemIconTint"
-        app:menu="@menu/navigation_bottom" />
+        app:menu="@menu/navigation_bottom"
+        app:labelVisibilityMode="unlabeled" />
     <!-- si tal, dentro de lo de arriba
         android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:scrollbarAlwaysDrawVerticalTrack="true" -->

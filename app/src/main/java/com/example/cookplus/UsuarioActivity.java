@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.cookplus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -274,7 +274,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
         editor.putStringSet(INTOLERANCIAS, ingredientes);
         editor.putStringSet(INGREDIENTES, dieta);
-
+        editor.putBoolean("PRIMERAVEZ", true);
         editor.apply();
     }
 
@@ -402,19 +402,11 @@ public class UsuarioActivity extends AppCompatActivity {
         if (requestCode == CODIGO_HACER_FOTO) {
             if (resultCode != RESULT_CANCELED) {
                 // La imagen ha sido capturada y grabada en la ubicación que se señaló en el Intent
-
                 ImageView miImagen = (ImageView) findViewById(R.id.fotoUsuario);
                 Bitmap miBitmap = BitmapFactory.decodeFile(ubicacion.getPath());
                 miImagen.setImageBitmap(miBitmap);
-                // NOTA: a pesar de los ejemplos acerca de este tema,
-                // el Intent del resultado suele venir a NULL y hay que guardar
-                // la URI en el momento de su creación, no a posteriori
-                // if (data != null)
-                // Log.i("onActivityResult", data.getData().toString());
-
             } else {
                 /* Codigo a implementar si la captura se cancela por el usuario o la aplicacion falla */
-
             }
         }
     }
@@ -514,20 +506,11 @@ public class UsuarioActivity extends AppCompatActivity {
         //ArrayList en el que guardamos las posiciones de los items seleccionados en el cuadro de dialogo.
         final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
 
-        //Array donde guardamos si los items han sido selecionados o no.
-        final boolean[] preCheckedItems = new boolean[]{
-                false, false, false, false
-        };
-
-        adb.setMultiChoiceItems(Ingredientes, preCheckedItems, new DialogInterface.OnMultiChoiceClickListener(){
+        /* En este caso tiene que ser un radio button porque solo podemos selecionar un tipo de dieta */
+        adb.setSingleChoiceItems(Ingredientes, 0, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which, boolean isChecked){
-
-                if(isChecked) {
-                    selectedItems.add(which);
-                } else if(selectedItems.contains(which)) {
-                    selectedItems.remove(Integer.valueOf(which));
-                }
+            public void onClick(DialogInterface dialogInterface, int i) {
+                selectedItems.add(i);
             }
         });
 

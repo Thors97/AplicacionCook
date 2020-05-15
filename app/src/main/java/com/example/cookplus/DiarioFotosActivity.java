@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.cookplus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,34 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
-public class RecetaActivity extends AppCompatActivity {
-
-    private ImageButton btnAddFav;
-    boolean fav = false;
+public class DiarioFotosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.receta);
-
-        btnAddFav = (ImageButton) findViewById(R.id.addFav);
-
-        btnAddFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!fav) {
-                    btnAddFav.setImageResource(R.drawable.cora_clicked);
-                    fav = true;
-                } else {
-                    btnAddFav.setImageResource(R.drawable.cora_unclicked);
-                    fav = false;
-                }
-            }
-        });
+        setContentView(R.layout.diario_fotos);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -79,11 +58,6 @@ public class RecetaActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.action_fridge) {
-            // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-            Intent intent = new Intent(this,NeveraActivity.class);
-            // Iniciamos la nueva actividad
-            startActivity(intent);
-
             System.out.println("APPMOV: About action...");
             return true;
         }

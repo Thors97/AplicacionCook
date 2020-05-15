@@ -1,44 +1,42 @@
-package com.example.myapplication;
+package com.example.cookplus;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.R;
-
 import java.util.List;
 
-public class NeveraAdapter extends ArrayAdapter<NeveraItem> {
-    public NeveraAdapter(Context context, int resource, List objects) {
+class FavAdapter extends ArrayAdapter<FavItem> {
+    public FavAdapter(Context context, int resource, List objects) {
         super(context, resource, objects);
     }
 
     @NonNull
     @Override
     /*funcion que llama el listView cuando le quiere pedir al adaptador una de las "pastillas"
-    * de la lista*/
+     * de la lista*/
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View resultado = convertView;
 
         //Si no hay "pastillas" previas, las creamos
-        if(resultado == null){
+        if (resultado == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             //el inflater devuelve un view
-            resultado = inflater.inflate(R.layout.nevera_item, null);
+            resultado = inflater.inflate(R.layout.fav_item, null);
         }
 
-        // busco el texto del item de la lista
-        CheckBox checkBox = (CheckBox) resultado.findViewById(R.id.neveraItem);
-        NeveraItem item = getItem(position);
+        // añado el texto al item de la lista
+        FavItem item = getItem(position);
+        TextView text = (TextView) resultado.findViewById(R.id.textItem);
+        text.setText(item.getTitulo());
 
-        checkBox.setText(item.getText());
-        checkBox.setChecked(item.isChecked());
+        //ImageButton btn = (ImageButton) resultado.findViewById(R.id.expand_button);
 
         return resultado;
     }

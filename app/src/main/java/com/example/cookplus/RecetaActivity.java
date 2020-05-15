@@ -1,63 +1,38 @@
-package com.example.myapplication;
+package com.example.cookplus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
-import java.util.ArrayList;
+public class RecetaActivity extends AppCompatActivity {
 
-public class FavoritosActivity extends AppCompatActivity {
-
-    private ArrayList<FavItem> itemFav;
-
-    private ImageButton btn;
-
-    private FavAdapter adapterFav;
-
-    private ListView listaFav;
-
-    private AlertDialog.Builder ad;
+    private ImageButton btnAddFav;
+    boolean fav = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.favoritos);
+        setContentView(R.layout.receta);
 
-        ad = new AlertDialog.Builder(this);
+        btnAddFav = (ImageButton) findViewById(R.id.addFav);
 
-        listaFav = (ListView) findViewById(R.id.favLV);
-
-        //btn = (ImageButton) findViewById(R.id.expand_button);
-
-        itemFav = new ArrayList<>();
-
-        itemFav.add(new FavItem("Ensalada de garbanzos"));
-        itemFav.add(new FavItem("Tarta de queso sin lactosa"));
-
-        adapterFav = new FavAdapter(
-                this,
-                R.layout.fav_item,
-                itemFav
-        );
-
-        listaFav.setAdapter(adapterFav);
-    }
-
-    public void expandReceta(View view) {
-        // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-        Intent intent = new Intent(this, RecetaActivity.class);
-        // Iniciamos la nueva actividad
-        startActivity(intent);
+        btnAddFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!fav) {
+                    btnAddFav.setImageResource(R.drawable.cora_clicked);
+                    fav = true;
+                } else {
+                    btnAddFav.setImageResource(R.drawable.cora_unclicked);
+                    fav = false;
+                }
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,14 +66,20 @@ public class FavoritosActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
+
         //NavBar
         if (id == R.id.action_favorite) {
+            // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
+            Intent intent = new Intent(this,FavoritosActivity.class);
+            // Iniciamos la nueva actividad
+            startActivity(intent);
+
             System.out.println("APPMOV: About action...");
             return true;
         }
         if (id == R.id.action_fridge) {
             // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-            Intent intent = new Intent(this, NeveraActivity.class);
+            Intent intent = new Intent(this,NeveraActivity.class);
             // Iniciamos la nueva actividad
             startActivity(intent);
 
@@ -107,7 +88,7 @@ public class FavoritosActivity extends AppCompatActivity {
         }
         if (id == R.id.action_user) {
             // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-            Intent intent = new Intent(this, PerfilActivity.class);
+            Intent intent = new Intent(this,PerfilActivity.class);
             // Iniciamos la nueva actividad
             startActivity(intent);
 
@@ -126,5 +107,4 @@ public class FavoritosActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }
