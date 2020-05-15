@@ -1,7 +1,13 @@
 package com.example.myapplication;
 
 import android.graphics.Bitmap;
-import android.media.Image;
+
+import java.util.ArrayList;
+
+/**
+ * Esta clase es un JavaBean para modelar los datos de una receta.
+ * Tiene un constructor y los getters y setters.
+ */
 
 public class Receta {
     private String nombre;
@@ -10,7 +16,7 @@ public class Receta {
 
     private String url;
     private String[] healthLabels;
-    private String[] ingredientes;
+    private ArrayList<String> ingredientes;
     private String calorias;
     private String tiempo;
 
@@ -43,11 +49,11 @@ public class Receta {
         return imagen;
     }
 
-    public String[] getIngredientes() {
+    public ArrayList<String> getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(String[] ingredientes) {
+    public void setIngredientes(ArrayList<String> ingredientes) {
         this.ingredientes = ingredientes;
     }
 

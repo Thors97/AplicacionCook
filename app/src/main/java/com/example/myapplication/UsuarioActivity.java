@@ -1,8 +1,11 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -25,19 +28,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.widget.Toast;
+
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.ArrayList;
-import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
+import java.text.SimpleDateFormat;
+
+/**
+ * Esta clase es la encargada de mostrar los datos del usuario.
+ * En ella se guardan los diferentes datos.
+ */
 
 public class UsuarioActivity extends AppCompatActivity {
 
@@ -56,7 +62,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
     // código de acción para lanzar un Intent que solicite una captura
     private static final int CODIGO_HACER_FOTO = 100;
-    // ubicación de la imagen tomada
+    // Variable que guarda la ruta de la imagen
     private File ubicacion = null;
     // Clave para no perder la ruta en caso de destrucción de la activity
     private final static String CLAVE_RUTA_IMAGEN = "CLAVE_RUTA_IMAGEN";
@@ -69,8 +75,9 @@ public class UsuarioActivity extends AppCompatActivity {
     private final static String INTOLERANCIAS= "INTOLERANCIAS";
     private final static String INGREDIENTES= "INGREDIENTES";
 
-    //-----------------------------------------------------------------------//
-
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -135,7 +142,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
             intoleranciasEdit.setText(intoleranciasPintar);
 
-            //ingredientesP= mPreferences.getString(INGREDIENTES, "");
+
             ingredientesP = mPreferences.getStringSet(INGREDIENTES, new HashSet<String>());
             ingredientesNoEdit = (TextView) findViewById(R.id.ingredientesNoEdit);
             String ingredientesPintar = "";
@@ -172,15 +179,25 @@ public class UsuarioActivity extends AppCompatActivity {
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-        // }//end if
+
     }
-    //-----------------------------------------------------------------------//
+
+    /**
+     *
+     * @param menu
+     * @return
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         // Se recrea el menu que aparece en ActionBar de la actividad.
         getMenuInflater().inflate(R.menu.menu_usuario, menu);
         return true;
     }
-    //-----------------------------------------------------------------------//
+
+    /**
+     *
+     * @param item
+     * @return
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         // Se obtiene el identificador del item que ha sido seleccionado
         int id = item.getItemId();
@@ -192,25 +209,25 @@ public class UsuarioActivity extends AppCompatActivity {
                 Intent intentFav = new Intent(this,FavoritosActivity.class);
                 // Iniciamos la nueva actividad
                 startActivity(intentFav);
-            break;
+                break;
             case R.id.action_fridge:
                 // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
                 Intent intentFridge = new Intent(this,NeveraActivity.class);
                 // Iniciamos la nueva actividad
                 startActivity(intentFridge);
-            break;
+                break;
             case R.id.action_user:
 
-            break;
+                break;
             case R.id.action_search:
                 // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
                 Intent intent = new Intent(this,BuscarRecetasActivity.class);
                 // Iniciamos la nueva actividad
                 startActivity(intent);
-            break;
+                break;
             case R.id.action_edit:
                 // editar=1;//Podemos editar el perfil de usuario
-            break;
+                break;
             case R.id.action_save:
                 // Guardamos los datos en preferencias
                 savePref();
@@ -221,14 +238,16 @@ public class UsuarioActivity extends AppCompatActivity {
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, msg, duration);
                 toast.show();
-            break;
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    //-----------------------------------------------------------------------//
-
+    /**
+     *
+     */
     public void savePref() {
+
         // Creamos coleccion de preferencias
         String sharedPrefFile = "com.example.myapplication";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
@@ -247,19 +266,22 @@ public class UsuarioActivity extends AppCompatActivity {
 
         editor.putString(EDAD, edad.getText().toString());
         int posicion = sexSpinner.getSelectedItemPosition();
-        //System.out.println("AAAAAAA " + posicion);
-        //int posicion = Integer.valueOf((String)sexSpinner.getSelectedItem()) ;
-        //        Log.e("Posicion:  ", String.valueOf(posicion));
+
+
         editor.putInt(SEXO, posicion);
         editor.putString(PESO,peso.getText().toString());
         editor.putString(ALTURA,altura.getText().toString());
 
         editor.putStringSet(INTOLERANCIAS, ingredientes);
         editor.putStringSet(INGREDIENTES, dieta);
-        //        (INGREDIENTES,ingredientesNoEdit.getText().toString());
+
         editor.apply();
     }
-    //-----------------------------------------------------------------------//
+
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         if (ubicacion != null) {
@@ -267,7 +289,11 @@ public class UsuarioActivity extends AppCompatActivity {
         }
         super.onSaveInstanceState(savedInstanceState);
     }
-    //-----------------------------------------------------------------------//
+
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState.containsKey(CLAVE_RUTA_IMAGEN)) {
@@ -275,37 +301,35 @@ public class UsuarioActivity extends AppCompatActivity {
         }
         super.onRestoreInstanceState(savedInstanceState);
     }
-    //-----------------------------------------------------------------------//
-    public void onClick(View v) {
-        // si el usuario pulsa el botón, pedimos una captura mediante un Intent
-        // que solicite la acción de una app apropiada para la tarea
-        if (v.getId() == R.id.button) {
 
-            // primero comprobamos que existe alguna cámara (posterior o frontal) con la que poder
-            // hacer la foto, ya que especificamos en el manifest que no era obligatorio tener cámara
-            // para poder instalar la app:
-            // <uses-feature android:name="android.hardware.camera" android:required="false" />
+    /**
+     * Esta función es la encargada de iniciar la camara para tomar la foto.
+     * @param v
+     */
+    public void onClick(View v) {
+        if (v.getId() == R.id.button) {
+            // Se comprueba que hay una camara disponible en el dispositivo.
+
             PackageManager manager = getPackageManager();
             if (! manager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
                 Toast.makeText(this, "No se dispone de cámara",
                         Toast.LENGTH_LONG).show();
                 return;
             }
-            // solicitamos específicamente la captura de una imagen
+            // Solicitamos la captura de una imagen
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-            // creamos una ruta en la que guardar la imagen
-            // y damos esta ubicación a la app que se encargue de hacerla
-            ubicacion = obtenerUbicacionImagen(); // objeto File
-            // nuestro método obtenerUbicacionImagen() puede devolver null si el
-            // sistema de almacenamiento externo no está disponible, por lo que
-            // dependemos de que no sea así para poder iniciar la captura
+            /* Creamos una ruta en la que guardar la imagen
+             y damos esta ubicación a la app que se encargue de hacerla*/
+            ubicacion = obtenerUbicacionImagen();
+            /*  obtenerUbicacionImagen() puede retornar null. Por eso lo controlamos.
+                Devuelve null si el almacenamiento externo no esta disponible.*/
+
             if (ubicacion != null) {
                 Uri uriImagen = Uri.fromFile(ubicacion);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, uriImagen);
-
-                // IMPORTANTE: esperamos el resultado de la operación en onActivityResult()
-                // para saber si se pudo hacer la foto o no y emprender acciones acordes
+                /* IMPORTANTE: esperamos el resultado de la operación en onActivityResult()
+                 para saber si se pudo hacer la foto o no y emprender acciones acordes. */
                 startActivityForResult(intent, CODIGO_HACER_FOTO);
             } else {
                 Toast.makeText(this, "No se puede acceder al sistema de archivos",
@@ -313,35 +337,26 @@ public class UsuarioActivity extends AppCompatActivity {
             }
         }
     }
-    //-----------------------------------------------------------------------//
-    /** Creamos un objeto File (que no es otra cosa que una ruta) para guardar ahí la foto */
-    private File obtenerUbicacionImagen() {
 
-        // ====>>> Se recomienda utilizar almacenamiento EXTERNO
-        //         siempre que se guarden archivos MULTIMEDIA
+    /**
+     * Creamos un objeto File (que no es otra cosa que una ruta) para guardar ahí la foto
+     * @return Devuelve la ruta en la que se va a guardar la imagen. Devuelve null si el medio externo no esta disponible.
+     */
+    private File obtenerUbicacionImagen() {
 
         File directorioExterno;
 
-        // IMPORTANTE: Primero comprobamos que el almacenamiento externo está disponible para escritura.
-        // Ver posibles estados en:
-        // http://developer.android.com/reference/android/os/Environment.html#getExternalStorageState()
+        /*
+         IMPORTANTE: Primero comprobamos que el almacenamiento externo está disponible para escritura.
+       */
         if (! Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
             return null;
 
-        // ====>>> Puedes consultar las distintas opciones de acceso a ficheros a través de la
-        //         clase Environment:
-        //         http://developer.android.com/reference/android/os/Environment.html
+        /* Usaremos el directorio PRIVADO de la aplicación ubicado en almacenamiento externo,
+         que se borra al desinstalarla*/
 
-        // Usaremos el directorio PRIVADO de la aplicación ubicado en almacenamiento externo,
-        // que se borra al desinstalarla
         directorioExterno = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
-        // Otra opción es utilizar un directorio PÚBLICO, también en almacenamiento externo,
-        // que puede ser escaneado y accedido por otras apps,
-        // y que persiste aun después de desinstalarla.
-        // Para esto, comentar la línea de más arriba y descomentar las dos siguientes:
-        //directorioExterno = new File(Environment.getExternalStoragePublicDirectory(
-        //        Environment.DIRECTORY_PICTURES), "HelloCamera");
 
         // Si aún no existe el directorio, lo creamos
         if (! directorioExterno.exists()){
@@ -350,30 +365,35 @@ public class UsuarioActivity extends AppCompatActivity {
                 return null;
             }
         }
-        // Creamos un nombre de fichero dentro de ese directorio
-        // (es buena idea utilizar un timestamp para evitar sobreescribir imágenes)
+        // Creamos un nombre de fichero dentro de ese directorio. Le añadimos el timestamp para no sobrescribir imagenes.
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File fichero = new File(directorioExterno.getPath() + File.separator +
                 "IMG_"+ timestamp + ".jpg");
         // Devolvemos la ruta completa que hemos creado
         return fichero;
     }
-    //-----------------------------------------------------------------------//
-    // method for bitmap to base64
-    // https://stackoverflow.com/questions/18072448/how-to-save-image-in-shared-preference-in-android-shared-preference-issue-in-a
+
+    /**
+     *  Este metodo nos permite codificar la imagen de bitmap a base64.
+     *  Para implementar esta funcionalidad hemos usado uso de este recurso:
+     *  https://stackoverflow.com/questions/18072448/how-to-save-image-in-shared-preference-in-android-shared-preference-issue-in-a
+     * @param image
+     * @return String Imagen codificada a base64
+     */
     public static String encodeTobase64(Bitmap image) {
         Bitmap immage = image;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] b = baos.toByteArray();
         String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
-
         Log.d("Image Log:", imageEncoded);
-        System.out.println("IMAGEN ENCODED:  " + imageEncoded);
         return imageEncoded;
     }
-    //-----------------------------------------------------------------------//
+
     @Override
+    /**
+     *
+     */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
@@ -381,11 +401,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
         if (requestCode == CODIGO_HACER_FOTO) {
             if (resultCode != RESULT_CANCELED) {
-                // La imagen ha sido capturada y grabada en la ubicación
-                // que se señaló en el Intent
-
-                // TextView miTexto = (TextView) findViewById(R.id.texto);
-                // miTexto.setText(ubicacion.getPath());
+                // La imagen ha sido capturada y grabada en la ubicación que se señaló en el Intent
 
                 ImageView miImagen = (ImageView) findViewById(R.id.fotoUsuario);
                 Bitmap miBitmap = BitmapFactory.decodeFile(ubicacion.getPath());
@@ -397,31 +413,38 @@ public class UsuarioActivity extends AppCompatActivity {
                 // Log.i("onActivityResult", data.getData().toString());
 
             } else {
-                // La captura ha sido cancelada por el usuario, ha fallado,
-                // o la otra app se cerró inesperadamente
+                /* Codigo a implementar si la captura se cancela por el usuario o la aplicacion falla */
+
             }
         }
     }
-    //-----------------------------------------------------------------------//
+
+    /**
+     * Funcion que nos permite crear un cuadro de diálogo donde se muestran los diferentes
+     * parametros a seleccionar. Una vez seleccionados estos se guardan en un HasSet que
+     * para posteiormente guardarlos en las preferencias. A su vez muestra los elementos seleccionados en la interfaz.
+     * Para el desarrollo de funcionalidad nos hemos basado en el siguiente recurso.
+     * Paágina: https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
+     * @param  v
+     */
     public void onTextViewClickedIntolerancias(View v){
 
-        //Código extraido de:
-        //https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
+
         final TextView tv = (TextView) findViewById(R.id.intoleranciasEdit);
         tv.setText(null);
-        //Initialize a new AlertDialog Builder
+        // Creamos el cuadro de alerta.
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
 
         adb.setTitle("Seleccione los parametros saludables:");
-
+        // Son los diferentes elementos que se van a msotrar en el cuadro de dialogo.
         final String[] Intolerancias = new String[]{
                 "Sin azucar", "Cacahuetes", "Frutos Secos", "Alcohol", "Vegana", "Vegetariana"
         };
 
-        //ArrayList to store Alert Dialog selected items index position
+        //ArrayList en el que guardamos las posiciones de los items seleccionados en el cuadro de dialogo.
         final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
 
-        //Array to store pre checked/selected items
+        //Array donde guardamos si los items han sido selecionados o no.
         final boolean[] preCheckedItems = new boolean[]{
                 false,false,false,false,false,false
         };
@@ -429,86 +452,69 @@ public class UsuarioActivity extends AppCompatActivity {
         adb.setMultiChoiceItems(Intolerancias, preCheckedItems, new DialogInterface.OnMultiChoiceClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked){
-
-                //You can update the preCheckedItems array here
-                //In this tutorial i ignored this feature
-                if(isChecked)
-                {
-                    //Add the checked item to checked items collection
+                if(isChecked) {
                     selectedItems.add(which);
-                }
-                else if(selectedItems.contains(which))
-                {
-                    /*If the clicked checkbox item is unchecked now
-                    and it already contains in the selected items collection
-                    then we remove it from selected items collection*/
+                } else if(selectedItems.contains(which)) {
                     selectedItems.remove(Integer.valueOf(which));
-            }
+                }
             }
         });
 
-        //Define the AlertDialog positive/ok/yes button
+        //Define los botones de OK
         adb.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
-                //When user click the positive button from alert dialog
-
-                //Loop/iterate through ArrayList
+                /*Hacemos un bucle para recorrer los elementos selecionados
+                    cuando el usuario pulse el boton de OK.
+                 */
                 ingredientes = new HashSet<>();
-                for(int i=0;i<selectedItems.size();i++){
-                    //selectedItems ArrayList current item's correspondent
+                String intoleranciaSelected = "";
+                for(int i = 0; i<selectedItems.size(); i++){
+
                     int IndexOfAllergies = selectedItems.get(i);
 
-                    //Get the selectedItems array specific index position's
-                    String intoleranciaSelected = Arrays.asList(Intolerancias).get(IndexOfAllergies);
 
-                    // Borramos el contenido ya almacenado y Display the selected colors to TextView
+                    intoleranciaSelected = Arrays.asList(Intolerancias).get(IndexOfAllergies);
+
                     ingredientes.add(intoleranciaSelected);
                     tv.setText(tv.getText() + intoleranciaSelected + "\n");
-
 
                 }
             }
         });
 
-        //Define the Neutral/Cancel button in AlertDialog
-        adb.setNeutralButton("Cancel", new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which){
-                //When user click the neutral/cancel button from alert dialog
+        //Definimos el boton de Cancelar
+        adb.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
             }
         });
-
-        //Display the Alert Dialog on app interface
 
         adb.show();
     }
 
-    //-----------------------------------------------------------------------//
-
+    /**
+     * Para el desarrollo de funcionalidad nos hemos basado en el siguiente recurso.
+     * Paágina: https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
+     * @param v
+     */
     public void onTextViewClickedIngredientes(View v){
 
-        //Código extraido de:
         dieta = null;
-        //https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
         final TextView tv = (TextView) findViewById(R.id.ingredientesNoEdit);
         tv.setText(null);
 
-        //Initialize a new AlertDialog Builder
+        // Creamos el cuadro de alerta.
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
-
-        //Set a title for alert dialog
         adb.setTitle("Tipo de dieta:");
 
-        //Initialize a new String Array
         final String[] Ingredientes = new String[]{
                 "Balanceada", "Alta en proteína", "Baja en grasa", "Baja en carbohidratos"
         };
 
-        //ArrayList to store Alert Dialog selected items index position
+        //ArrayList en el que guardamos las posiciones de los items seleccionados en el cuadro de dialogo.
         final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
 
-        //Array to store pre checked/selected items
+        //Array donde guardamos si los items han sido selecionados o no.
         final boolean[] preCheckedItems = new boolean[]{
                 false, false, false, false
         };
@@ -517,57 +523,44 @@ public class UsuarioActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked){
 
-                //You can update the preCheckedItems array here
-                //In this tutorial i ignored this feature
-                if(isChecked)
-                {
-                    //Add the checked item to checked items collection
+                if(isChecked) {
                     selectedItems.add(which);
-                }
-                else if(selectedItems.contains(which))
-                {
-                    /*If the clicked checkbox item is unchecked now
-                     and it already contains in the selected items collection
-                     then we remove it from selected items collection*/
+                } else if(selectedItems.contains(which)) {
                     selectedItems.remove(Integer.valueOf(which));
                 }
             }
         });
 
-        //Define the AlertDialog positive/ok/yes button
+        //Define los botones de OK
         adb.setPositiveButton("Ok", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
-                //When user click the positive button from alert dialog
-
-                //Loop/iterate through ArrayList
+                /*Hacemos un bucle para recorrer los elementos selecionados
+                    cuando el usuario pulse el boton de OK.
+                 */
                 dieta = new HashSet<>();
-                for(int i=0;i<selectedItems.size();i++){
-                    //selectedItems ArrayList current item's correspondent
+                String ingredientesSelected = "";
+                for(int i = 0; i<selectedItems.size(); i++){
                     int IndexOfIngredients = selectedItems.get(i);
 
-                    //Get the selectedItems array specific index position's
-                    String ingredientesSelected = Arrays.asList(Ingredientes).get(IndexOfIngredients);
-
-                    //Display the selected colors to TextView
-
+                    ingredientesSelected = Arrays.asList(Ingredientes).get(IndexOfIngredients);
+                    //Guardamos en el hasSet el texto de los items seleccionados.
                     dieta.add(ingredientesSelected);
+                    //Mostramos el texto de los items seleccionados.
                     tv.setText(tv.getText() + ingredientesSelected + "\n");
 
                 }
             }
         });
 
-        //Define the Neutral/Cancel button in AlertDialog
+        //Definimos el boton de cancelar.
         adb.setNeutralButton("Cancel", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
-                //When user click the neutral/cancel button from alert dialog
+
             }
         });
         tv.setText(null);
-        //Display the Alert Dialog on app interface
         adb.show();
     }
 }
-//-----------------------------------------------------------------------//

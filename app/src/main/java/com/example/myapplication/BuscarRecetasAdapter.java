@@ -2,26 +2,22 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Esta clase es la encargada de configurar el XML en el que se van a mostrar las recetas.
  * Para el desarrollo de este adapter me he basado en lo comentado en la siguiente entrada de StackOverflkow
  * Fuente: https://stackoverflow.com/questions/21833181/arrayadapter-text-and-image
+ *
  */
 public class BuscarRecetasAdapter extends ArrayAdapter<Receta> {
 
@@ -38,6 +34,7 @@ public class BuscarRecetasAdapter extends ArrayAdapter<Receta> {
         ImageView imageView;
         TextView txtTitle;
         TextView txtCalorias;
+        TextView txtIngredientes;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -52,6 +49,7 @@ public class BuscarRecetasAdapter extends ArrayAdapter<Receta> {
             holder.txtTitle = (TextView) convertView.findViewById(R.id.listText);
             holder.imageView = (ImageView) convertView.findViewById(R.id.listImage);
             holder.txtCalorias = (TextView) convertView.findViewById(R.id.listCalorias);
+            holder.txtIngredientes = (TextView) convertView.findViewById(R.id.listIngredientes);
             convertView.setTag(holder);
         } else
             holder = (ViewHolder) convertView.getTag();
@@ -59,10 +57,22 @@ public class BuscarRecetasAdapter extends ArrayAdapter<Receta> {
 
         holder.txtTitle.setText(receta.getNombre());
         holder.imageView.setImageBitmap(receta.getImagen());
-        holder.txtCalorias.setText("CALORIAS:  " + receta.getCalorias());
+        holder.txtCalorias.setText("CALORIAS:" + "\n" + receta.getCalorias().substring(0, 7));
+        String ingredientes = receta.getIngredientes().toString().substring(1, receta.getIngredientes().toString().length() - 1);
+        holder.txtIngredientes.setText("INGREDIENTES: " + "\n" + ingredientes);
+
         return convertView;
     }
 
+    /**
+     * Esta funcion es la encargada de devolver la URL al Activity para que se pueda
+     * abrir la receta en el navegador.
+     *
+     * @param position
+     * @return String URL
+     * Esta pagina me ha ayudado a implementar esta función:
+     * https://stackoverflow.com/questions/36810210/listview-custom-adapter-onclick-launch-url-link
+     */
     public String getLink(int position) {
         return items.get(position).getUrl();
     }

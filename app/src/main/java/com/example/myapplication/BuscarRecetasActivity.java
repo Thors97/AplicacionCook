@@ -1,28 +1,28 @@
 package com.example.myapplication;
 
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.media.Image;
-import android.net.Uri;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import android.net.Uri;
 import java.net.HttpURLConnection;
+
+import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
+
+
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
-import android.graphics.BitmapFactory;
-
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,27 +31,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.app.ProgressDialog;
-
-import javax.net.ssl.HttpsURLConnection;
-
 
 
 public class BuscarRecetasActivity extends AppCompatActivity {
 
-    //APP ID y API KEY
+    //Estas variables son los parámetros para autenticarnos en el servidor.
     final String APP_ID = "638c05ef";
     final String API_KEY = "131fcc82ee2adeadd0e6d8e2e1d29f99";
 
     private ListView m_listview;
     private EditText m_edittext;
     private String alimento;
-
-
 
 
     @Override
@@ -61,18 +54,22 @@ public class BuscarRecetasActivity extends AppCompatActivity {
 
         // Creamos un listview que va a contener los resultados de la consulta
         m_listview = (ListView) findViewById(R.id.id_list_view);
-
         m_edittext = (EditText)  findViewById(R.id.buscadorReceta);
 
     }
 
+    /**
+     * Al pinchar sobre el boton de buscar ejecuta la búsqueda. Recupera el alimento escrito
+     * si este existe y ejecuta la llamada al execute.
+     *
+     * @param view
+     */
     public void buscar(View view){
         alimento = m_edittext.getText().toString();
         if (alimento.isEmpty()) {
 
             //AlertDialog
             // si no hay nada metido, no puede buscar nada
-            //4_Android_Intents_BroadcastReceivers_Dialog.pdf UC3M (pág 30)
             AlertDialog.Builder ad = new AlertDialog.Builder(this);
             ad.setTitle("Error");
             ad.setMessage(" No ha introducido nada ");
@@ -83,12 +80,15 @@ public class BuscarRecetasActivity extends AppCompatActivity {
             });
             ad.show();
             return;
-
         }
         new BuscarReceta().execute(alimento);
-
     }
 
+    /**
+     * Este método es el que controla al navegación del navbottom.
+     * @param item
+     * @return boolean.
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         // Se obtiene el identificador del item que ha sido seleccionado
         int id = item.getItemId();
@@ -151,30 +151,27 @@ public class BuscarRecetasActivity extends AppCompatActivity {
 
     }
 
-    public void recetaButton(View view){
-        //creamos el intent
-        Intent intent = new Intent(this, RecetaActivity.class);
-
-        // Iniciamos la nueva actividad
-        startActivity(intent);
-    }
-
     private class BuscarReceta extends AsyncTask<String , Object, ArrayList<Receta>> {
 
-        @Override
+
         protected ArrayList<Receta> doInBackground(String... urls) {
-            String health, diet = "";
+
             ArrayList<Receta> temp;
             String alimento = urls[0];
-            String intolerancias = "";
-            Set<String> salud, dieta;
-            //Queremos acceder a las preferencias para poder filtrar.
-            String sharedPrefFile = "com.example.myapplication";
-            SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-            String[] arrayIngredientes, arrayDieta = null;
 
             String url = "https://api.edamam.com/search?q=" + alimento + "&app_id=" + APP_ID + "&app_key=" + API_KEY;
 
+            Set<String> salud, dieta;
+
+            /* Accedemos a las preferencias que es donde tenemos guardados los datos
+                sobre el tipo de dieta que queremos y sobre las alergias.
+            */
+            String sharedPrefFile = "com.example.myapplication";
+            SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+
+            /* Comprobamos que las preferencias no estan vacías. Recuperamos los datos de los alimentos(salud) y
+                del tipo de dieta que queremos para añadirselos a la consulta al servidor.
+            * */
             if (mPreferences != null) {
                 salud = mPreferences.getStringSet("INTOLERANCIAS", new HashSet<String>());
 
@@ -188,12 +185,16 @@ public class BuscarRecetasActivity extends AppCompatActivity {
                 }
             }
 
-
-            // make Call to the url
             temp = makeCall(url);
-
             return temp;
         }
+
+        /**
+         *  Esta función se utiliza para convertir las preferencias al formato del servidor y poder hacer la
+         *  consulta correctamente.
+         * @param ingredientes
+         * @return String Devuelve los diferentes ingredientes en el formato que acepta el servidor.
+         */
 
         protected String tipoSalud(Set<String> ingredientes) {
             String health = "health=";
@@ -224,6 +225,11 @@ public class BuscarRecetasActivity extends AppCompatActivity {
             return health;
         }
 
+        /**
+         * @param dieta
+         * @return Convierte el tipo de dieta guardado en las preferencias al tipo de parametro del servidor.
+         */
+
         protected String tipoDieta(Set<String> dieta) {
             String health = "diet=";
 
@@ -249,6 +255,7 @@ public class BuscarRecetasActivity extends AppCompatActivity {
             return health;
         }
 
+
         //Progress dialog para notificar que se están buscando recetas
         ProgressDialog progress_dialog = new ProgressDialog(BuscarRecetasActivity.this);
 
@@ -260,14 +267,22 @@ public class BuscarRecetasActivity extends AppCompatActivity {
             progress_dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progress_dialog.show();
         }
-        protected void onPostExecute(ArrayList<Receta> result) {
 
-            // Aquí se actualiza el interfaz de usuario
+        /**
+         * Este método es el encargado de actualizar el XML y añadir las recetas buscadas.
+         * @param result
+         */
+        protected void onPostExecute(ArrayList<Receta> result) {
 
 
             final BuscarRecetasAdapter adapter = new BuscarRecetasAdapter(BuscarRecetasActivity.this, R.layout.buscar_recetas, result);
-
             m_listview.setAdapter(adapter);
+
+            /*
+             *  Código que permite que al pulsar en cada rectea está se abra en el navegador.
+             *  Recurso: Para implementar este código hemos utilizado de referencia el siguiente codigo de StackOverflow
+             *  https://stackoverflow.com/questions/36810210/listview-custom-adapter-onclick-launch-url-link
+             */
             m_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -279,14 +294,18 @@ public class BuscarRecetasActivity extends AppCompatActivity {
 
                 }
             });
-
-            //Ocultamos el progressDialog
+            //Una vez hemos realizado la busqueda cerramos el cuadro de progreso.
             progress_dialog.dismiss();
 
         }
-
-
     }
+
+    /**
+     * Ejecuta la consulta contra el servidor y parsea los datos recibidos.
+     * Los datos se reciben en un JSON.
+     * @param stringURL
+     * @return ArrayList que contiene las recetas recuperadas del JSON.
+     */
     public static ArrayList<Receta> makeCall(String stringURL) {
 
         URL url = null;
@@ -335,16 +354,32 @@ public class BuscarRecetasActivity extends AppCompatActivity {
                                             receta.setName(jsonReader.nextString());
                                         } else if (name.equals("image")) {
                                             receta.setImagen(getBitmapFromURL(jsonReader.nextString()));
-
-
                                         } else if (name.equals("url")) {
                                             receta.setUrl(jsonReader.nextString());
+                                        } else if (name.equals("ingredients")) {
+                                            jsonReader.beginArray();
+                                            while (jsonReader.hasNext()) {
+                                                ArrayList<String> ingredientes = new ArrayList<String>();
+                                                jsonReader.beginObject();
+                                                int count = 0;
+                                                while (jsonReader.hasNext()) {
+                                                    name = jsonReader.nextName();
+                                                    if (name.equals("text")) {
+                                                        ingredientes.add(jsonReader.nextString());
+                                                    } else {
+                                                        jsonReader.skipValue();
+                                                    }
+                                                    count++;
+                                                }
+                                                receta.setIngredientes(ingredientes);
+                                                jsonReader.endObject();
+                                            }
+                                            jsonReader.endArray();
                                         } else if (name.equals("calories")) {
                                             receta.setCalorias(jsonReader.nextString());
                                         } else {
                                             jsonReader.skipValue();
                                         }
-
                                     }
                                     jsonReader.endObject();
                                 }else{
@@ -375,10 +410,11 @@ public class BuscarRecetasActivity extends AppCompatActivity {
     }
 
     /**
-     * Este código ha sido sacado de StackOverflow.
+     * Nos permite descargarnos la imagen desde una URL concreta convirtiendola a BITMAP
+     * y posteriormente añadirla a la receta en la llamada.
+     * Para implementar este código nos hemos ayudado de una entrada de StackOverflow.
      * Página: https://stackoverflow.com/questions/18210700/best-method-to-download-image-from-url-in-android
      ***/
-
     public static Bitmap getBitmapFromURL(String src) {
         try {
             java.net.URL url = new java.net.URL(src);
