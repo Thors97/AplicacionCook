@@ -13,6 +13,11 @@ import com.example.cookplus.R;
 
 import java.util.List;
 
+/**
+ * Para el desarrollo de este adapter me he basado en el siguiente vídeo
+ * Fuente: https://www.youtube.com/watch?v=742V81aJ75o
+ */
+
 public class NeveraAdapter extends ArrayAdapter<NeveraItem> {
     public NeveraAdapter(Context context, int resource, List objects) {
         super(context, resource, objects);

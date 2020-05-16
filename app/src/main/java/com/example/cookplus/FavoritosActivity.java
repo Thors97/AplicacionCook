@@ -34,8 +34,6 @@ public class FavoritosActivity extends AppCompatActivity {
 
         listaFav = (ListView) findViewById(R.id.favLV);
 
-        //btn = (ImageButton) findViewById(R.id.expand_button);
-
         itemFav = new ArrayList<>();
 
         itemFav.add(new FavItem("Ensalada de garbanzos"));
