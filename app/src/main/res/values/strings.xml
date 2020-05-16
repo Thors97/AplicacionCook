@@ -122,10 +122,10 @@
     <string name="resumenSexo">- Sexo</string>
     <string name="resumenSaludCardio"> Salud cardiovascular </string>
     <string name="resumenEnfermedad"> - Tengo diabetes </string>
-    <string name="resumenIntolerancias"> Celiaquía, Intolerancias y Alergias Alimentarias</string>
+    <string name="resumenIntolerancias">Intolerancias y Alergias Alimentarias</string>
     <string name="resumenIntolerancias1"> - Crústaceos</string>
     <string name="resumenIntolerancias2"> - Gluten</string>
-    <string name="resumenIngredientesNo"> Ingredientes no deseados</string>
+    <string name="resumenIngredientesNo">Tipo de Dieta</string>
     <string name="resumenIngredientesNo1"> - Carne de cerdo</string>
     <string name="resumenEditar">Editar</string>
 
@@ -149,6 +149,6 @@
     <string name="establecer">Establecer</string>
     <string name="en_cm">(en cm)</string>
     <string name="ingredientes_no">Pulse aquí para seleccionar las intolerancias</string>
-    <string name="dieta">Pulse aquí para seleccionar los ingredientes</string>
+    <string name="dieta">Pulse aquí para seleccionar el tipo de dieta</string>
 
 </resources>

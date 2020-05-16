@@ -96,7 +96,7 @@ public class UsuarioActivity extends AppCompatActivity {
         // PREFERENCIAS
         // 5_Android_Prefences_Fichero_BD.pdf
         // Recuperamos la informacion salvada en la preferencia
-        String sharedPrefFile = "com.example.myapplication";
+        String sharedPrefFile = "com.example.cookplus";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
         String nombre, edadP, alturaP, pesoP, strImagen, sex_spinner;
@@ -132,27 +132,20 @@ public class UsuarioActivity extends AppCompatActivity {
             peso.setText(pesoP);
 
             intoleranciasP = mPreferences.getStringSet(INTOLERANCIAS, new HashSet<String>());
-            System.out.println("MIRAMOS A VER CUANTAS INTOLERANCIAS SE GUARDAN: " + intoleranciasP);
             intoleranciasEdit = (TextView) findViewById(R.id.intoleranciasEdit);
             String intoleranciasPintar = "";
-            for (String ingrediente : intoleranciasP) {
-
+            for (String ingrediente : intoleranciasP)
                 intoleranciasPintar = intoleranciasPintar + "\n" + ingrediente;
-            }
 
             intoleranciasEdit.setText(intoleranciasPintar);
-
 
             ingredientesP = mPreferences.getStringSet(INGREDIENTES, new HashSet<String>());
             ingredientesNoEdit = (TextView) findViewById(R.id.ingredientesNoEdit);
             String ingredientesPintar = "";
-            for (String ingrediente : ingredientesP) {
-
+            for (String ingrediente : ingredientesP)
                 ingredientesPintar = ingredientesPintar + "\n" + ingrediente;
-            }
 
             ingredientesNoEdit.setText(ingredientesPintar);
-
         }
 
         // instanciamos
@@ -249,7 +242,7 @@ public class UsuarioActivity extends AppCompatActivity {
     public void savePref() {
 
         // Creamos coleccion de preferencias
-        String sharedPrefFile = "com.example.myapplication";
+        String sharedPrefFile = "com.example.cookplus";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
         // Obtenemos un editor de preferencias

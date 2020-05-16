@@ -11,13 +11,19 @@ import android.view.View;
 
 public class PrincipalActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String sharedPrefFile = "com.example.myapplication";
+        String sharedPrefFile = "com.example.cookplus";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         SharedPreferences.Editor editor = mPreferences.edit();
 
+        /*
+        Aquí comprobamos si es la primera vez que se ha accedido a la app
+        o no. Si es la primera vez se lanza la pantalla de usuario, si no se carga la pantalla
+        principal.
+         */
         boolean firstTime = mPreferences.getBoolean("PRIMERAVEZ", false);
         if (!firstTime) {
             Intent intentSettings = new Intent(this, UsuarioActivity.class);

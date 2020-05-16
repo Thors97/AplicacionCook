@@ -166,7 +166,7 @@ public class BuscarRecetasActivity extends AppCompatActivity {
             /* Accedemos a las preferencias que es donde tenemos guardados los datos
                 sobre el tipo de dieta que queremos y sobre las alergias.
             */
-            String sharedPrefFile = "com.example.myapplication";
+            String sharedPrefFile = "com.example.cookplus";
             SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
             /* Comprobamos que las preferencias no estan vacías. Recuperamos los datos de los alimentos(salud) y
@@ -226,6 +226,7 @@ public class BuscarRecetasActivity extends AppCompatActivity {
         }
 
         /**
+         * Esta función es la encargada de convertir el tipo de dieta a el formato del servidor.
          * @param dieta
          * @return Convierte el tipo de dieta guardado en las preferencias al tipo de parametro del servidor.
          */
@@ -258,7 +259,6 @@ public class BuscarRecetasActivity extends AppCompatActivity {
 
         //Progress dialog para notificar que se están buscando recetas
         ProgressDialog progress_dialog = new ProgressDialog(BuscarRecetasActivity.this);
-
         @Override
         protected void onPreExecute() {
             //Mostramos el progressDialog en la activity
