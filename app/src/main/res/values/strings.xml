@@ -121,14 +121,16 @@
     <string name="resumenAltura">- Altura</string>
     <string name="resumenSexo">- Sexo</string>
     <string name="resumenSaludCardio"> Salud cardiovascular </string>
-    <string name="resumenEnfermedad"> - Tengo diabetes </string>
-    <string name="resumenIntolerancias">Intolerancias y Alergias Alimentarias</string>
-    <string name="resumenIntolerancias1"> - Crústaceos</string>
-    <string name="resumenIntolerancias2"> - Gluten</string>
-    <string name="resumenIngredientesNo">Tipo de Dieta</string>
-    <string name="resumenIngredientesNo1"> - Carne de cerdo</string>
-    <string name="resumenEditar">Editar</string>
-
+    <string name="descripFoto">Imagen del usuario</string>
+    <string name="infoPeso">(en kilos)</string>
+    <string name="paramSalu">Parámetros saludables</string>
+    <string name="seleccionarParam">  Pulse aquí para seleccionarlos</string>
+    <string name="click">true</string>
+    <string name="seleccionarDieta">  Pulse aquí para seleccionar una dieta</string>
+    <string name="tipoDieta">Tipo de dieta</string>
+    <string name="fotoPerfil">Foto de Perfil</string>
+    <string name="textNombre">textPersonName</string>
+    <string name="numero">number</string>
     <!-- otros -->
     <string name="app_name">Cook +</string>
     <string name="hello">Cook+</string>

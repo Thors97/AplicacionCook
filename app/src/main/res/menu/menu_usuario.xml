@@ -4,12 +4,6 @@
     tools:context="com.example.cookplus.UsuarioActivity">
 
     <item
-        android:id="@+id/action_edit"
-        android:title="@string/action_edit"
-        android:orderInCategory="1"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_save"
         android:title="@string/action_save"
         android:orderInCategory="2"
