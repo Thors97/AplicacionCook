@@ -11,7 +11,7 @@ import android.util.Log;
 public class DbAdapter {
     private static final String TAG = "APMOV: DbAdapter"; // Usado en los mensajes de Log
 
-    //Nombre de la base de datos, tablas (en este caso una) y versión
+    //Nombre de la base de datos, tablas y versión
     private static final String DATABASE_NAME = "data";
     private static final String DATABASE_TABLE_LISTA = "lista";
     private static final String DATABASE_TABLE_DESPENSA = "despensa";
@@ -22,7 +22,7 @@ public class DbAdapter {
     public static final String KEY_CHECKED= "checked";
     public static final String KEY_ROWID = "_id";
 
-    // Sentencia SQL para crear las tablas de las bases de datos
+    //Sentencias SQL para crear las tablas de las bases de datos
     private static final String DATABASE_CREATE_LISTA = "create table " + DATABASE_TABLE_LISTA + " (" +
             KEY_ROWID +" integer primary key autoincrement, " +
             KEY_FOOD +" text not null, " +
@@ -61,10 +61,10 @@ public class DbAdapter {
     }
 
     /**
-     * Constructor - takes the context to allow the database to be
-     * opened/created
+     * Constructor - toma el contexto para permitir a labase de datos
+     * abrirse/crearse
      *
-     * @param ctx the Context within which to work
+     * @param ctx el contexto donde trabajar
      */
 
     public DbAdapter(Context ctx) {
@@ -72,9 +72,9 @@ public class DbAdapter {
     }
 
     /**
-     * Open the notes database. If it cannot be opened, try to create a new
-     * instance of the database. If it cannot be created, throw an exception to
-     * signal the failure
+     * Abre la base de datos. Si no pudiera abrirse, intenta crear una nueva
+     * instancia de la base de datos. Si no se crea, lanza una excepcion para
+     * indicar el error
      *
      * @return this (self reference, allowing this to be chained in an
      *         initialization call)
@@ -91,14 +91,14 @@ public class DbAdapter {
     }
 
     /**
-     * Create a new note using the title and body provided. If the note is
-     * successfully created return the new rowId for that note, otherwise return
-     * a -1 to indicate failure.
+     * Crea un nuevo item en la lista con el nombre del alimento y el estado del checkbox.
+     * Si el item se crea correctamente se devuelve el rowId para ese item, en caso contrario
+     * se devulve -1 indicando el fallo.
      *
-     * @param tabla table where we insert alimentos
-     * @param alimento the title of the note
-     * @param checked the body of the note
-     * @return rowId or -1 if failed
+     * @param tabla tabla de la bbdd donde añadir el alimento creado
+     * @param alimento nombre del alimento a añadir
+     * @param checked estado del checkbox
+     * @return rowId o -1 si falla
      */
     public long createItem(String tabla, String alimento, int checked) {
         ContentValues initialValues = new ContentValues();
@@ -109,21 +109,21 @@ public class DbAdapter {
     }
 
     /**
-     * Delete the note with the given rowId
+     * Borrar el item con el nombre del alimento indicado
      *
-     * @param tabla table where we delete alimentos
-     * @param alimento name of food to delete
-     * @return true if deleted, false otherwise
+     * @param tabla tabla donde borrar el alimento
+     * @param alimento nombre del alimento a borrar
+     * @return true si se borro correctamente, false en otro caso
      */
     public boolean deleteItem(String tabla, String alimento) {
         return mDb.delete(tabla, KEY_FOOD + " = '" + alimento +"'" , null) > 0;
     }
 
     /**
-     * Return a Cursor over the list of all notes in the database
+     * Devuelve un Cursor sobre la tabla indicada de la bbdd
      *
-     * @param tabla table where we search alimentos
-     * @return Cursor over all notes
+     * @param tabla tabla donde buscar los alimentos
+     * @return Cursor sobre todos los items
      */
     public Cursor fetchAllItems(String tabla) {
 
@@ -131,35 +131,17 @@ public class DbAdapter {
                 KEY_CHECKED}, null, null, null, null, null);
     }
 
-    /**
-     * Return a Cursor positioned at the note that matches the given name
-     *
-     * @param tabla table where we search alimentos
-     * @param name id of note to retrieve
-     * @return Cursor positioned to matching note, if found
-     * @throws SQLException if note could not be found/retrieved
-     */
-    public Cursor fetchItem(String tabla, String name) throws SQLException {
 
-        Cursor mCursor =
-                mDb.query(true, tabla, new String[] {KEY_ROWID,
-                                KEY_FOOD, KEY_CHECKED}, KEY_FOOD + "= '" + name + "'", null,
-                        null, null, null, null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-        }
-        return mCursor;
-    }
 
     /**
-     * Update the note using the details provided. The note to be updated is
-     * specified using the rowId, and it is altered to use the title and body
-     * values passed in
+     * Actualiza el item con los detalles indicados. El item se especifica
+     * usando el nombre del alimento, y se actualiza con el nombre del alimento
+     * y estado del checkbox pasados por parametro.
      *
-     * @param tabla table where we search alimentos
-     * @param alimento value to set note title to
-     * @param checked value to set note body to
-     * @return true if the note was successfully updated, false otherwise
+     * @param tabla tabla donde buscar el alimento y actualizarlo
+     * @param alimento nombre del alimento a actualizar
+     * @param checked estado del checkbox del alimento
+     * @return true si el item se actualizo correctamente, false en otro caso
      */
     public boolean updateItem(String tabla, String alimento, int checked) {
         ContentValues args = new ContentValues();
@@ -168,10 +150,11 @@ public class DbAdapter {
 
         return mDb.update(tabla, args, KEY_FOOD + " = '" + alimento +"'" , null) > 0;
     }
+
     /**
-     * Clear all the items at the specified table using tabla
+     * Borra todos los items de la tabla de la base de datos indicada con tabla
      *
-     * @param tabla table where we search alimentos
+     * @param tabla tabla donde borrar los alimentos
      */
     public void clear(String tabla){
         mDb.delete(tabla, null, null);
