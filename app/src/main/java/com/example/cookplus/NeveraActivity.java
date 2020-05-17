@@ -64,11 +64,11 @@ public class NeveraActivity extends AppCompatActivity {
         despensaAL = new ArrayList<>();
         listaAL = new ArrayList<>();
 
-        //creamos el adaptador de la BD y la abrimos
+        //Crea el adaptador de la BD y la abre
         dbAdapter = new DbAdapter(this);
         dbAdapter.open();
 
-        //creamos los adapatador para la lista
+        //Crea los adapatadores para las listas
         adapterDespensa = new NeveraAdapter(
                 this,
                 R.layout.nevera_item,
@@ -81,7 +81,7 @@ public class NeveraActivity extends AppCompatActivity {
                 listaAL
         );
 
-        //Añadir item a lista correspondiente cuando se pulsa el boton (+)
+        //Añade un item a lista correspondiente cuando se pulsa el boton (+)
         btnAddDespensa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +96,10 @@ public class NeveraActivity extends AppCompatActivity {
             }
         });
 
-        //Añadir item a lista correspondiente cuando se pulsa el Done del teclado
+        /*
+         * Añade un item a lista correspondiente cuando se pulsa el boton DONE del teclado
+         * Fuente: https://www.youtube.com/watch?v=742V81aJ75o
+         */
         editItemDespensa.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -113,7 +116,7 @@ public class NeveraActivity extends AppCompatActivity {
             }
         });
 
-        //Borrar item de la lista con click prolongado
+        //Borra un item con click prolongado de la lista correspondiente
         despensa.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> lista, View item, int posicion, long id) {
@@ -130,19 +133,23 @@ public class NeveraActivity extends AppCompatActivity {
             }
         });
 
-        //Cambiar aspecto item de la lista con click (marcar comprado/agotado)
+        /*
+         * Cambia el aspecto del checkbox del item de la lista correspondiente al clickar
+         * (marcar como comprado/agotado) y actualiza el valor del checked de ese elemento
+         * en la tabla correspondiente de la base de datos.
+         */
         despensa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> list, View item, int pos, long id) {
-                //cambio aspecto del checkbox(click o unclick)
+                //cambia aspecto del checkbox(click o unclick)
                 despensaAL.get(pos).toggleChecked();
                 adapterDespensa.notifyDataSetChanged();
-                //recojo el par de datos (alimento y si está cheeckado ahora o no)
+                //recoge el par de datos (alimento y si está cheeckado ahora o no)
                 boolean isChecked = despensaAL.get(pos).isChecked();
                 String alimento = despensaAL.get(pos).getText();
-                //convertimos a int para la bbdd
+                //convierte a int para la bbdd
                 int checked = (isChecked)? 1:0; //0 = not checked (false) ; 1 = checked (true)
-                //actualizamos
+                //actualiza
                 dbAdapter.updateItem(DATABASE_TABLE_DESPENSA, alimento, checked);
             }
         });
@@ -150,15 +157,15 @@ public class NeveraActivity extends AppCompatActivity {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> list, View item, int pos, long id) {
-                //cambio aspecto del checkbox(click o unclick)
+                //cambia aspecto del checkbox(click o unclick)
                 listaAL.get(pos).toggleChecked();
                 adapterLista.notifyDataSetChanged();
-                //recojo el par de datos (alimento y si está cheeckado ahora o no)
+                //recoge el par de datos (alimento y si está cheeckado ahora o no)
                 boolean isChecked = listaAL.get(pos).isChecked();
                 String alimento = listaAL.get(pos).getText();
-                //convertimos a int para la bbdd
+                //convierte a int para la bbdd
                 int checked = (isChecked)? 1:0; //0 = not checked (false) ; 1 = checked (true)
-                //actualizamos
+                //actualiza
                 dbAdapter.updateItem(DATABASE_TABLE_LISTA, alimento, checked);
             }
         });
@@ -169,9 +176,16 @@ public class NeveraActivity extends AppCompatActivity {
         rellenarLista(DATABASE_TABLE_DESPENSA, despensaAL, adapterDespensa);
         rellenarLista(DATABASE_TABLE_LISTA, listaAL, adapterLista);
     }
-
+    /**
+     * Rellena la lista indicada con los datos de la tabla correspondiente de
+     * la base de datos
+     *
+     * @param tabla
+     * @param item
+     * @param adapter
+     * */
     private void rellenarLista(String tabla, ArrayList<NeveraItem> item, ArrayAdapter<NeveraItem> adapter) {
-        //recojo todos los datos de la bbdd
+        //recoge todos los datos de la bbdd
         Cursor itemsCursor = dbAdapter.fetchAllItems(tabla);
         //si la bbdd no está vacía, rellenamos la lista con los alimentos hasta el final de la bbddd
         if(itemsCursor.moveToFirst()) {

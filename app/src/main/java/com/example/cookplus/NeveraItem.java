@@ -1,5 +1,11 @@
 package com.example.cookplus;
 
+/**
+ * Esta clase es un JavaBean para modelar los datos de un item de las listas
+ * lista de la compra o nevera.
+ * Tiene dos constructores y los getters y setters.
+ */
+
 public class NeveraItem {
     private String text;
     private boolean checked;

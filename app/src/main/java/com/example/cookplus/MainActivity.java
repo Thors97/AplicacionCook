@@ -14,7 +14,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Handler para pasar del MainActivity al PrincipalActivity
+        /* Handler para pasar del MainActivity al PrincipalActivity
+         * Fuente: http://jonsegador.com/2012/11/mostrar-pantalla-splash-android-durante-unos-segundos-iniciar-aplicacion/
+         */
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {

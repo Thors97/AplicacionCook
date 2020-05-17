@@ -13,8 +13,7 @@ import com.example.cookplus.R;
 
 import java.util.List;
 
-/**
- * Para el desarrollo de este adapter me he basado en el siguiente vídeo
+/* Para el desarrollo de este adapter me he basado en el siguiente vídeo
  * Fuente: https://www.youtube.com/watch?v=742V81aJ75o
  */
 
@@ -23,10 +22,11 @@ public class NeveraAdapter extends ArrayAdapter<NeveraItem> {
         super(context, resource, objects);
     }
 
+    /* Funcion que llama el listView cuando le quiere pedir al adaptador una
+     * de las "pastillas" de la lista
+     */
     @NonNull
     @Override
-    /*funcion que llama el listView cuando le quiere pedir al adaptador una de las "pastillas"
-    * de la lista*/
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View resultado = convertView;
@@ -38,7 +38,6 @@ public class NeveraAdapter extends ArrayAdapter<NeveraItem> {
             resultado = inflater.inflate(R.layout.nevera_item, null);
         }
 
-        // busco el texto del item de la lista
         CheckBox checkBox = (CheckBox) resultado.findViewById(R.id.neveraItem);
         NeveraItem item = getItem(position);
 

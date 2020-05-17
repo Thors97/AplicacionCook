@@ -58,7 +58,6 @@ public class FavoritosActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Se recrea el menu que aparece en ActionBar de la actividad.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
         return true;
     }
 
