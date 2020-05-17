@@ -20,8 +20,8 @@
             android:layout_weight="2"
             android:layout_height="match_parent"
             android:layout_marginTop="18dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
             android:layout_marginBottom="18dp"
             android:orientation="vertical">
 
@@ -49,11 +49,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumendesayunoLunes"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/comidaLunes"
@@ -62,11 +60,9 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencomidaLunes"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF"/>
 
                 <TextView
                     android:id="@+id/cenaLunes"
@@ -74,11 +70,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencenaLunes"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF"/>
 
             </LinearLayout>
 
@@ -106,11 +100,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumendesayunoMiércoles"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF"/>
 
                 <TextView
                     android:id="@+id/comidaMiércoles"
@@ -119,11 +111,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencomidaMiércoles"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF"/>
 
                 <TextView
                     android:id="@+id/cenaMiércoles"
@@ -131,11 +121,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencenaMiércoles"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF"/>
 
             </LinearLayout>
 
@@ -154,7 +142,7 @@
                     android:fontFamily="@font/chewy"
                     android:text="@string/resumenViernes"
                     android:textAlignment="center"
-                    android:textSize="24sp" />           ​
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/desayunoViernes"
@@ -163,11 +151,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumendesayunoViernes"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF"/>
 
                 <TextView
                     android:id="@+id/comidaViernes"
@@ -176,11 +162,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencomidaViernes"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/cenaViernes"
@@ -188,11 +172,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencenaViernes"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
 
@@ -220,11 +202,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumendesayunoDomingo"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/comidaDomingo"
@@ -233,11 +213,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencomidaDomingo"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF"/>
 
                 <TextView
                     android:id="@+id/cenaDomingo"
@@ -245,11 +223,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencenaDomingo"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -261,8 +237,8 @@
             android:layout_weight="2"
             android:layout_height="match_parent"
             android:layout_marginTop="18dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="36dp"
             android:layout_marginBottom="18dp"
             android:orientation="vertical">
 
@@ -290,11 +266,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumendesayunoMartes"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF"/>
 
                 <TextView
                     android:id="@+id/comidaMartes"
@@ -303,11 +277,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencomidaMartes"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/cenaMartes"
@@ -315,11 +287,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencenaMartes"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
 
@@ -347,11 +317,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumendesayunoJueves"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/comidaJueves"
@@ -360,11 +328,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencomidaJueves"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/cenaJueves"
@@ -372,11 +338,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencenaJueves"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
 
@@ -404,11 +368,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumendesayunoSábado"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/comidaSábado"
@@ -417,11 +379,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencomidaSábado"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/cenaSábado"
@@ -429,11 +389,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
-                    android:paddingStart="8dp"
                     android:text="@string/resumencenaSábado"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:typeface="normal" />
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
 
@@ -441,7 +399,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                android:paddingTop="6dp">
                 <ImageView
                     android:id="@+id/imagenComeSano"
                     android:layout_height="match_parent"
@@ -453,6 +412,7 @@
 
         </LinearLayout>
     </LinearLayout>
+
     <!-- _________NAV BAR_________________________ -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -462,6 +422,7 @@
         android:background="@color/colorPrimary"
         app:itemIconTint="@color/itemIconTint"
         app:itemTextColor="@color/itemIconTint"
-        app:menu="@menu/navigation_bottom" />
+        app:menu="@menu/navigation_bottom"
+        app:labelVisibilityMode="unlabeled"/>
 
 </LinearLayout>

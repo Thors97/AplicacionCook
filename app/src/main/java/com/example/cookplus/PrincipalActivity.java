@@ -108,16 +108,16 @@ public class PrincipalActivity extends AppCompatActivity {
 
     }
 
-    public void ensaladaGarbanzosButton(View view) {
-        // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-        Intent intent = new Intent(this, RecetaActivity.class);
+    public void goBuscador(View view) {
+        // Creamos el Intent que va a lanzar la segunda activity
+        Intent intent = new Intent(this, BuscarRecetasActivity.class);
 
         // Iniciamos la nueva actividad
         startActivity(intent);
     }
 
     public void añadirMenuButton(View view) {
-        // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
+        // Creamos el Intent que va a lanzar la segunda activity
         Intent intent = new Intent(this, PlanSemanalActivity.class);
 
         // Iniciamos la nueva actividad
@@ -125,7 +125,7 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     public void perfilButton(View view){
-        // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
+        // Creamos el Intent que va a lanzar la segunda activity
         Intent intent = new Intent(this, PerfilActivity.class);
 
         // Iniciamos la nueva actividad

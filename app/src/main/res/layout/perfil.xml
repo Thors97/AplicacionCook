@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+<!-- PESO -->
     <TextView
         android:id="@+id/resumenPeso"
         android:layout_width="match_parent"
@@ -15,6 +16,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
+        android:paddingTop="3dp"
         android:paddingStart="10dp"
         android:backgroundTint="#EAECEC"
         android:fontFamily="@font/chewy"
@@ -22,6 +24,7 @@
         android:textSize="24sp"
         android:background="@drawable/esquinas_redondeadas"/>
 
+<!-- MACROS -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -43,11 +46,11 @@
             android:id="@+id/imgMacros"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"
             app:srcCompat="@drawable/graficobarras" />
 
     </LinearLayout>
 
+<!-- DIARIO FOTOS -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -107,13 +110,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="10dp"
         android:background="@color/colorPrimary"
         app:itemIconTint="@color/itemIconTint"
         app:itemTextColor="@color/itemIconTint"
-        app:menu="@menu/navigation_bottom" />
-    <!-- si tal, dentro de lo de arriba
-        android:scrollbarAlwaysDrawHorizontalTrack="true"
-        android:scrollbarAlwaysDrawVerticalTrack="true" -->
+        app:menu="@menu/navigation_bottom"
+        app:labelVisibilityMode="unlabeled"/>
 
 </LinearLayout>

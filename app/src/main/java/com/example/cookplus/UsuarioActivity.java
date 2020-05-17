@@ -214,16 +214,19 @@ public class UsuarioActivity extends AppCompatActivity {
                 break;
             case R.id.action_fridge:
                 // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-                Intent intentFridge = new Intent(this,NeveraActivity.class);
+                Intent intentFridge = new Intent(this, NeveraActivity.class);
                 // Iniciamos la nueva actividad
                 startActivity(intentFridge);
                 break;
             case R.id.action_user:
-
+                // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
+                Intent intentPerfil = new Intent(this, PerfilActivity.class);
+                // Iniciamos la nueva actividad
+                startActivity(intentPerfil);
                 break;
             case R.id.action_search:
                 // Creamos el Intent que va a lanzar la segunda activity (SecondActivity)
-                Intent intent = new Intent(this,BuscarRecetasActivity.class);
+                Intent intent = new Intent(this, BuscarRecetasActivity.class);
                 // Iniciamos la nueva actividad
                 startActivity(intent);
                 break;
@@ -240,6 +243,8 @@ public class UsuarioActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, msg, duration);
                 toast.show();
                 break;
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -250,7 +255,7 @@ public class UsuarioActivity extends AppCompatActivity {
     public void savePref() {
 
         // Creamos coleccion de preferencias
-        String sharedPrefFile = "com.example.myapplication";
+        String sharedPrefFile = "com.example.cookplus";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
         // Obtenemos un editor de preferencias

@@ -180,9 +180,9 @@ public class NeveraActivity extends AppCompatActivity {
      * Rellena la lista indicada con los datos de la tabla correspondiente de
      * la base de datos
      *
-     * @param tabla
-     * @param item
-     * @param adapter
+     * @param tabla tabla de la base de datos de donde leer los datos
+     * @param item arraylist donde almacenar los alimentos
+     * @param adapter adaptador de la lista
      * */
     private void rellenarLista(String tabla, ArrayList<NeveraItem> item, ArrayAdapter<NeveraItem> adapter) {
         //recoge todos los datos de la bbdd

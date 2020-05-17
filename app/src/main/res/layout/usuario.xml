@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fillViewport="false">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="10"
         android:orientation="vertical">
-
 
         <LinearLayout
             android:layout_width="379dp"
-            android:layout_height="686dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:orientation="vertical">
 
@@ -23,7 +23,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="111dp"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="2"
                 android:orientation="horizontal">
@@ -31,16 +31,14 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="117dp"
-                    android:layout_marginTop="8dp"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/fotoUsuario"
-                        android:layout_width="94dp"
-                        android:layout_height="68dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/esquinas_redondeadas"
                         android:contentDescription="@string/descripFoto"
@@ -99,8 +97,9 @@
                         android:layout_width="262dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="6dp"
                         android:layout_weight="1"
+                        android:paddingStart="5sp"
                         android:backgroundTint="#EAECEC"
                         android:hint="@string/resumenNombreApellidos"
                         android:inputType="textPersonName"
@@ -155,6 +154,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@string/resumenSexo"
+                        android:textSize="18sp"
                         tools:background="#EAECEC"
                         tools:backgroundTint="#EAECEC" />
 
@@ -180,6 +180,7 @@
                         android:layout_marginStart="8dp"
                         android:backgroundTint="#EAECEC"
                         android:text="@string/resumenEdad"
+                        android:textSize="18sp"
                         tools:background="#EAECEC"
                         tools:backgroundTint="#EAECEC" />
 
@@ -220,6 +221,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@string/resumenpeso"
+                        android:textSize="18sp"
                         tools:background="#EAECEC"
                         tools:backgroundTint="#EAECEC" />
 
@@ -248,6 +250,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@string/resumenAltura"
+                        android:textSize="18sp"
                         tools:background="#EAECEC"
                         tools:backgroundTint="#EAECEC" />
 
@@ -259,6 +262,7 @@
                         android:hint="@string/en_cm"
                         android:inputType="number"
                         android:text=""
+                        android:textSize="16sp"
                         tools:background="#EAECEC"
                         tools:backgroundTint="#EAECEC" />
 
@@ -304,13 +308,13 @@
                     android:layout_height="143dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="6dp"
+                    android:paddingStart="8sp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#EAECEC"
                     android:clickable="true"
                     android:focusable="true"
                     android:hint="@string/seleccionarParam"
                     android:onClick="onTextViewClickedParametrosSaludables"
-                    android:textAlignment="center"
                     android:textSize="17sp"
                     tools:layout_marginBottom="6dp" />
 
@@ -357,12 +361,12 @@
                     android:layout_height="55dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:paddingStart="8sp"
                     android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#EAECEC"
                     android:clickable="@string/click"
                     android:hint="@string/seleccionarDieta"
                     android:onClick="onTextViewClickedDieta"
-                    android:textAlignment="center"
                     android:textSize="17sp"
                     tools:layout_marginBottom="16dp" />
 
@@ -370,17 +374,17 @@
             </LinearLayout>
         </LinearLayout>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_weight="0"
-            android:background="@color/colorPrimary"
-            android:paddingTop="10dp"
-            app:itemIconTint="@color/itemIconTint"
-            app:itemTextColor="@color/itemIconTint"
-            app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/navigation_bottom" />
 
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_weight="0"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@color/itemIconTint"
+        app:itemTextColor="@color/itemIconTint"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/navigation_bottom" />
+
+</LinearLayout>

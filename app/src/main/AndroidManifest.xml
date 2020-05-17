@@ -28,6 +28,7 @@
             android:name="com.example.cookplus.UsuarioActivity"
             android:label="Perfil de usuario"
             android:parentActivityName="com.example.cookplus.PrincipalActivity"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.cookplus.PerfilActivity"
@@ -47,6 +48,7 @@
         <activity
             android:name="com.example.cookplus.PrincipalActivity"
             android:label="Cook+"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.cookplus.RecetaActivity"
@@ -62,10 +64,12 @@
             android:name="com.example.cookplus.BuscarRecetasActivity"
             android:label="Buscador de recetas"
             android:parentActivityName="com.example.cookplus.PrincipalActivity"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.cookplus.NeveraActivity"
             android:label="Despensa"
+            android:windowSoftInputMode="adjustPan"
             android:parentActivityName="com.example.cookplus.PrincipalActivity"
             android:screenOrientation="portrait"/>
         <activity

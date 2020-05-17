@@ -30,7 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/silueta" />
 
@@ -39,7 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/silueta" />
@@ -49,7 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 app:srcCompat="@drawable/silueta" />
 
@@ -122,7 +122,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/silueta" />
 
@@ -131,7 +131,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/silueta" />
@@ -141,7 +141,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 app:srcCompat="@drawable/silueta" />
 
@@ -166,7 +166,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 1"
+                android:text="Foto 4"
                 android:textSize="16sp" />
 
             <TextView
@@ -179,7 +179,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 2"
+                android:text="Foto 5"
                 android:textSize="16sp" />
 
             <TextView
@@ -192,7 +192,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 3"
+                android:text="Foto 6"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -214,7 +214,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/silueta" />
 
@@ -223,7 +223,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/silueta" />
@@ -233,7 +233,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 app:srcCompat="@drawable/silueta" />
 
@@ -258,7 +258,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 1"
+                android:text="Foto 7"
                 android:textSize="16sp" />
 
             <TextView
@@ -271,7 +271,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 2"
+                android:text="Foto 8"
                 android:textSize="16sp" />
 
             <TextView
@@ -284,7 +284,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 3"
+                android:text="Foto 9"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -306,7 +306,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/silueta" />
 
@@ -315,7 +315,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 app:srcCompat="@drawable/silueta" />
@@ -325,7 +325,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 app:srcCompat="@drawable/silueta" />
 
@@ -350,7 +350,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 1"
+                android:text="Foto 10"
                 android:textSize="16sp" />
 
             <TextView
@@ -363,7 +363,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 2"
+                android:text="Foto 11"
                 android:textSize="16sp" />
 
             <TextView
@@ -376,7 +376,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 3"
+                android:text="Foto 12"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -389,12 +389,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/colorPrimary"
-        android:paddingTop="10dp"
         app:itemIconTint="@color/itemIconTint"
         app:itemTextColor="@color/itemIconTint"
-        app:menu="@menu/navigation_bottom" />
-    <!-- si tal, dentro de lo de arriba
-        android:scrollbarAlwaysDrawHorizontalTrack="true"
-        android:scrollbarAlwaysDrawVerticalTrack="true" -->
+        app:menu="@menu/navigation_bottom"
+        app:labelVisibilityMode="unlabeled"/>
+
 
 </LinearLayout>
