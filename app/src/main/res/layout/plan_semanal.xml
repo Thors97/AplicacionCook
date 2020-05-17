@@ -39,6 +39,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/chewy"
                     android:text="@string/resumenLunes"
+                    android:textAlignment="center"
                     android:textSize="24sp" />
 
                 <TextView
@@ -46,10 +47,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumendesayunoLunes"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -58,10 +60,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencomidaLunes"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -69,10 +72,11 @@
                     android:id="@+id/cenaLunes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencenaLunes"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -92,6 +96,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/chewy"
                     android:text="@string/resumenMiércoles"
+                    android:textAlignment="center"
                     android:textSize="24sp" />
 
                 <TextView
@@ -99,10 +104,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumendesayunoMiércoles"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -111,10 +117,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencomidaMiércoles"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -122,10 +129,11 @@
                     android:id="@+id/cenaMiércoles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencenaMiércoles"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -145,6 +153,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/chewy"
                     android:text="@string/resumenViernes"
+                    android:textAlignment="center"
                     android:textSize="24sp" />           ​
 
                 <TextView
@@ -152,10 +161,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumendesayunoViernes"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -164,10 +174,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencomidaViernes"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -175,10 +186,11 @@
                     android:id="@+id/cenaViernes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencenaViernes"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -198,6 +210,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/chewy"
                     android:text="@string/resumenDomingo"
+                    android:textAlignment="center"
                     android:textSize="24sp" />            ​
 
                 <TextView
@@ -205,10 +218,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumendesayunoDomingo"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -217,10 +231,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencomidaDomingo"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -228,10 +243,11 @@
                     android:id="@+id/cenaDomingo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencenaDomingo"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
             </LinearLayout>
@@ -264,6 +280,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/chewy"
                     android:text="@string/resumenMartes"
+                    android:textAlignment="center"
                     android:textSize="24sp" />
 
                 <TextView
@@ -271,10 +288,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumendesayunoMartes"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -283,10 +301,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencomidaMartes"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -294,10 +313,11 @@
                     android:id="@+id/cenaMartes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencenaMartes"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -317,6 +337,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/chewy"
                     android:text="@string/resumenJueves"
+                    android:textAlignment="center"
                     android:textSize="24sp" />
 
                 <TextView
@@ -324,10 +345,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumendesayunoJueves"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -336,10 +358,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencomidaJueves"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -347,10 +370,11 @@
                     android:id="@+id/cenaJueves"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencenaJueves"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -370,6 +394,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/chewy"
                     android:text="@string/resumenSábado"
+                    android:textAlignment="center"
                     android:textSize="24sp" />
 
                 <TextView
@@ -377,10 +402,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumendesayunoSábado"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -389,10 +415,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencomidaSábado"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 
@@ -400,10 +427,11 @@
                     android:id="@+id/cenaSábado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#00897B"
+                    android:background="@drawable/esquinas_redondeadas"
                     android:backgroundTint="#00897B"
                     android:paddingStart="8dp"
                     android:text="@string/resumencenaSábado"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:typeface="normal" />
 

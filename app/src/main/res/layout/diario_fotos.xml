@@ -13,8 +13,8 @@
         android:layout_weight="10"
         android:orientation="vertical">
 
-<!-- ___________ PRIMERA LINEA _________________ -->
-<!-- ___________ FOTOS ________________________ -->
+        <!-- ___________ PRIMERA LINEA _________________ -->
+        <!-- ___________ FOTOS ________________________ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -32,7 +32,7 @@
                 android:layout_weight="3.33"
                 android:scaleType="centerInside"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton2"
@@ -42,7 +42,7 @@
                 android:scaleType="centerInside"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton3"
@@ -51,11 +51,11 @@
                 android:layout_weight="3.33"
                 android:scaleType="centerInside"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
         </LinearLayout>
 
-<!-- __ TITULOS _______________________________ -->
+        <!-- __ TITULOS _______________________________ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -105,8 +105,8 @@
 
         </LinearLayout>
 
-<!-- __ SEGUNDA LINEA _______________________________ -->
- <!-- ____ FOTOS _______________________________ -->
+        <!-- __ SEGUNDA LINEA _______________________________ -->
+        <!-- ____ FOTOS _______________________________ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -124,7 +124,7 @@
                 android:layout_weight="3.33"
                 android:scaleType="centerInside"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton5"
@@ -134,7 +134,7 @@
                 android:scaleType="centerInside"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton6"
@@ -143,7 +143,7 @@
                 android:layout_weight="3.33"
                 android:scaleType="centerInside"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
         </LinearLayout>
 
@@ -216,7 +216,7 @@
                 android:layout_weight="3.33"
                 android:scaleType="centerInside"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton8"
@@ -226,7 +226,7 @@
                 android:scaleType="centerInside"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton9"
@@ -235,7 +235,7 @@
                 android:layout_weight="3.33"
                 android:scaleType="centerInside"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
         </LinearLayout>
 
@@ -308,7 +308,7 @@
                 android:layout_weight="3.33"
                 android:scaleType="centerInside"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton11"
@@ -318,7 +318,7 @@
                 android:scaleType="centerInside"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton12"
@@ -327,7 +327,7 @@
                 android:layout_weight="3.33"
                 android:scaleType="centerInside"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
         </LinearLayout>
 

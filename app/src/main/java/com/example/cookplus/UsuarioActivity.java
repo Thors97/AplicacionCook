@@ -42,7 +42,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * Esta clase es la encargada de mostrar los datos del usuario.
- * En ella se guardan los diferentes datos.
+ * En ella se guardan los diferentes datos mediante preferencias.
  */
 
 public class UsuarioActivity extends AppCompatActivity {
@@ -53,14 +53,14 @@ public class UsuarioActivity extends AppCompatActivity {
     private Button establecerBtn;
     private EditText peso;
     private EditText altura;
-    private TextView intoleranciasEdit;
-    private TextView ingredientesNoEdit;
-    private Set<String> dieta, ingredientes;
+    private TextView paramSaludablesEdit;
+    private TextView dietaEdit;
+    private Set<String> dieta, parametros;
     Calendar c;
     DatePickerDialog fecha;
     Spinner sexSpinner;
 
-    // código de acción para lanzar un Intent que solicite una captura
+    // Código de acción para lanzar un Intent que solicite una captura
     private static final int CODIGO_HACER_FOTO = 100;
     // Variable que guarda la ruta de la imagen
     private File ubicacion = null;
@@ -72,8 +72,8 @@ public class UsuarioActivity extends AppCompatActivity {
     private final static String PESO = "PESO";
     private final static String ALTURA= "ALTURA";
     private final static String EDAD= "EDAD";
-    private final static String INTOLERANCIAS= "INTOLERANCIAS";
-    private final static String INGREDIENTES= "INGREDIENTES";
+    private final static String PARAMSALU = "PARAMSALU";
+    private final static String DIETA = "DIETA";
 
     /**
      * @param savedInstanceState
@@ -85,7 +85,7 @@ public class UsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.usuario);
 
         // SPINNER para el sexo de la persona
-        // 2_Android_InterfacesUsuario_v2.pdf UC3M (págs 18, 19)
+        // 2_Android_InterfacesUsuario_v2.pdf
         final String[] optionsSex = new String[]{"Mujer", "Hombre"};
         sexSpinner = (Spinner) findViewById(R.id.sexo);
 
@@ -96,11 +96,12 @@ public class UsuarioActivity extends AppCompatActivity {
         // PREFERENCIAS
         // 5_Android_Prefences_Fichero_BD.pdf
         // Recuperamos la informacion salvada en la preferencia
-        String sharedPrefFile = "com.example.cookplus";
+        String sharedPrefFile = "com.example.myapplication";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
         String nombre, edadP, alturaP, pesoP, strImagen, sex_spinner;
-        Set<String> ingredientesP, intoleranciasP;
+        Set<String> dietaSet, paramSaluSet;
+
         if(mPreferences!=null){
             nombre= mPreferences.getString(NOMBRE, "");
             nombreApellidos = (EditText) findViewById(R.id.nombreApellidos);
@@ -111,7 +112,7 @@ public class UsuarioActivity extends AppCompatActivity {
             byte[] decodedByte = Base64.decode(strImagen, 0);
             if (decodedByte != null) {
                 Bitmap imagen = BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
-                System.out.println("recuperamos imagen: "+imagen);
+
                 fotoPerfil = (ImageView) findViewById(R.id.fotoUsuario);
                 fotoPerfil.setImageBitmap(imagen);
             }
@@ -131,27 +132,35 @@ public class UsuarioActivity extends AppCompatActivity {
             peso = (EditText) findViewById(R.id.pesoEdit);
             peso.setText(pesoP);
 
-            intoleranciasP = mPreferences.getStringSet(INTOLERANCIAS, new HashSet<String>());
-            intoleranciasEdit = (TextView) findViewById(R.id.intoleranciasEdit);
-            String intoleranciasPintar = "";
-            for (String ingrediente : intoleranciasP)
-                intoleranciasPintar = intoleranciasPintar + "\n" + ingrediente;
+            paramSaluSet = mPreferences.getStringSet(PARAMSALU, new HashSet<String>());
+            paramSaludablesEdit = (TextView) findViewById(R.id.paramSaludablesEdit);
+            String parametrosSaludablesPintar = "";
+            for (String ingrediente : paramSaluSet) {
 
-            intoleranciasEdit.setText(intoleranciasPintar);
 
-            ingredientesP = mPreferences.getStringSet(INGREDIENTES, new HashSet<String>());
-            ingredientesNoEdit = (TextView) findViewById(R.id.ingredientesNoEdit);
-            String ingredientesPintar = "";
-            for (String ingrediente : ingredientesP)
-                ingredientesPintar = ingredientesPintar + "\n" + ingrediente;
+                parametrosSaludablesPintar = parametrosSaludablesPintar + "\n" + ingrediente;
+            }
+            paramSaludablesEdit.setText(parametrosSaludablesPintar);
 
-            ingredientesNoEdit.setText(ingredientesPintar);
+
+            dietaSet = mPreferences.getStringSet(DIETA, new HashSet<String>());
+            dietaEdit = (TextView) findViewById(R.id.dietaEdit);
+            String dietaPintar = "";
+            for (String ingrediente : dietaSet) {
+
+                dietaPintar = dietaPintar + "\n" + ingrediente;
+            }
+
+            dietaEdit.setText(dietaPintar);
+
         }
 
         // instanciamos
         establecerBtn = (Button) findViewById(R.id.addBirthayBtn);
+
         // DatePickerDialog
         // 2_Android_InterfacesUsuario_v2.pdf UC3M
+        // Establecemos la fecha de nacimiento del usuario a través de un DatePickerDialog
         establecerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,9 +227,8 @@ public class UsuarioActivity extends AppCompatActivity {
                 // Iniciamos la nueva actividad
                 startActivity(intent);
                 break;
-            case R.id.action_edit:
-                // editar=1;//Podemos editar el perfil de usuario
-                break;
+
+
             case R.id.action_save:
                 // Guardamos los datos en preferencias
                 savePref();
@@ -237,36 +245,39 @@ public class UsuarioActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Método para guardar los datos de perfil en preferencias
      */
     public void savePref() {
 
         // Creamos coleccion de preferencias
-        String sharedPrefFile = "com.example.cookplus";
+        String sharedPrefFile = "com.example.myapplication";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
         // Obtenemos un editor de preferencias
         SharedPreferences.Editor editor = mPreferences.edit();
 
-        // Guardamos el valor en una preferencia
+        // Guardamos el nombre en una preferencia
         editor.putString(NOMBRE,nombreApellidos.getText().toString() );//insertamos los valores con su método put<type> correspondiente
 
-        // Obtenemos la imagen como mapa de bits a través del método getDrawingCache()
+        // Obtenemos la imagen como mapa de bits a través del método getDrawingCache() y la guardamos
         fotoPerfil.buildDrawingCache();
         Bitmap bitmap = fotoPerfil.getDrawingCache();
 
         editor.putString(IMG, encodeTobase64(bitmap));
 
+        // Guardamos la edad en una preferencia
         editor.putString(EDAD, edad.getText().toString());
         int posicion = sexSpinner.getSelectedItemPosition();
 
 
+        // Guardamos el sexo en una preferencia
         editor.putInt(SEXO, posicion);
         editor.putString(PESO,peso.getText().toString());
         editor.putString(ALTURA,altura.getText().toString());
 
-        editor.putStringSet(INTOLERANCIAS, ingredientes);
-        editor.putStringSet(INGREDIENTES, dieta);
+        // Guardamos los parametros saludables y el tipo de dieta en una preferencia
+        editor.putStringSet(PARAMSALU, parametros);
+        editor.putStringSet(DIETA, dieta);
         editor.putBoolean("PRIMERAVEZ", true);
         editor.apply();
     }
@@ -368,7 +379,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
     /**
      *  Este metodo nos permite codificar la imagen de bitmap a base64.
-     *  Para implementar esta funcionalidad hemos usado uso de este recurso:
+     *  Para implementar esta funcionalidad hemos hecho uso de este recurso:
      *  https://stackoverflow.com/questions/18072448/how-to-save-image-in-shared-preference-in-android-shared-preference-issue-in-a
      * @param image
      * @return String Imagen codificada a base64
@@ -412,18 +423,18 @@ public class UsuarioActivity extends AppCompatActivity {
      * Paágina: https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
      * @param  v
      */
-    public void onTextViewClickedIntolerancias(View v){
+    public void onTextViewClickedParametrosSaludables(View v) {
 
 
-        final TextView tv = (TextView) findViewById(R.id.intoleranciasEdit);
+        final TextView tv = (TextView) findViewById(R.id.paramSaludablesEdit);
         tv.setText(null);
         // Creamos el cuadro de alerta.
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
 
         adb.setTitle("Seleccione los parametros saludables:");
-        // Son los diferentes elementos que se van a msotrar en el cuadro de dialogo.
-        final String[] Intolerancias = new String[]{
-                "Sin azucar", "Cacahuetes", "Frutos Secos", "Alcohol", "Vegana", "Vegetariana"
+        // Son los diferentes elementos que se van a mostrar en el cuadro de dialogo.
+        final String[] ParametrosSaludables = new String[]{
+                "Sin azúcar", "Cacahuetes", "Frutos Secos", "Alcohol", "Vegana", "Vegetariana"
         };
 
         //ArrayList en el que guardamos las posiciones de los items seleccionados en el cuadro de dialogo.
@@ -434,7 +445,7 @@ public class UsuarioActivity extends AppCompatActivity {
                 false,false,false,false,false,false
         };
 
-        adb.setMultiChoiceItems(Intolerancias, preCheckedItems, new DialogInterface.OnMultiChoiceClickListener(){
+        adb.setMultiChoiceItems(ParametrosSaludables, preCheckedItems, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked){
                 if(isChecked) {
@@ -452,17 +463,17 @@ public class UsuarioActivity extends AppCompatActivity {
                 /*Hacemos un bucle para recorrer los elementos selecionados
                     cuando el usuario pulse el boton de OK.
                  */
-                ingredientes = new HashSet<>();
-                String intoleranciaSelected = "";
+                parametros = new HashSet<>();
+                String paramSelected = "";
                 for(int i = 0; i<selectedItems.size(); i++){
 
-                    int IndexOfAllergies = selectedItems.get(i);
+                    int IndexOfParam = selectedItems.get(i);
 
 
-                    intoleranciaSelected = Arrays.asList(Intolerancias).get(IndexOfAllergies);
+                    paramSelected = Arrays.asList(ParametrosSaludables).get(IndexOfParam);
 
-                    ingredientes.add(intoleranciaSelected);
-                    tv.setText(tv.getText() + intoleranciaSelected + "\n");
+                    parametros.add(paramSelected);
+                    tv.setText(tv.getText() + paramSelected + "\n");
 
                 }
             }
@@ -479,20 +490,20 @@ public class UsuarioActivity extends AppCompatActivity {
 
     /**
      * Para el desarrollo de funcionalidad nos hemos basado en el siguiente recurso.
-     * Paágina: https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
+     * Página: https://android--examples.blogspot.com/2015/04/alertdialog-in-android.html
      * @param v
      */
-    public void onTextViewClickedIngredientes(View v){
+    public void onTextViewClickedDieta(View v) {
 
         dieta = null;
-        final TextView tv = (TextView) findViewById(R.id.ingredientesNoEdit);
+        final TextView tv = (TextView) findViewById(R.id.dietaEdit);
         tv.setText(null);
 
         // Creamos el cuadro de alerta.
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
         adb.setTitle("Tipo de dieta:");
 
-        final String[] Ingredientes = new String[]{
+        final String[] Dieta = new String[]{
                 "Balanceada", "Alta en proteína", "Baja en grasa", "Baja en carbohidratos"
         };
 
@@ -500,7 +511,7 @@ public class UsuarioActivity extends AppCompatActivity {
         final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
 
         /* En este caso tiene que ser un radio button porque solo podemos selecionar un tipo de dieta */
-        adb.setSingleChoiceItems(Ingredientes, 0, new DialogInterface.OnClickListener() {
+        adb.setSingleChoiceItems(Dieta, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 selectedItems.add(i);
@@ -515,15 +526,15 @@ public class UsuarioActivity extends AppCompatActivity {
                     cuando el usuario pulse el boton de OK.
                  */
                 dieta = new HashSet<>();
-                String ingredientesSelected = "";
+                String dietaSelected = "";
                 for(int i = 0; i<selectedItems.size(); i++){
-                    int IndexOfIngredients = selectedItems.get(i);
+                    int IndexOfDieta = selectedItems.get(i);
 
-                    ingredientesSelected = Arrays.asList(Ingredientes).get(IndexOfIngredients);
+                    dietaSelected = Arrays.asList(Dieta).get(IndexOfDieta);
                     //Guardamos en el hasSet el texto de los items seleccionados.
-                    dieta.add(ingredientesSelected);
+                    dieta.add(dietaSelected);
                     //Mostramos el texto de los items seleccionados.
-                    tv.setText(tv.getText() + ingredientesSelected + "\n");
+                    tv.setText(tv.getText() + dietaSelected + "\n");
 
                 }
             }

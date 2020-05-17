@@ -173,9 +173,9 @@ public class BuscarRecetasActivity extends AppCompatActivity {
                 del tipo de dieta que queremos para añadirselos a la consulta al servidor.
             * */
             if (mPreferences != null) {
-                salud = mPreferences.getStringSet("INTOLERANCIAS", new HashSet<String>());
+                salud = mPreferences.getStringSet("PARAMSALU", new HashSet<String>());
 
-                dieta = mPreferences.getStringSet("INGREDIENTES", new HashSet<String>());
+                dieta = mPreferences.getStringSet("DIETA", new HashSet<String>());
 
                 if (salud.size() > 0) {
                     url = url + "&" + tipoSalud(salud);
