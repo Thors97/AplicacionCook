@@ -96,7 +96,7 @@ public class UsuarioActivity extends AppCompatActivity {
         // PREFERENCIAS
         // 5_Android_Prefences_Fichero_BD.pdf
         // Recuperamos la informacion salvada en la preferencia
-        String sharedPrefFile = "com.example.myapplication";
+        String sharedPrefFile = "com.example.cookplus";
         SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
         String nombre, edadP, alturaP, pesoP, strImagen, sex_spinner;
@@ -154,6 +154,8 @@ public class UsuarioActivity extends AppCompatActivity {
             dietaEdit.setText(dietaPintar);
 
         }
+        parametros = mPreferences.getStringSet(PARAMSALU, new HashSet<String>());
+        dieta = mPreferences.getStringSet(DIETA, new HashSet<String>());
 
         // instanciamos
         establecerBtn = (Button) findViewById(R.id.addBirthayBtn);
@@ -282,6 +284,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
         // Guardamos los parametros saludables y el tipo de dieta en una preferencia
         editor.putStringSet(PARAMSALU, parametros);
+
         editor.putStringSet(DIETA, dieta);
         editor.putBoolean("PRIMERAVEZ", true);
         editor.apply();
@@ -513,13 +516,13 @@ public class UsuarioActivity extends AppCompatActivity {
         };
 
         //ArrayList en el que guardamos las posiciones de los items seleccionados en el cuadro de dialogo.
-        final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
-
+        //final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
+        final int[] selectItem = {0};
         /* En este caso tiene que ser un radio button porque solo podemos selecionar un tipo de dieta */
         adb.setSingleChoiceItems(Dieta, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                selectedItems.add(i);
+                selectItem[0] = i;
             }
         });
 
@@ -532,17 +535,13 @@ public class UsuarioActivity extends AppCompatActivity {
                  */
                 dieta = new HashSet<>();
                 String dietaSelected = "";
-                for(int i = 0; i<selectedItems.size(); i++){
-                    int IndexOfDieta = selectedItems.get(i);
-
-                    dietaSelected = Arrays.asList(Dieta).get(IndexOfDieta);
-                    //Guardamos en el hasSet el texto de los items seleccionados.
-                    dieta.add(dietaSelected);
-                    //Mostramos el texto de los items seleccionados.
-                    tv.setText(tv.getText() + dietaSelected + "\n");
-
+                dietaSelected = Arrays.asList(Dieta).get(selectItem[0]);
+                //Guardamos en el hasSet el texto de los items seleccionados.
+                dieta.add(dietaSelected);
+                //Mostramos el texto de los items seleccionados.
+                tv.setText(tv.getText() + dietaSelected + "\n");
                 }
-            }
+
         });
 
         //Definimos el boton de cancelar.

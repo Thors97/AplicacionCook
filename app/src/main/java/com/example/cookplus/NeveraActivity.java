@@ -206,9 +206,15 @@ public class NeveraActivity extends AppCompatActivity {
         }
     }
 
-
-
-    //Método para añadir items al ListView de cada lista
+    /**
+     * Añade la lista indicada y la tabla correspondiente de la base de datos
+     * el alimento introducido por el usuario.
+     *
+     * @param tabla    tabla de la base de datos almacenar el alimento
+     * @param item     arraylist donde listar el alimento
+     * @param adapter  adaptador de la lista
+     * @param editItem editText donde recoger el alimento escrito
+     */
     private void addItem(String tabla, ListView lista, ArrayList<NeveraItem> item, ArrayAdapter<NeveraItem> adapter, EditText editItem) {
         //Cogemos texto de la editText y lo convertimos a String
         String itemText = editItem.getText().toString();
@@ -238,7 +244,16 @@ public class NeveraActivity extends AppCompatActivity {
         }
     }
 
-    //Metodos para borrar de los ListView de cada lista
+    /**
+     * Borra de la lista indicada y la tabla correspondiente de la base de datos
+     * el alimento en la posicion posicion, tras un mensaje que alerta del borrado.
+     *
+     * @param tabla tabla de la base de datos eliminar el alimento
+     * @param item arraylist donde eliminar el alimento
+     * @param adapter adaptador de la lista
+     * @param posicion posicion del alimento en la lista
+     * @param id id del alimento en la lista
+     * */
     public void borrarItem(final String tabla, final ArrayList<NeveraItem> item, final ArrayAdapter<NeveraItem> adapter, final int posicion, final long id){
         //creamos alerta de borrado del alimento
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -272,6 +287,14 @@ public class NeveraActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Borra de la lista indicada y la tabla correspondiente de la base de datos
+     * los alimentos chekeados, tras un mensaje que alerta del borrado.
+     *
+     * @param tabla tabla de la base de datos eliminar el alimento
+     * @param item arraylist donde eliminar el alimento
+     * @param adapter adaptador de la lista
+     * */
     public void borrarChecked(String tabla, final ArrayList<NeveraItem> item, final ArrayAdapter<NeveraItem> adapter){
         ArrayList<NeveraItem> itemsChecked = new ArrayList<>();
         //recojo todos los datos de la bbdd
@@ -306,6 +329,14 @@ public class NeveraActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Borra de la lista indicada y la tabla correspondiente de la base de datos
+     * todos los alimentos, tras un mensaje que alerta del borrado.
+     *
+     * @param tabla tabla de la base de datos eliminar el alimento
+     * @param item arraylist donde eliminar el alimento
+     * @param adapter adaptador de la lista
+     * */
     public void borrarTodo(final String tabla, final ArrayList<NeveraItem> item, final ArrayAdapter<NeveraItem> adapter){
 
         //creamos alerta de borrado del alimento

@@ -56,7 +56,7 @@ public class BuscarRecetasAdapter extends ArrayAdapter<Receta> {
 
         holder.txtTitle.setText(receta.getNombre());
         holder.imageView.setImageBitmap(receta.getImagen());
-        holder.txtCalorias.setText("CALORIAS:" + "\n" + receta.getCalorias().substring(0, 7));
+        holder.txtCalorias.setText("CALORIAS:" + "\n" + receta.getCalorias().substring(0, 5));
         String ingredientes = receta.getIngredientes().toString().substring(1, receta.getIngredientes().toString().length() - 1);
         holder.txtIngredientes.setText("INGREDIENTES: " + "\n" + ingredientes);
 
