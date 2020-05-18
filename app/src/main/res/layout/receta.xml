@@ -2,7 +2,6 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -78,12 +77,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="10dp"
         android:background="@color/colorPrimary"
         app:itemIconTint="@color/itemIconTint"
         app:itemTextColor="@color/itemIconTint"
-        app:menu="@menu/navigation_bottom" />
-    <!-- si tal, dentro de lo de arriba
-        android:scrollbarAlwaysDrawHorizontalTrack="true"
-        android:scrollbarAlwaysDrawVerticalTrack="true" -->
+        app:menu="@menu/navigation_bottom"
+        app:labelVisibilityMode="unlabeled"/>
 </LinearLayout>

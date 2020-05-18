@@ -13,8 +13,8 @@
         android:layout_weight="10"
         android:orientation="vertical">
 
-<!-- ___________ PRIMERA LINEA _________________ -->
-<!-- ___________ FOTOS ________________________ -->
+        <!-- ___________ PRIMERA LINEA _________________ -->
+        <!-- ___________ FOTOS ________________________ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -30,32 +30,32 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
         </LinearLayout>
 
-<!-- __ TITULOS _______________________________ -->
+        <!-- __ TITULOS _______________________________ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -105,8 +105,8 @@
 
         </LinearLayout>
 
-<!-- __ SEGUNDA LINEA _______________________________ -->
- <!-- ____ FOTOS _______________________________ -->
+        <!-- __ SEGUNDA LINEA _______________________________ -->
+        <!-- ____ FOTOS _______________________________ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -122,28 +122,28 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
         </LinearLayout>
 
@@ -166,7 +166,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 1"
+                android:text="Foto 4"
                 android:textSize="16sp" />
 
             <TextView
@@ -179,7 +179,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 2"
+                android:text="Foto 5"
                 android:textSize="16sp" />
 
             <TextView
@@ -192,7 +192,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 3"
+                android:text="Foto 6"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -214,28 +214,28 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton9"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
         </LinearLayout>
 
@@ -258,7 +258,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 1"
+                android:text="Foto 7"
                 android:textSize="16sp" />
 
             <TextView
@@ -271,7 +271,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 2"
+                android:text="Foto 8"
                 android:textSize="16sp" />
 
             <TextView
@@ -284,7 +284,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 3"
+                android:text="Foto 9"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -306,28 +306,28 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton11"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
             <ImageView
                 android:id="@+id/imageButton12"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3.33"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:layout_marginStart="10dp"
-                app:srcCompat="@drawable/ensalada_garbanzos" />
+                app:srcCompat="@drawable/silueta" />
 
         </LinearLayout>
 
@@ -350,7 +350,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 1"
+                android:text="Foto 10"
                 android:textSize="16sp" />
 
             <TextView
@@ -363,7 +363,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 2"
+                android:text="Foto 11"
                 android:textSize="16sp" />
 
             <TextView
@@ -376,7 +376,7 @@
                 android:layout_marginEnd="0dp"
                 android:fontFamily="sans-serif"
                 android:textAlignment="center"
-                android:text="Foto 3"
+                android:text="Foto 12"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -389,12 +389,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/colorPrimary"
-        android:paddingTop="10dp"
         app:itemIconTint="@color/itemIconTint"
         app:itemTextColor="@color/itemIconTint"
-        app:menu="@menu/navigation_bottom" />
-    <!-- si tal, dentro de lo de arriba
-        android:scrollbarAlwaysDrawHorizontalTrack="true"
-        android:scrollbarAlwaysDrawVerticalTrack="true" -->
+        app:menu="@menu/navigation_bottom"
+        app:labelVisibilityMode="unlabeled"/>
+
 
 </LinearLayout>
